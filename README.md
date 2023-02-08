@@ -8,7 +8,7 @@ An online E-store system built in Java 11=> and ___ _replace with other platform
 - Aadith Charugundla
 - Cullen Walsh
 - Jessica Phillips
-- MEMBER4
+- Zachary Rutherford
 
 
 ## Prerequisites
