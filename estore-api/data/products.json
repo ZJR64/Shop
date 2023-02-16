@@ -1,0 +1,52 @@
+[
+    {
+        "id": 11,
+        "name": "Mr. Nice",
+        "type": "Coffee"
+    },
+    {
+        "id": 12,
+        "name": "Narco",
+        "type": "Coffee"
+    },
+    {
+        "id": 13,
+        "name": "Bombasto",
+        "type": "Coffee"
+    },
+    {
+        "id": 14,
+        "name": "Celeritas",
+        "type": "Coffee"
+    },
+    {
+        "id": 15,
+        "name": "Magneta",
+        "type": "Coffee"
+    },
+    {
+        "id": 16,
+        "name": "RubberMan",
+        "type": "Coffee"
+    },
+    {
+        "id": 17,
+        "name": "Dynama",
+        "type": "Coffee"
+    },
+    {
+        "id": 18,
+        "name": "Dr IQ",
+        "type": "Coffee"
+    },
+    {
+        "id": 19,
+        "name": "Magma",
+        "type": "Coffee"
+    },
+    {
+        "id": 20,
+        "name": "Tornado",
+        "type": "Coffee"
+    }
+]

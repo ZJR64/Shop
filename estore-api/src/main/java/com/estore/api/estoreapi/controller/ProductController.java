@@ -16,7 +16,7 @@ import java.io.IOException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-import com.estore.api.estoreapi.persistence.ProdutDAO;
+import com.estore.api.estoreapi.persistence.ProductDAO;
 import com.estore.api.estoreapi.model.Product;
 
 /**
