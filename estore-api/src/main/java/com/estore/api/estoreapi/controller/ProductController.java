@@ -22,7 +22,8 @@ import com.estore.api.estoreapi.model.Product;
 /**
  * Handles the REST API requests for the Product resource
  * <p>
- * {@literal @}RestController Spring annotation identifies this class as a REST API
+ * {@literal @}RestController Spring annotation identifies this class as a REST
+ * API
  * method handler to the Spring framework
  * 
  * @author AADITH CHARUGUNDLA
@@ -37,34 +38,44 @@ public class ProductController {
     /**
      * Creates a REST API controller to reponds to requests
      * 
-     * @param productDao The {@link ProductDAO Product Data Access Object} to perform CRUD operations
-     * <br>
-     * This dependency is injected by the Spring Framework
+     * @param productDao The {@link ProductDAO Product Data Access Object} to
+     *                   perform CRUD operations
+     *                   <br>
+     *                   This dependency is injected by the Spring Framework
      */
     public ProductController(ProductDAO productDao) {
         this.productDao = productDao;
     }
 
     /**
-     * Responds to the GET request for all {@linkplain Product products}
+     * Responds to the GET request for all {@linkplain Product products} whose name
+     * contains
+     * the text in name
      * 
-     * @return ResponseEntity with array of {@link Product product} objects (may be empty) and
-     * HTTP status of OK<br>
-     * ResponseEntity with HTTP status of INTERNAL_SERVER_ERROR otherwise
+     * @param name The name parameter which contains the text used to find the
+     *             {@link Product products}
+     * 
+     * @return ResponseEntity with array of {@link Product product} objects (may be
+     *         empty)
+     *         and
+     *         HTTP status of OK<br>
+     *         ResponseEntity with HTTP status of INTERNAL_SERVER_ERROR otherwise
+     *         <p>
+     *         Example: Find all products that contain the text "ma"
+     *         GET http://localhost:8080/products/?name=ma
      */
-    @GetMapping("")
-    public ResponseEntity<Product[]> getProducts() {
-        LOG.info("GET /heroes");
+    @GetMapping("/")
+    public ResponseEntity<Product[]> searchProducts(@RequestParam String name) {
+        LOG.info("GET /products/?name=" + name);
 
         try {
-            Product[] products = productDao.getProducts();
+            Product[] products = productDao.findProducts(name);
             if (products != null)
-                return new ResponseEntity<Product[]>(products,HttpStatus.OK);
+                return new ResponseEntity<Product[]>(products, HttpStatus.OK);
             else
                 return new ResponseEntity<>(HttpStatus.NOT_FOUND);
-        }
-        catch(IOException e) {
-            LOG.log(Level.SEVERE,e.getLocalizedMessage());
+        } catch (IOException e) {
+            LOG.log(Level.SEVERE, e.getLocalizedMessage());
             return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
         }
     }
