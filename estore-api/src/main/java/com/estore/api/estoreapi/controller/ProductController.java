@@ -47,27 +47,28 @@ public class ProductController {
         this.productDao = productDao;
     }
 
-     /**
-     * Responds to the GET request for a {@linkplain Product product} for the given id
+    /**
+     * Responds to the GET request for a {@linkplain Product product} for the given
+     * id
      * 
      * @param id The id used to locate the {@link Product product}
      * 
-     * @return ResponseEntity with {@link Product product} object and HTTP status of OK if found<br>
-     * ResponseEntity with HTTP status of NOT_FOUND if not found<br>
-     * ResponseEntity with HTTP status of INTERNAL_SERVER_ERROR otherwise
+     * @return ResponseEntity with {@link Product product} object and HTTP status of
+     *         OK if found<br>
+     *         ResponseEntity with HTTP status of NOT_FOUND if not found<br>
+     *         ResponseEntity with HTTP status of INTERNAL_SERVER_ERROR otherwise
      */
     @GetMapping("/{id}")
-    public ResponseEntity<Product> getHero(@PathVariable int id) {
+    public ResponseEntity<Product> getProduct(@PathVariable int id) {
         LOG.info("GET /product/" + id);
         try {
             Product product = productDao.getProduct(id);
             if (product != null)
-                return new ResponseEntity<Product>(product,HttpStatus.OK);
+                return new ResponseEntity<Product>(product, HttpStatus.OK);
             else
                 return new ResponseEntity<>(HttpStatus.NOT_FOUND);
-        }
-        catch(IOException e) {
-            LOG.log(Level.SEVERE,e.getLocalizedMessage());
+        } catch (IOException e) {
+            LOG.log(Level.SEVERE, e.getLocalizedMessage());
             return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
         }
     }

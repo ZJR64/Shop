@@ -1,52 +1,52 @@
 [
     {
         "id": 11,
-        "name": "Mr. Nice",
+        "name": "Colombian Roast",
         "type": "Coffee"
     },
     {
         "id": 12,
-        "name": "Narco",
+        "name": "Vanilla",
         "type": "Coffee"
     },
     {
         "id": 13,
-        "name": "Bombasto",
+        "name": "French Roast",
         "type": "Coffee"
     },
     {
         "id": 14,
-        "name": "Celeritas",
+        "name": "Italian Roast",
         "type": "Coffee"
     },
     {
         "id": 15,
-        "name": "Magneta",
+        "name": "Shadow Wizard Roast",
         "type": "Coffee"
     },
     {
         "id": 16,
-        "name": "RubberMan",
+        "name": "Chief Keef Blend",
         "type": "Coffee"
     },
     {
         "id": 17,
-        "name": "Dynama",
+        "name": "Zaza Infused Blend",
         "type": "Coffee"
     },
     {
         "id": 18,
-        "name": "Dr IQ",
-        "type": "Coffee"
+        "name": "Chamomile Tea",
+        "type": "Tea"
     },
     {
         "id": 19,
-        "name": "Magma",
-        "type": "Coffee"
+        "name": "Oolong Tea",
+        "type": "Tea"
     },
     {
         "id": 20,
-        "name": "Tornado",
-        "type": "Coffee"
+        "name": "Green Tea",
+        "type": "Tea"
     }
 ]
