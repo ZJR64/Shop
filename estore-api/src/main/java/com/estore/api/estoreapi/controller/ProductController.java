@@ -54,7 +54,7 @@ public class ProductController {
      */
     @GetMapping("")
     public ResponseEntity<Product[]> getProducts() {
-        LOG.info("GET /heroes");
+        LOG.info("GET  Product products");
 
         try {
             Product[] products = productDao.getProducts();
@@ -68,4 +68,33 @@ public class ProductController {
             return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
         }
     }
+
+    /**
+     * Updates the {@linkplain Product product} with the provided {@linkplain Product product} object, if it exists
+     * 
+     * @param Product product The {@link Product product} to update
+     * 
+     * @return ResponseEntity with updated {@link Product product} object and HTTP status of OK if updated<br>
+     * ResponseEntity with HTTP status of NOT_FOUND if not found<br>
+     * ResponseEntity with HTTP status of INTERNAL_SERVER_ERROR otherwise
+     */
+    @PutMapping("")
+    public ResponseEntity<Product> updateProduct(@RequestBody Product product) {
+        LOG.info("PUT  /products " + product);
+
+        // Replace below with your implementation
+        try {
+            Product productCheck = productDao.updateProduct(product);
+            if (productCheck != null) {
+                return new ResponseEntity<Product>(productCheck,HttpStatus.OK);
+            }
+            return new ResponseEntity<Product>(HttpStatus.NOT_FOUND);
+        }
+        catch (Exception e) {
+            LOG.log(Level.SEVERE,e.getLocalizedMessage());
+            return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
+        }
+    }
+
+
 }
