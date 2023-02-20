@@ -74,12 +74,7 @@ public class ProductController {
     }
 
     /**
-     * Responds to the GET request for all {@linkplain Product products} whose name
-     * contains
-     * the text in name
-     * 
-     * @param name The name parameter which contains the text used to find the
-     *             {@link Product products}
+     * Responds to the GET request for all {@linkplain Product products}
      * 
      * @return ResponseEntity with array of {@link Product product} objects (may be
      *         empty) and
@@ -89,6 +84,31 @@ public class ProductController {
     @GetMapping("")
     public ResponseEntity<Product[]> getProducts() {
         LOG.info("GET /products");
+
+        try {
+            Product[] products = productDao.getProducts();
+            return new ResponseEntity<Product[]>(products,HttpStatus.OK);
+        }
+        catch (Exception e) {
+            LOG.log(Level.SEVERE,e.getLocalizedMessage());
+            return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
+        }
+
+    }
+
+    /**
+     * Responds to the GET request for all {@linkplain Product products} whose name contains
+     * the text in name
+     * 
+     * @param name The name parameter which contains the text used to find the {@link Product products}
+     * 
+     * @return ResponseEntity with array of {@link Product hero} objects (may be empty) and
+     * HTTP status of OK<br>
+     * ResponseEntity with HTTP status of INTERNAL_SERVER_ERROR otherwise
+     * <p>
+     * Example: Find all products that contain the text "ma"
+     * GET http://localhost:8080/products/?name=ma
+     */
     @GetMapping("/")
     public ResponseEntity<Product[]> searchProducts(@RequestParam String name) {
         LOG.info("GET /products/?name=" + name);
@@ -96,7 +116,6 @@ public class ProductController {
         try {
             Product[] products = productDao.findProducts(name);
             if (products != null) {
-                return new ResponseEntity<Product[]>(products, HttpStatus.OK);
                 return new ResponseEntity<Product[]>(products, HttpStatus.OK);
             }
             else {
