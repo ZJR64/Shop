@@ -74,7 +74,12 @@ public class ProductController {
     }
 
     /**
-     * Responds to the GET request for all {@linkplain Product products}
+     * Responds to the GET request for all {@linkplain Product products} whose name
+     * contains
+     * the text in name
+     * 
+     * @param name The name parameter which contains the text used to find the
+     *             {@link Product products}
      * 
      * @return ResponseEntity with array of {@link Product product} objects (may be
      *         empty) and
@@ -84,13 +89,19 @@ public class ProductController {
     @GetMapping("")
     public ResponseEntity<Product[]> getProducts() {
         LOG.info("GET /products");
+    @GetMapping("/")
+    public ResponseEntity<Product[]> searchProducts(@RequestParam String name) {
+        LOG.info("GET /products/?name=" + name);
 
         try {
-            Product[] products = productDao.getProducts();
-            if (products != null)
+            Product[] products = productDao.findProducts(name);
+            if (products != null) {
                 return new ResponseEntity<Product[]>(products, HttpStatus.OK);
-            else
+                return new ResponseEntity<Product[]>(products, HttpStatus.OK);
+            }
+            else {
                 return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+            }
         } catch (IOException e) {
             LOG.log(Level.SEVERE, e.getLocalizedMessage());
             return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);

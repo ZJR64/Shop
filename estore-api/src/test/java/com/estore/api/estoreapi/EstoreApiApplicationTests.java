@@ -1,23 +1,15 @@
 package com.estore.api.estoreapi;
 
-import java.beans.Transient;
-
 import static org.junit.jupiter.api.Assertions.assertDoesNotThrow;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
-import static org.junit.jupiter.api.Assertions.assertNull;
-import static org.junit.jupiter.api.Assertions.assertThrows;
-import static org.mockito.ArgumentMatchers.any;
-import static org.mockito.Mockito.doThrow;
-import static org.mockito.Mockito.mock;
-import static org.mockito.Mockito.when;
-
-import com.fasterxml.jackson.databind.ObjectMapper;
-import com.estore.api.estoreapi.model.Product;
-import com.estore.api.estoreapi.persistence.ProductFileDAO;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
+
+import com.estore.api.estoreapi.model.Product;
+import com.estore.api.estoreapi.persistence.ProductFileDAO;
+import com.fasterxml.jackson.databind.ObjectMapper;
 
 @SpringBootTest
 class EstoreApiApplicationTests {
