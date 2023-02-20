@@ -110,7 +110,7 @@ public class ProductController {
      */
     @PutMapping("")
     public ResponseEntity<Product> updateProduct(@RequestBody Product product) {
-        LOG.info("PUT  /products " + product);
+        LOG.info("PUT /products " + product);
 
         // Replace below with your implementation
         try {
