@@ -54,7 +54,7 @@ public class ProductController {
      */
     @GetMapping("")
     public ResponseEntity<Product[]> getProducts() {
-        LOG.info("GET /heroes");
+        LOG.info("GET /products");
 
         try {
             Product[] products = productDao.getProducts();
@@ -67,5 +67,32 @@ public class ProductController {
             LOG.log(Level.SEVERE,e.getLocalizedMessage());
             return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
         }
+    }
+
+    /**
+     * Creates a {@linkplain Product product} with the provided product object
+     *
+     * @param product - The {@link Product product} to create
+     *
+     * @return ResponseEntity with created {@link Product product} object and HTTP status of CREATED<br>
+     * ResponseEntity with HTTP status of CONFLICT if {@link Product product} object already exists<br>
+     * ResponseEntity with HTTP status of INTERNAL_SERVER_ERROR otherwise
+     */
+    @PostMapping("")
+    public ResponseEntity<Product> createProduct(@RequestBody Product product) {
+        LOG.info("POST /products " + product);
+        try{
+            Product newProduct = productDao.createProduct(product);
+            if (newProduct != null){
+                return new ResponseEntity<Product>(newProduct, HttpStatus.CREATED);
+            }
+            else{
+                return new ResponseEntity<>(HttpStatus.CONFLICT);
+            }
+        }catch(Exception e){
+            LOG.log(Level.SEVERE,e.getLocalizedMessage());
+            return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
+        }
+
     }
 }
