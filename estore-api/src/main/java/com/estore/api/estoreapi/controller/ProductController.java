@@ -47,7 +47,7 @@ public class ProductController {
         this.productDao = productDao;
     }
 
-        /**
+    /**
      * Responds to the GET request for a {@linkplain Product product} for the given
      * id
      * 
@@ -74,29 +74,30 @@ public class ProductController {
     }
 
     /**
-    * Creates a {@linkplain Product product} with the provided product object
-    *
-    * @param product - The {@link Product product} to create
-    *
-    * @return ResponseEntity with created {@link Product product} object and HTTP status of CREATED<br>
-    * ResponseEntity with HTTP status of CONFLICT if {@link Product product} object already exists<br>
-    * ResponseEntity with HTTP status of INTERNAL_SERVER_ERROR otherwise
-    */
-   @PostMapping("")
-   public ResponseEntity<Product> createProduct(@RequestBody Product product) {
-       LOG.info("POST /products " + product);
-       try{
-           Product newProduct = productDao.createProduct(product);
-           if (newProduct != null){
-               return new ResponseEntity<Product>(newProduct, HttpStatus.CREATED);
-           }
-           else{
-               return new ResponseEntity<>(HttpStatus.CONFLICT);
-           }
-       }catch(Exception e){
-           LOG.log(Level.SEVERE,e.getLocalizedMessage());
-           return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
-       }
+     * Creates a {@linkplain Product product} with the provided product object
+     *
+     * @param product - The {@link Product product} to create
+     *
+     * @return ResponseEntity with created {@link Product product} object and HTTP
+     *         status of CREATED<br>
+     *         ResponseEntity with HTTP status of CONFLICT if {@link Product
+     *         product} object already exists<br>
+     *         ResponseEntity with HTTP status of INTERNAL_SERVER_ERROR otherwise
+     */
+    @PostMapping("")
+    public ResponseEntity<Product> createProduct(@RequestBody Product product) {
+        LOG.info("POST /products " + product);
+        try {
+            Product newProduct = productDao.createProduct(product);
+            if (newProduct != null) {
+                return new ResponseEntity<Product>(newProduct, HttpStatus.CREATED);
+            } else {
+                return new ResponseEntity<>(HttpStatus.CONFLICT);
+            }
+        } catch (Exception e) {
+            LOG.log(Level.SEVERE, e.getLocalizedMessage());
+            return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
+        }
     }
 
     /**
@@ -109,30 +110,32 @@ public class ProductController {
      */
     @GetMapping("")
     public ResponseEntity<Product[]> getProducts() {
-        LOG.info("GET /heroes");
+        LOG.info("GET /products");
 
         try {
             Product[] products = productDao.getProducts();
-            return new ResponseEntity<Product[]>(products,HttpStatus.OK);
-        }
-        catch (IOException e) {
-        LOG.log(Level.SEVERE, e.getLocalizedMessage());
-        return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
+            return new ResponseEntity<Product[]>(products, HttpStatus.OK);
+        } catch (IOException e) {
+            LOG.log(Level.SEVERE, e.getLocalizedMessage());
+            return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
         }
     }
 
     /**
-     * Responds to the GET request for all {@linkplain Product products} whose name contains
+     * Responds to the GET request for all {@linkplain Product products} whose name
+     * contains
      * the text in name
      * 
-     * @param name The name parameter which contains the text used to find the {@link Product products}
+     * @param name The name parameter which contains the text used to find the
+     *             {@link Product products}
      * 
-     * @return ResponseEntity with array of {@link Product hero} objects (may be empty) and
-     * HTTP status of OK<br>
-     * ResponseEntity with HTTP status of INTERNAL_SERVER_ERROR otherwise
-     * <p>
-     * Example: Find all products that contain the text "ma"
-     * GET http://localhost:8080/products/?name=ma
+     * @return ResponseEntity with array of {@link Product hero} objects (may be
+     *         empty) and
+     *         HTTP status of OK<br>
+     *         ResponseEntity with HTTP status of INTERNAL_SERVER_ERROR otherwise
+     *         <p>
+     *         Example: Find all products that contain the text "ma"
+     *         GET http://localhost:8080/products/?name=ma
      */
     @GetMapping("/")
     public ResponseEntity<Product[]> searchProducts(@RequestParam String name) {
@@ -142,8 +145,7 @@ public class ProductController {
             Product[] products = productDao.findProducts(name);
             if (products != null) {
                 return new ResponseEntity<Product[]>(products, HttpStatus.OK);
-            }
-            else {
+            } else {
                 return new ResponseEntity<>(HttpStatus.NOT_FOUND);
             }
         } catch (IOException e) {
@@ -180,15 +182,14 @@ public class ProductController {
         }
     }
 
-    
     /**
      * Deletes a {@linkplain Product product} with the given id
      * 
      * @param id The id of the {@link Product product} to deleted
      * 
      * @return ResponseEntity HTTP status of OK if deleted<br>
-     * ResponseEntity with HTTP status of NOT_FOUND if not found<br>
-     * ResponseEntity with HTTP status of INTERNAL_SERVER_ERROR otherwise
+     *         ResponseEntity with HTTP status of NOT_FOUND if not found<br>
+     *         ResponseEntity with HTTP status of INTERNAL_SERVER_ERROR otherwise
      */
     @DeleteMapping("/{id}")
     public ResponseEntity<Product> deleteProduct(@PathVariable int id) {
@@ -199,15 +200,12 @@ public class ProductController {
             boolean productCheck = productDao.deleteProduct(id);
             if (productCheck) {
                 return new ResponseEntity<Product>(HttpStatus.OK);
-            } 
-            return new ResponseEntity<Product>(HttpStatus.NOT_FOUND);    
-        }
-        catch (Exception e) {
+            }
+            return new ResponseEntity<Product>(HttpStatus.NOT_FOUND);
+        } catch (Exception e) {
             LOG.log(Level.SEVERE, e.getLocalizedMessage());
             return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
         }
-        
+
     }
 }
-
-    
