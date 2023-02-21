@@ -48,32 +48,6 @@ public class ProductController {
     }
 
     /**
-     * Responds to the GET request for a {@linkplain Product product} for the given
-     * id
-     * 
-     * @param id The id used to locate the {@link Product product}
-     * 
-     * @return ResponseEntity with {@link Product product} object and HTTP status of
-     *         OK if found<br>
-     *         ResponseEntity with HTTP status of NOT_FOUND if not found<br>
-     *         ResponseEntity with HTTP status of INTERNAL_SERVER_ERROR otherwise
-     */
-    @GetMapping("/{id}")
-    public ResponseEntity<Product> getProduct(@PathVariable int id) {
-        LOG.info("GET /product/" + id);
-        try {
-            Product product = productDao.getProduct(id);
-            if (product != null)
-                return new ResponseEntity<Product>(product, HttpStatus.OK);
-            else
-                return new ResponseEntity<>(HttpStatus.NOT_FOUND);
-        } catch (IOException e) {
-            LOG.log(Level.SEVERE, e.getLocalizedMessage());
-            return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
-        }
-    }
-
-    /**
      * Responds to the GET request for all {@linkplain Product products}
      * 
      * @return ResponseEntity with array of {@link Product product} objects (may be
@@ -83,17 +57,16 @@ public class ProductController {
      */
     @GetMapping("")
     public ResponseEntity<Product[]> getProducts() {
-        LOG.info("GET /products");
+        LOG.info("GET /heroes");
 
         try {
             Product[] products = productDao.getProducts();
             return new ResponseEntity<Product[]>(products,HttpStatus.OK);
         }
-        catch (Exception e) {
-            LOG.log(Level.SEVERE,e.getLocalizedMessage());
-            return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
+        catch (IOException e) {
+        LOG.log(Level.SEVERE, e.getLocalizedMessage());
+        return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
         }
-
     }
 
     /**
@@ -184,3 +157,5 @@ public class ProductController {
         
     }
 }
+
+    
