@@ -113,6 +113,6 @@ public class Product {
      */
     @Override
     public String toString() {
-        return String.format(STRING_FORMAT, id, name, type);
+        return String.format(STRING_FORMAT, id, name, type,price,quantity);
     }
 }

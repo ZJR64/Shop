@@ -102,6 +102,6 @@ public class Ingredient {
      */
     @Override
     public String toString() {
-        return String.format(STRING_FORMAT,id,name);
+        return String.format(STRING_FORMAT,id,name,type,price,volume);
     }
 }
