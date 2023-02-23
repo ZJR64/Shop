@@ -6,7 +6,7 @@ import com.estore.api.estoreapi.model.Ingredient;
 /**
  * Defines the interface for Ingredient object persistence
  * 
- * @author Zachary Rutherford
+ * @author Zak Rutherford
  */
 public interface IngredientDAO {
     /**
