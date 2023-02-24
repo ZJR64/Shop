@@ -12,13 +12,13 @@ public class Ingredient {
     private static final Logger LOG = Logger.getLogger(Ingredient.class.getName());
 
     // Package private for tests
-    static final String STRING_FORMAT = "Ingredient [id=%d, name=%s, type=%s, price=%f, volume=%d]";
+    static final String STRING_FORMAT = "Ingredient [id=%d, name=%s, type=%s, price=%f, volume=%f]";
 
     @JsonProperty("id") private int id;
     @JsonProperty("name") private String name;
     @JsonProperty("type") private String type;
     @JsonProperty("price") private float price;
-    @JsonProperty("volume") private int volume;
+    @JsonProperty("volume") private float volume;
 
     /**
      * Create a ingredient with the given id and name
@@ -34,7 +34,7 @@ public class Ingredient {
      * value, i.e. 0 for int
      */
     public Ingredient(@JsonProperty("id") int id, @JsonProperty("name") String name, @JsonProperty("type") String type,
-    @JsonProperty("price") float price, @JsonProperty("volume") int volume) {
+    @JsonProperty("price") float price, @JsonProperty("volume") float volume) {
         this.id = id;
         this.name = name;
         this.type = type;
@@ -89,13 +89,13 @@ public class Ingredient {
      * Sets the volume of the ingredient - necessary for JSON object to Java object deserialization
      * @param volume The volume of the ingredient
      */
-    public void setVolume(int volume) {this.volume = volume;}
+    public void setVolume(float volume) {this.volume = volume;}
 
     /**
      * Retrieves the volume of the ingredient
      * @return The volume of the ingredient
      */
-    public int getVolume() {return volume;}
+    public float getVolume() {return volume;}
 
     /**
      * {@inheritDoc}

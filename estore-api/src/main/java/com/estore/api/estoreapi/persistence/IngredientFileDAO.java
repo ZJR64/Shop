@@ -32,7 +32,8 @@ public class IngredientFileDAO implements IngredientDAO {
     private ObjectMapper objectMapper; // Provides conversion between Ingredients
                                        // objects and JSON text format written
                                        // to the file
-    private static int nextId; // The next Id to assign to a new ingredient
+    private static int currentID; // The lates ID to be assigned to an ingredient
+    private static ArrayList<Integer> deletedIDs; // arraylist of all deleted ids
     private String filename; // Filename to read from and write to
 
     /**
@@ -53,12 +54,16 @@ public class IngredientFileDAO implements IngredientDAO {
     /**
      * Generates the next id for a new {@linkplain Ingredient ingredient}
      * 
-     * @return The next id
+     * @return The an id
      */
     private synchronized static int nextId() {
-        int id = nextId;
-        ++nextId;
-        return id;
+        if (deletedIDs.size() > 0) {
+            return deletedIDs.remove(0);
+        }
+        else {
+            currentID++;
+            return currentID;
+        }
     }
 
     /**
@@ -124,7 +129,8 @@ public class IngredientFileDAO implements IngredientDAO {
      */
     private boolean load() throws IOException {
         ingredients = new TreeMap<>();
-        nextId = 0;
+        currentID = 0;
+        deletedIDs = new ArrayList<Integer>();
 
         // Deserializes the JSON objects from the file into an array of ingredients
         // readValue will throw an IOException if there's an issue with the file
@@ -132,13 +138,25 @@ public class IngredientFileDAO implements IngredientDAO {
         Ingredient[] ingredientArray = objectMapper.readValue(new File(filename), Ingredient[].class);
 
         // Add each ingredient to the tree map and keep track of the greatest id
+        int maxID = 0;
         for (Ingredient ingredient : ingredientArray) {
             ingredients.put(ingredient.getId(), ingredient);
-            if (ingredient.getId() > nextId)
-                nextId = ingredient.getId();
+            if (ingredient.getId() > maxID)
+                maxID = ingredient.getId();
         }
-        // Make the next id one greater than the maximum from the file
-        ++nextId;
+
+        //assign the value.
+        currentID = maxID;
+
+        //find the missing ids to fil in the deleted id list
+        for (int i = 1; i <= maxID; i++) {
+            deletedIDs.add(i);
+        }
+
+        for (Ingredient ingredient : ingredientArray) {
+            deletedIDs.remove(deletedIDs.indexOf(ingredient.getId()));
+        }
+
         return true;
     }
 
@@ -214,6 +232,7 @@ public class IngredientFileDAO implements IngredientDAO {
         synchronized (ingredients) {
             if (ingredients.containsKey(id)) {
                 ingredients.remove(id);
+                deletedIDs.add(id);
                 return save();
             } else
                 return false;
