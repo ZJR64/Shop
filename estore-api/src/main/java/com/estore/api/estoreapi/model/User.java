@@ -52,7 +52,7 @@ public class User {
      */
     public User(@JsonProperty("id") int id, @JsonProperty("email") String email, @JsonProperty("name") String name,
             @JsonProperty("password") String password, @JsonProperty("address") String address,
-            @JsonProperty("Admin") Boolean admin, @JsonProperty("payInfo") String[] payInfo) {
+            @JsonProperty("admin") Boolean admin, @JsonProperty("payInfo") String[] payInfo) {
         this.id = id;
         this.email = email;
         this.name = name;
