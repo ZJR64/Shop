@@ -26,7 +26,7 @@ import com.estore.api.estoreapi.model.User;
  * API
  * method handler to the Spring framework
  * 
- * @author Zak Rutherford
+ * @author AADITH CHARUGUNDLA
  */
 
 @RestController
@@ -51,18 +51,18 @@ public class UserController {
      * Responds to the GET request for a {@linkplain User user} for the given
      * id
      * 
-     * @param email The email used to locate the {@link User user}
+     * @param id The id used to locate the {@link User user}
      * 
      * @return ResponseEntity with {@link User user} object and HTTP status of
      *         OK if found<br>
      *         ResponseEntity with HTTP status of NOT_FOUND if not found<br>
      *         ResponseEntity with HTTP status of INTERNAL_SERVER_ERROR otherwise
      */
-    @GetMapping("/{email}")
-    public ResponseEntity<User> getUser(@PathVariable String email) {
-        LOG.info("GET /user/" + email);
+    @GetMapping("/{id}")
+    public ResponseEntity<User> getUser(@PathVariable int id) {
+        LOG.info("GET /user/" + id);
         try {
-            User user = userDao.getUser(email);
+            User user = userDao.getUser(id);
             if (user != null)
                 return new ResponseEntity<User>(user, HttpStatus.OK);
             else
@@ -185,19 +185,19 @@ public class UserController {
     /**
      * Deletes a {@linkplain User user} with the given id
      * 
-     * @param email The email of the {@link User user} to deleted
+     * @param id The id of the {@link User user} to deleted
      * 
      * @return ResponseEntity HTTP status of OK if deleted<br>
      *         ResponseEntity with HTTP status of NOT_FOUND if not found<br>
      *         ResponseEntity with HTTP status of INTERNAL_SERVER_ERROR otherwise
      */
     @DeleteMapping("/{id}")
-    public ResponseEntity<User> deleteUser(@PathVariable String email) {
-        LOG.info("DELETE /users/" + email);
+    public ResponseEntity<User> deleteUser(@PathVariable int id) {
+        LOG.info("DELETE /users/" + id);
 
         // Replace below with your implementation
         try {
-            boolean userCheck = userDao.deleteUser(email);
+            boolean userCheck = userDao.deleteUser(id);
             if (userCheck) {
                 return new ResponseEntity<User>(HttpStatus.OK);
             }

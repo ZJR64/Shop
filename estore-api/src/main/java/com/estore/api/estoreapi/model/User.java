@@ -8,14 +8,15 @@ import com.fasterxml.jackson.annotation.JsonProperty;
  * Represents a Product entity
  * 
  * @author AADITH CHARUGUNDLA
- * @author Zak Rutherford
  */
 public class User {
     private static final Logger LOG = Logger.getLogger(User.class.getName());
 
     // Package private for tests
-    static final String STRING_FORMAT = "Product [email=%s, name=%s, password=%s, address=%s, admin=%b, payInfo=%s]";
+    static final String STRING_FORMAT = "Product [int=%d, email=%s, name=%s, password=%s, address=%s, admin=%b, payInfo=%s]";
 
+    @JsonProperty("id")
+    private int id;
     @JsonProperty("email")
     private String email;
     @JsonProperty("name")
@@ -49,15 +50,25 @@ public class User {
      *                 default Java
      *                 value, i.e. 0 for int
      */
-    public User(@JsonProperty("email") String email, @JsonProperty("name") String name,
+    public User(@JsonProperty("id") int id, @JsonProperty("email") String email, @JsonProperty("name") String name,
             @JsonProperty("password") String password, @JsonProperty("address") String address,
             @JsonProperty("Admin") Boolean admin, @JsonProperty("payInfo") String[] payInfo) {
+        this.id = id;
         this.email = email;
         this.name = name;
         this.password = password;
         this.address = address;
         this.admin = admin;
         this.payInfo = payInfo;
+    }
+
+    /**
+     * Retrieves the id of the ingredient
+     * 
+     * @return The id of the ingredient
+     */
+    public int getId() {
+        return id;
     }
 
     /**
@@ -86,6 +97,15 @@ public class User {
      */
     public void setName(String name) {
         this.name = name;
+    }
+
+    /**
+     * Retrieves the password of the user
+     * 
+     * @return The password of the user
+     */
+    public String getPassword() {
+        return password;
     }
 
     /**
@@ -161,6 +181,6 @@ public class User {
      */
     @Override
     public String toString() {
-        return String.format(STRING_FORMAT, email, name, password, address, admin, payInfo);
+        return String.format(STRING_FORMAT, id, email, name, password, address, admin, payInfo);
     }
 }
