@@ -2,8 +2,6 @@ package com.estore.api.estoreapi.model;
 
 import java.util.logging.Logger;
 
-import java.util.*;
-
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 /**
@@ -16,10 +14,12 @@ public class User {
     private static final Logger LOG = Logger.getLogger(User.class.getName());
 
     // Package private for tests
-    static final String STRING_FORMAT = "Product [email=%s, password=%s, address=%s, admin=%b, payInfo=%s]";
+    static final String STRING_FORMAT = "Product [email=%s, name=%s, password=%s, address=%s, admin=%b, payInfo=%s]";
 
     @JsonProperty("email")
     private String email;
+    @JsonProperty("name")
+    private String name;
     @JsonProperty("password")
     private String password;
     @JsonProperty("address")
@@ -30,9 +30,11 @@ public class User {
     private String[] payInfo;
 
     /**
-     * Create a user with the given email, password, address, admin, and payInfo
+     * Create a user with the given email, name, password, address, admin, and
+     * payInfo
      * 
      * @param email    The email of the User
+     * @param name     The name of the User
      * @param password The password of the User
      * @param address  The address of the User
      * @param admin    Whether or not the User is an admin
@@ -47,10 +49,11 @@ public class User {
      *                 default Java
      *                 value, i.e. 0 for int
      */
-    public User(@JsonProperty("email") String email, @JsonProperty("password") String password,
-            @JsonProperty("address") String address,
+    public User(@JsonProperty("email") String email, @JsonProperty("name") String name,
+            @JsonProperty("password") String password, @JsonProperty("address") String address,
             @JsonProperty("Admin") Boolean admin, @JsonProperty("payInfo") String[] payInfo) {
         this.email = email;
+        this.name = name;
         this.password = password;
         this.address = address;
         this.admin = admin;
@@ -64,6 +67,25 @@ public class User {
      */
     public String getEmail() {
         return email;
+    }
+
+    /**
+     * Retrieves the name of the user
+     * 
+     * @return The name of the user
+     */
+    public String getName() {
+        return name;
+    }
+
+    /**
+     * Sets the name of the user - necessary for JSON object to Java object
+     * deserialization
+     * 
+     * @param name The name of the user
+     */
+    public void setName(String name) {
+        this.name = name;
     }
 
     /**
@@ -139,6 +161,6 @@ public class User {
      */
     @Override
     public String toString() {
-        return String.format(STRING_FORMAT, email, password, address, admin, payInfo);
+        return String.format(STRING_FORMAT, email, name, password, address, admin, payInfo);
     }
 }
