@@ -11,10 +11,11 @@ geometry: margin=1in
 ## Team Information
 * Team name: TEAMNAME
 * Team members
-  * MEMBER1
-  * MEMBER2
-  * MEMBER3
-  * MEMBER4
+  * Aadith Charugundla
+  * Cullen Walsh
+  * Jessica Phillips
+  * Zachary Rutherford
+  * Frank Andes
 
 ## Executive Summary
 
@@ -36,15 +37,30 @@ This is a summary of the project.
 
 This section describes the features of the application.
 
-> _In this section you do not need to be exhaustive and list every
-> story.  Focus on top-level features from the Vision document and
-> maybe Epics and critical Stories._
+> _Features of the application include browsing products,
+> purchasing tea or coffee, adding to cart, choosing a custom
+> packaging, inventory management, admin management, and customer
+> orders._
 
 ### Definition of MVP
-> _Provide a simple description of the Minimum Viable Product._
+> _The minimal Viable product will include minimal authentication
+> for customers and the e-store owner login and logout, customer
+> functionality, inventory management, data persistence, and a 
+> 10% feature._  
 
 ### MVP Features
-> _Provide a list of top-level Epics and/or Stories of the MVP._
+> _Prepackaged Tea/Coffee
+> Customer Orders
+> Single Cart
+> Remove Products
+> Modify Products
+> Add Products
+> Browse Products
+> Shipping Address
+> Add Admins
+> User Login
+> Modify Admin Priviledges
+> Remove Admins_
 
 ### Roadmap of Enhancements
 > _Provide a list of top-level features in the order you plan to consider them._
