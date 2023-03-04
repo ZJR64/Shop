@@ -13,7 +13,7 @@ public class Ingredient {
     private static final Logger LOG = Logger.getLogger(Ingredient.class.getName());
 
     // Package private for tests
-    static final String STRING_FORMAT = "Ingredient [id=%d, name=%s, type=%s, price=%f, volume=%f]";
+    public static final String STRING_FORMAT = "Ingredient [id=%d, name=%s, type=%s, price=%f, volume=%f]";
 
     @JsonProperty("id")
     private int id;

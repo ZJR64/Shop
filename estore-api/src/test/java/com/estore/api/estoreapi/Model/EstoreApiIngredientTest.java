@@ -1,8 +1,11 @@
-package com.estore.api.estoreapi.model.IngredientTest;
+package com.estore.api.estoreapi.Model;
 
 import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+
+import com.estore.api.estoreapi.model.Ingredient;
 
 /**
  * The unit test suite for the Ingredient class
@@ -19,8 +22,8 @@ class EstoreApiApplicationTests {
 		int expected_id = 69;
 		String expected_name = "Deez Nuts";
 		String expected_type = "Bean";
-		float expected_price = 0.69;
-		float expected_volume = 420.69;
+		double expected_price = 0.69;
+		double expected_volume = 420.69;
 
 		// Invoke
 		Ingredient ingredient = new Ingredient(expected_id, expected_name, expected_type, expected_price,
@@ -41,8 +44,8 @@ class EstoreApiApplicationTests {
 		int id = 69;
 		String name = "Deez Nuts";
 		String type = "Bean";
-		float price = 0.69;
-		float volume = 420.69;
+		double price = 0.69;
+		double volume = 420.69;
 		Ingredient ingredient = new Ingredient(id, name, type, price, volume);
 
 		String expected_name = "Balls";
@@ -60,8 +63,8 @@ class EstoreApiApplicationTests {
 		int id = 69;
 		String name = "Deez Nuts";
 		String type = "Bean";
-		float price = 0.69;
-		float volume = 420.69;
+		double price = 0.69;
+		double volume = 420.69;
 		Ingredient ingredient = new Ingredient(id, name, type, price, volume);
 
 		String expected_type = "Not Beans?";
@@ -79,11 +82,11 @@ class EstoreApiApplicationTests {
 		int id = 69;
 		String name = "Deez Nuts";
 		String type = "Bean";
-		float price = 0.69;
-		float volume = 420.69;
+		double price = 0.69;
+		double volume = 420.69;
 		Ingredient ingredient = new Ingredient(id, name, type, price, volume);
 
-		float expected_price = 0.21;
+		double expected_price = 0.21;
 
 		// Invoke
 		ingredient.setPrice(expected_price);
@@ -98,11 +101,11 @@ class EstoreApiApplicationTests {
 		int id = 69;
 		String name = "Deez Nuts";
 		String type = "Bean";
-		float price = 0.69;
-		float volume = 420.69;
+		double price = 0.69;
+		double volume = 420.69;
 		Ingredient ingredient = new Ingredient(id, name, type, price, volume);
 
-		float expected_volume = 69.420;
+		double expected_volume = 69.420;
 
 		// Invoke
 		ingredient.setVolume(expected_volume);
@@ -117,8 +120,8 @@ class EstoreApiApplicationTests {
 		int id = 69;
 		String name = "Deez Nuts";
 		String type = "Bean";
-		float price = 0.69;
-		float volume = 420.69;
+		double price = 0.69;
+		double volume = 420.69;
 		String expected_string = String.format(Ingredient.STRING_FORMAT, id, name, type, price, volume);
 		Ingredient ingredient = new Ingredient(id, name, type, price, volume);
 

@@ -1,8 +1,11 @@
-package com.estore.api.estoreapi.model.UserTest;
+package com.estore.api.estoreapi.Model;
 
 import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+
+import com.estore.api.estoreapi.model.User;
 
 /**
  * The unit test suite for the User class
@@ -32,9 +35,9 @@ class EstoreApiApplicationTests {
         assertEquals(expected_id, user.getId());
         assertEquals(expected_email, user.getEmail());
         assertEquals(expected_name, user.getName());
-        assertEquals(expected_password, user.getType());
-        assertEquals(expected_admin, user.getPrice());
-        assertEquals(expected_payInfo, user.getVolume());
+        assertEquals(expected_password, user.getPassword());
+        assertEquals(expected_admin, user.getAdmin());
+        assertEquals(expected_payInfo, user.getPayInfo());
 
     }
 
@@ -42,11 +45,13 @@ class EstoreApiApplicationTests {
     public void testName() {
         // Setup
         int id = 69;
+        String email = "scammer@scam.com";
         String name = "Deez Nuts";
-        String password = "Bean";
-        float admin = 0.69;
-        float payInfo = 420.69;
-        Ingredient user = new Ingredient(id, name, password, admin, payInfo);
+        String password = "password123";
+        String address = "129 balls lane";
+        Boolean admin = false;
+        String[] payInfo = new String[] { "123", "235", "1351135" };
+        User user = new User(id, email, name, password, address, admin, payInfo);
 
         String expected_name = "Balls";
 
@@ -61,69 +66,76 @@ class EstoreApiApplicationTests {
     public void testType() {
         // Setup
         int id = 69;
+        String email = "scammer@scam.com";
         String name = "Deez Nuts";
-        String password = "Bean";
-        float admin = 0.69;
-        float payInfo = 420.69;
-        Ingredient user = new Ingredient(id, name, password, admin, payInfo);
+        String password = "password123";
+        String address = "129 balls lane";
+        Boolean admin = false;
+        String[] payInfo = new String[] { "123", "235", "1351135" };
+        User user = new User(id, email, name, password, address, admin, payInfo);
 
         String expected_password = "Not Beans?";
 
         // Invoke
-        user.setType(expected_password);
+        user.setPassword(expected_password);
 
         // Analyze
-        assertEquals(expected_password, user.getType());
+        assertEquals(expected_password, user.getPassword());
     }
 
     @Test
     public void testPrice() {
         // Setup
         int id = 69;
+        String email = "scammer@scam.com";
         String name = "Deez Nuts";
-        String password = "Bean";
-        float admin = 0.69;
-        float payInfo = 420.69;
-        Ingredient user = new Ingredient(id, name, password, admin, payInfo);
+        String password = "password123";
+        String address = "129 balls lane";
+        Boolean admin = false;
+        String[] payInfo = new String[] { "123", "235", "1351135" };
+        User user = new User(id, email, name, password, address, admin, payInfo);
 
-        float expected_admin = 0.21;
-
+        boolean expected_admin = true;
         // Invoke
-        user.setPrice(expected_admin);
+        user.setAdmin(expected_admin);
 
         // Analyze
-        assertEquals(expected_admin, user.getPrice());
+        assertEquals(expected_admin, user.getAdmin());
     }
 
     @Test
     public void testVolume() {
         // Setup
         int id = 69;
+        String email = "scammer@scam.com";
         String name = "Deez Nuts";
-        String password = "Bean";
-        float admin = 0.69;
-        float payInfo = 420.69;
-        Ingredient user = new Ingredient(id, name, password, admin, payInfo);
+        String password = "password123";
+        String address = "129 balls lane";
+        Boolean admin = false;
+        String[] payInfo = new String[] { "123", "235", "1351135" };
+        User user = new User(id, email, name, password, address, admin, payInfo);
 
-        float expected_payInfo = 69.420;
+        String[] expected_payInfo = new String[] { "135135", "13616457", "9876" };
 
         // Invoke
-        user.setVolume(expected_payInfo);
+        user.setPayInfo(expected_payInfo);
 
         // Analyze
-        assertEquals(expected_payInfo, user.getVolume());
+        assertEquals(expected_payInfo, user.getPayInfo());
     }
 
     @Test
     public void testToString() {
         // Setup
         int id = 69;
+        String email = "scammer@scam.com";
         String name = "Deez Nuts";
-        String password = "Bean";
-        float admin = 0.69;
-        float payInfo = 420.69;
-        String expected_string = String.format(Ingredient.STRING_FORMAT, id, name, password, admin, payInfo);
-        Ingredient user = new Ingredient(id, name, password, admin, payInfo);
+        String password = "password123";
+        String address = "129 balls lane";
+        Boolean admin = false;
+        String[] payInfo = new String[] { "123", "235", "1351135" };
+        String expected_string = String.format(User.STRING_FORMAT, id, name, password, admin, payInfo);
+        User user = new User(id, email, name, password, address, admin, payInfo);
 
         // Invoke
         String actual_string = user.toString();
