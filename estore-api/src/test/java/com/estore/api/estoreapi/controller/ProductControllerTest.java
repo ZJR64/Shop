@@ -21,7 +21,7 @@ import org.springframework.http.ResponseEntity;
 /**
  * Test the Product Controller class
  * 
- * @author Zak Rutherfored
+ * @author Zak Rutherford
  */
 @Tag("Controller-tier")
 public class ProductControllerTest {

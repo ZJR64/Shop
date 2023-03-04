@@ -19,7 +19,7 @@ import org.springframework.http.ResponseEntity;
 /**
  * Test the Ingredient Controller class
  * 
- * @author Zak Rutherfored
+ * @author Cullen
  */
 @Tag("Controller-tier")
 public class IngredientControllerTest {
