@@ -14,7 +14,7 @@ import com.estore.api.estoreapi.model.Ingredient;
  */
 @Tag("Model-tier")
 @SpringBootTest
-class EstoreApiApplicationTests {
+class EstoreApiIngredientTest {
 
 	@Test
 	public void testCtor() {
