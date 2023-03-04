@@ -18,7 +18,7 @@ geometry: margin=1in
 
 ## Executive Summary
 
-This is a summary of the project.
+E-Store for E-boys and E-girls. Selling E-coffee and E-Tea to all of E-America. For our project we created an online store that seels tea and coffee. We started by storing the ingredients for each blend instead of the product. In this way we made it easier to calculate the cost of each blend and quickly modify the cost based on the owner's preference. the pre-made blends are readily available to the users to bowse and search through. The users can add those blends to their carts and checkout using payment information.
 
 ### Purpose
 > _Provide a very brief statement about the project and the most
