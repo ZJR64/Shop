@@ -25,9 +25,9 @@ public class Product {
     @JsonProperty("type")
     private String type;
     @JsonProperty("modPrice")
-    private float modPrice;
+    private double modPrice;
     @JsonProperty("ingredients")
-    private Map<String, Float> ingredients;
+    private Map<String, Double> ingredients;
 
     /**
      * Create a product with the given id and name
@@ -47,7 +47,7 @@ public class Product {
      *                 value, i.e. 0 for int
      */
     public Product(@JsonProperty("id") int id, @JsonProperty("name") String name, @JsonProperty("type") String type,
-            @JsonProperty("modPrice") float modPrice, @JsonProperty("ingredients") Map<String, Float> ingredients) {
+            @JsonProperty("modPrice") double modPrice, @JsonProperty("ingredients") Map<String, Double> ingredients) {
         this.id = id;
         this.name = name;
         this.type = type;
@@ -108,7 +108,7 @@ public class Product {
      * 
      * @param modPrice The modified price of the product
      */
-    public void setModPrice(float modPrice) {
+    public void setModPrice(double modPrice) {
         this.modPrice = modPrice;
     }
 
@@ -117,7 +117,7 @@ public class Product {
      * 
      * @return The modified price of the product
      */
-    public float getModPrice() {
+    public double getModPrice() {
         return modPrice;
     }
 
@@ -127,7 +127,7 @@ public class Product {
      * 
      * @param ingredients The ingredients of the product
      */
-    public void setIngredients(Map<String, Float> ingredients) {
+    public void setIngredients(Map<String, Double> ingredients) {
         this.ingredients = ingredients;
     }
 
@@ -136,7 +136,7 @@ public class Product {
      * 
      * @return The ingredients of the product
      */
-    public Map<String, Float> getIngredients() {
+    public Map<String, Double> getIngredients() {
         return ingredients;
     }
 
