@@ -193,25 +193,25 @@ public class ProductControllerTest {
     }
 
     @Test
-    public void testGetProductes() throws IOException { // getProductes may throw IOException
+    public void testGetProducts() throws IOException { // getProductes may throw IOException
         // Setup
-        Product[] productes = new Product[2];
+        Product[] products = new Product[2];
         Map<String, Double> test1 = new HashMap<String, Double>();
         test1.put("Black Bean", 0.5);
         test1.put("White Bean", 0.5);
         Map<String, Double> test2 = new HashMap<String, Double>();
         test2.put("All White", 1.00);
-        productes[0]  = new Product(99,"MLK's Dream", "Coffee", 0.8, test1);
-        productes[1] = new Product(100,"Dixiecrats", "Tea", 0.11, test2);
-        // When getProductes is called return the productes created above
-        when(mockProductDAO.getProducts()).thenReturn(productes);
+        products[0]  = new Product(99,"MLK's Dream", "Coffee", 0.8, test1);
+        products[1] = new Product(100,"Dixiecrats", "Tea", 0.11, test2);
+        // When getProductes is called return the products created above
+        when(mockProductDAO.getProducts()).thenReturn(products);
 
         // Invoke
         ResponseEntity<Product[]> response = productController.getProducts();
 
         // Analyze
         assertEquals(HttpStatus.OK,response.getStatusCode());
-        assertEquals(productes,response.getBody());
+        assertEquals(products,response.getBody());
     }
 
     @Test
@@ -231,24 +231,24 @@ public class ProductControllerTest {
     public void testSearchProductes() throws IOException { // findProductes may throw IOException
         // Setup
         String searchString = "Blend";
-        Product[] productes = new Product[2];
+        Product[] products = new Product[2];
         Map<String, Double> test1 = new HashMap<String, Double>();
         test1.put("Loser Bean", 0.5);
         test1.put("Dork Bean", 0.5);
         Map<String, Double> test2 = new HashMap<String, Double>();
         test2.put("nice leaf", 1.00);
-        productes[0]  = new Product(99,"Nerd Blend", "Coffee", 0.8, test1);
-        productes[1] = new Product(100,"Nice Guy Blend", "Tea", 0.11, test2);
+        products[0]  = new Product(99,"Nerd Blend", "Coffee", 0.8, test1);
+        products[1] = new Product(100,"Nice Guy Blend", "Tea", 0.11, test2);
         // When findProductes is called with the search string, return the two
-        /// productes above
-        when(mockProductDAO.findProducts(searchString)).thenReturn(productes);
+        /// products above
+        when(mockProductDAO.findProducts(searchString)).thenReturn(products);
 
         // Invoke
         ResponseEntity<Product[]> response = productController.searchProducts(searchString);
 
         // Analyze
         assertEquals(HttpStatus.OK,response.getStatusCode());
-        assertEquals(productes,response.getBody());
+        assertEquals(products,response.getBody());
     }
 
     @Test

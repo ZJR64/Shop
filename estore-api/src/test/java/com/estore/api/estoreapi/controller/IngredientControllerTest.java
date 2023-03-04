@@ -176,18 +176,18 @@ public class IngredientControllerTest {
     @Test
     public void testGetIngredientes() throws IOException { // getIngredientes may throw IOException
         // Setup
-        Ingredient[] ingredientes = new Ingredient[2];
-        ingredientes[0] = new Ingredient(99,"Is that even a bean?!?!", "Coffee", 0.01, 567);
-        ingredientes[1] = new Ingredient(100,"Oh god, another", "Coffee", 0.02, 123);
-        // When getIngredientes is called return the ingredientes created above
-        when(mockIngredientDAO.getIngredients()).thenReturn(ingredientes);
+        Ingredient[] ingredients = new Ingredient[2];
+        ingredients[0] = new Ingredient(99,"Is that even a bean?!?!", "Coffee", 0.01, 567);
+        ingredients[1] = new Ingredient(100,"Oh god, another", "Coffee", 0.02, 123);
+        // When getIngredientes is called return the ingredients created above
+        when(mockIngredientDAO.getIngredients()).thenReturn(ingredients);
 
         // Invoke
         ResponseEntity<Ingredient[]> response = ingredientController.getIngredients();
 
         // Analyze
         assertEquals(HttpStatus.OK,response.getStatusCode());
-        assertEquals(ingredientes,response.getBody());
+        assertEquals(ingredients,response.getBody());
     }
 
     @Test
@@ -207,19 +207,19 @@ public class IngredientControllerTest {
     public void testSearchIngredientes() throws IOException { // findIngredientes may throw IOException
         // Setup
         String searchString = "Thee";
-        Ingredient[] ingredientes = new Ingredient[2];
-        ingredientes[0] = new Ingredient(99,"For Thee Search", "Coffee", 0.01, 567);
-        ingredientes[1] = new Ingredient(100,"Thee Will Never Be Found", "Coffee", 0.02, 123);
+        Ingredient[] ingredients = new Ingredient[2];
+        ingredients[0] = new Ingredient(99,"For Thee Search", "Coffee", 0.01, 567);
+        ingredients[1] = new Ingredient(100,"Thee Will Never Be Found", "Coffee", 0.02, 123);
         // When findIngredientes is called with the search string, return the two
-        /// ingredientes above
-        when(mockIngredientDAO.findIngredients(searchString)).thenReturn(ingredientes);
+        /// ingredients above
+        when(mockIngredientDAO.findIngredients(searchString)).thenReturn(ingredients);
 
         // Invoke
         ResponseEntity<Ingredient[]> response = ingredientController.searchIngredients(searchString);
 
         // Analyze
         assertEquals(HttpStatus.OK,response.getStatusCode());
-        assertEquals(ingredientes,response.getBody());
+        assertEquals(ingredients,response.getBody());
     }
 
     @Test
