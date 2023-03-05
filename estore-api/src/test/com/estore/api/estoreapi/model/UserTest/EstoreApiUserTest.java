@@ -1,8 +1,12 @@
 package com.estore.api.estoreapi.model.UserTest;
 
+import com.estore.api.estoreapi.model.Ingredient;
+import com.estore.api.estoreapi.model.User;
 import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
+
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 /**
  * The unit test suite for the User class
@@ -32,9 +36,9 @@ class EstoreApiApplicationTests {
         assertEquals(expected_id, user.getId());
         assertEquals(expected_email, user.getEmail());
         assertEquals(expected_name, user.getName());
-        assertEquals(expected_password, user.getType());
-        assertEquals(expected_admin, user.getPrice());
-        assertEquals(expected_payInfo, user.getVolume());
+        assertEquals(expected_password, user.getPassword());
+        assertEquals(expected_admin, user.getAdmin());
+        assertEquals(expected_payInfo, user.getPayInfo());
 
     }
 
@@ -44,8 +48,8 @@ class EstoreApiApplicationTests {
         int id = 69;
         String name = "Deez Nuts";
         String password = "Bean";
-        float admin = 0.69;
-        float payInfo = 420.69;
+        float admin = 0.69f;
+        float payInfo = 420.69f;
         Ingredient user = new Ingredient(id, name, password, admin, payInfo);
 
         String expected_name = "Balls";
@@ -63,8 +67,8 @@ class EstoreApiApplicationTests {
         int id = 69;
         String name = "Deez Nuts";
         String password = "Bean";
-        float admin = 0.69;
-        float payInfo = 420.69;
+        float admin = 0.69f;
+        float payInfo = 420.69f;
         Ingredient user = new Ingredient(id, name, password, admin, payInfo);
 
         String expected_password = "Not Beans?";
@@ -82,11 +86,11 @@ class EstoreApiApplicationTests {
         int id = 69;
         String name = "Deez Nuts";
         String password = "Bean";
-        float admin = 0.69;
-        float payInfo = 420.69;
+        float admin = 0.69f;
+        float payInfo = 420.69f;
         Ingredient user = new Ingredient(id, name, password, admin, payInfo);
 
-        float expected_admin = 0.21;
+        float expected_admin = 0.21f;
 
         // Invoke
         user.setPrice(expected_admin);
@@ -101,11 +105,11 @@ class EstoreApiApplicationTests {
         int id = 69;
         String name = "Deez Nuts";
         String password = "Bean";
-        float admin = 0.69;
-        float payInfo = 420.69;
+        float admin = 0.69f;
+        float payInfo = 420.69f;
         Ingredient user = new Ingredient(id, name, password, admin, payInfo);
 
-        float expected_payInfo = 69.420;
+        float expected_payInfo = 69.420f;
 
         // Invoke
         user.setVolume(expected_payInfo);
@@ -120,9 +124,9 @@ class EstoreApiApplicationTests {
         int id = 69;
         String name = "Deez Nuts";
         String password = "Bean";
-        float admin = 0.69;
-        float payInfo = 420.69;
-        String expected_string = String.format(Ingredient.STRING_FORMAT, id, name, password, admin, payInfo);
+        float admin = 0.69f;
+        float payInfo = 420.69f;
+        String expected_string = String.format(Ingredient.getSTRING_FORMAT(), id, name, password, admin, payInfo);
         Ingredient user = new Ingredient(id, name, password, admin, payInfo);
 
         // Invoke
