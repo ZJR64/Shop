@@ -14,7 +14,7 @@ import com.estore.api.estoreapi.model.User;
  */
 @Tag("Model-tier")
 @SpringBootTest
-class EstoreApiApplicationTests {
+class EstoreApiUserTests {
 
     @Test
     public void testCtor() {

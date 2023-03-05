@@ -50,7 +50,7 @@ public class EstoreApiProductTests {
          * commented out because it's unclear if the Id is changable, because there's no setId() method*/
         testProduct.setName(expectedName);
         testProduct.setType(expectedType);
-        testProduct.setIngredients(Map.of("test2", (float)17));
+        testProduct.setIngredients(Map.of("test2", 17.0));
         testProduct.setModPrice(expectedModPrice);
         testGets();
 
