@@ -1,4 +1,4 @@
-package com.estore.api.estoreapi;
+package com.estore.api.estoreapi.Persistence;
 
 import static org.junit.jupiter.api.Assertions.assertDoesNotThrow;
 import static org.junit.jupiter.api.Assertions.assertEquals;
