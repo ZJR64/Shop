@@ -1,11 +1,14 @@
 package com.estore.api.estoreapi.Model;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
+
 import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 import com.estore.api.estoreapi.model.Ingredient;
+
 
 /**
  * The unit test suite for the Ingredient class
@@ -14,7 +17,7 @@ import com.estore.api.estoreapi.model.Ingredient;
  */
 @Tag("Model-tier")
 @SpringBootTest
-class EstoreApiIngredientTests {
+class EstoreApiIngredientTest {
 
 	@Test
 	public void testCtor() {
@@ -122,7 +125,7 @@ class EstoreApiIngredientTests {
 		String type = "Bean";
 		double price = 0.69;
 		double volume = 420.69;
-		String expected_string = String.format(Ingredient.STRING_FORMAT, id, name, type, price, volume);
+		String expected_string = String.format(Ingredient.getSTRING_FORMAT(), id, name, type, price, volume);
 		Ingredient ingredient = new Ingredient(id, name, type, price, volume);
 
 		// Invoke
