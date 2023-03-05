@@ -26,7 +26,7 @@ import com.estore.api.estoreapi.model.User;
 @Component
 public class UserFileDAO implements UserDAO {
     private static final Logger LOG = Logger.getLogger(UserFileDAO.class.getName());
-    Map<Integer, User> users; // Provides a local cache of the User objects
+    public Map<Integer, User> users; // Provides a local cache of the User objects
                               // so that we don't need to read from the file
                               // each time
     private ObjectMapper objectMapper; // Provides conversion between Users

@@ -27,9 +27,9 @@ public class Ingredient {
     @JsonProperty("type")
     private String type;
     @JsonProperty("price")
-    private float price;
+    private double price;
     @JsonProperty("volume")
-    private float volume;
+    private double volume;
 
     /**
      * Create a ingredient with the given id, name, type, price, and volume
@@ -49,7 +49,7 @@ public class Ingredient {
      *               value, i.e. 0 for int
      */
     public Ingredient(@JsonProperty("id") int id, @JsonProperty("name") String name, @JsonProperty("type") String type,
-            @JsonProperty("price") float price, @JsonProperty("volume") float volume) {
+            @JsonProperty("price") double price, @JsonProperty("volume") double volume) {
         this.id = id;
         this.name = name;
         this.type = type;
@@ -110,7 +110,7 @@ public class Ingredient {
      * 
      * @param price The price of the ingredient
      */
-    public void setPrice(float price) {
+    public void setPrice(double price) {
         this.price = price;
     }
 
@@ -119,7 +119,7 @@ public class Ingredient {
      * 
      * @return The price of the ingredient
      */
-    public float getPrice() {
+    public double getPrice() {
         return price;
     }
 
@@ -129,7 +129,7 @@ public class Ingredient {
      * 
      * @param volume The volume of the ingredient
      */
-    public void setVolume(float volume) {
+    public void setVolume(double volume) {
         this.volume = volume;
     }
 
@@ -138,7 +138,7 @@ public class Ingredient {
      * 
      * @return The volume of the ingredient
      */
-    public float getVolume() {
+    public double getVolume() {
         return volume;
     }
 
