@@ -1,29 +1,31 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule } from '@angular/forms';
+import { HttpClientModule } from '@angular/common/http';
+
 import { AppComponent } from './app.component';
-import { ProductsComponent } from './products/products.component';
-import { UsersComponent } from './users/users.component';
+import { HomeComponent } from './home/home.component';
 import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './register/register.component';
-import { HomeComponent } from './home/home.component';
 import { LogoutComponent } from './logout/logout.component';
 import { MessagesComponent } from './messages/messages.component';
+
+import { AppRoutingModule } from './app-routing.module';
 
 @NgModule({
   declarations: [
     AppComponent,
-    ProductsComponent,
-    UsersComponent,
+    HomeComponent,
     LoginComponent,
     RegisterComponent,
-    HomeComponent,
     LogoutComponent,
     MessagesComponent
   ],
   imports: [
     BrowserModule,
-    FormsModule
+    FormsModule,
+    HttpClientModule,
+    AppRoutingModule
   ],
   providers: [],
   bootstrap: [AppComponent]

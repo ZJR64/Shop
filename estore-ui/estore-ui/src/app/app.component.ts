@@ -7,4 +7,5 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'Coffee/Tea E-store';
+  currentUser = localStorage.getItem('currentUser');
 }
