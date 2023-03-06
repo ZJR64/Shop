@@ -4,6 +4,7 @@ import { Location } from '@angular/common';
 
 import { User } from '../user';
 import { UserService } from '../services/user.service';
+import { LoginService } from '../services/login.service';
 
 @Component({
   selector: 'app-login',
@@ -15,10 +16,9 @@ export class LoginComponent implements OnInit{
   message!: String;
 
   constructor(
-    private route: ActivatedRoute,
     private router: Router,
     private userService: UserService,
-    private location: Location
+    private loginService: LoginService,
   ) {}
 
   ngOnInit(): void {
@@ -45,6 +45,7 @@ export class LoginComponent implements OnInit{
       if (element.email.trim() == email) {
         if (element.password.trim() == password) {
           localStorage.setItem('currentUser', element.email);
+          this.loginService.setLoggedIn(true);
           this.router.navigateByUrl('/home')
           return;
         }

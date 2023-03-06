@@ -1,8 +1,15 @@
 <h1>{{title}}</h1>
-<ng-container *ngIf="!currentUser===null">
+<ng-container *ngIf="this.isLoggedIn$ | async">
     <nav>
-        <a routerLink="/home">Home</a>
-        <a routerLink="/logout">Logout</a>
+        <!-- (click) passes input value to check if correct login -->
+  <button type="button" class="add-button" (click)="goHome();">
+    Home
+  </button>
+
+  <!-- (click) send to register -->
+  <button type="button" class="add-button" (click)="goLogout();">
+    Logout
+  </button>
     </nav>
 </ng-container>
 <router-outlet></router-outlet>
