@@ -30,3 +30,6 @@ button:disabled {
 .center {
     text-align: center;
 }
+.warning {
+    color: crimson;
+}

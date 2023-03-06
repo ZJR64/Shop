@@ -12,6 +12,7 @@ import { UserService } from '../services/user.service';
 })
 export class LoginComponent implements OnInit{
   users: User[] = [];
+  message!: String;
 
   constructor(
     private route: ActivatedRoute,
@@ -21,6 +22,7 @@ export class LoginComponent implements OnInit{
   ) {}
 
   ngOnInit(): void {
+    this.message = "";
     this.getUsers();
     if (localStorage.getItem('currentUser') != null) {
 
@@ -30,6 +32,7 @@ export class LoginComponent implements OnInit{
   getUsers(): void {
     this.userService.getUsers()
       .subscribe(users => this.users = users);
+      this.userService
   }
 
   verify(email: string, password: string): void {
@@ -39,13 +42,18 @@ export class LoginComponent implements OnInit{
     if (!password) { return; }
 
     this.users.forEach(element => {
-      if (element.email == email) {
-        if (element.password == password) {
+      if (element.email.trim() == email) {
+        if (element.password.trim() == password) {
           localStorage.setItem('currentUser', element.email);
+          this.router.navigateByUrl('/home')
           return;
         }
+        this.message = "Wrong Password";
+        return;
       }
+      this.message = "Unkown Email";
     });
+
   }
 
   register(): void {
