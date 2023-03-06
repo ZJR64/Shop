@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Location } from '@angular/common';
 
 import { User } from '../user';
@@ -15,6 +15,7 @@ export class LoginComponent implements OnInit{
 
   constructor(
     private route: ActivatedRoute,
+    private router: Router,
     private userService: UserService,
     private location: Location
   ) {}
@@ -45,6 +46,10 @@ export class LoginComponent implements OnInit{
         }
       }
     });
+  }
+
+  register(): void {
+    this.router.navigateByUrl('/register')
   }
 
 }
