@@ -1,1 +1,22 @@
-<p>register works!</p>
+<h2 class="center">Register</h2>
+
+<div class="center">
+  <label for="email">Email: </label>
+  <input id="email" #email />
+  <br>
+  <label for="name">Name: </label>
+  <input id="name" #name />
+  <br>
+  <label for="password">Password: </label>
+  <input id="password" #password />
+  <br>
+  <!-- (click) passes input value to check if correct login -->
+  <button type="button" class="add-button" (click)="createNewUser(email.value, name.value, password.value)">
+    Login
+  </button>
+
+  <!-- (click) send to login -->
+  <button type="button" class="add-button" (click)="back();">
+    Back
+  </button>
+</div>
