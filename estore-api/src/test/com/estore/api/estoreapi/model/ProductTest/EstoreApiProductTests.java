@@ -16,8 +16,8 @@ public class EstoreApiProductTests {
     int expectedId = 77;
     String expectedName = "productName";
     String expectedType = "productType";
-    float expectedModPrice = (float) 6.9;
-    Map<String, Float> expectedIngredients = Map.of("testKey", (float)77);
+    double expectedModPrice = (float) 6.9;
+    Map<String, Double> expectedIngredients = Map.of("testKey", 77.0);
 
     private Product testProduct = new Product(expectedId, expectedName, expectedType, expectedModPrice, expectedIngredients);
 
@@ -43,7 +43,7 @@ public class EstoreApiProductTests {
         expectedId = 78;
         expectedName = "productNameChanged";
         expectedType = "productTypeChanged";
-        expectedModPrice = (float)42;
+        expectedModPrice = 42.0;
 
         //now change the values in testproduct;
         /*testProduct.setId(expectedId);
