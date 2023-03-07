@@ -12,8 +12,8 @@ import { LoginService } from '../services/login.service';
   styleUrls: ['./login.component.css']
 })
 export class LoginComponent implements OnInit{
-  users: User[] = [];
   message!: String;
+  user!: User;
 
   constructor(
     private router: Router,
@@ -23,16 +23,9 @@ export class LoginComponent implements OnInit{
 
   ngOnInit(): void {
     this.message = "";
-    this.getUsers();
     if (localStorage.getItem('currentUser') != null) {
 
     }
-  }
-
-  getUsers(): void {
-    this.userService.getUsers()
-      .subscribe(users => this.users = users);
-      this.userService
   }
 
   verify(email: string, password: string): void {
@@ -41,10 +34,11 @@ export class LoginComponent implements OnInit{
     if (!email) { return; }
     if (!password) { return; }
 
-    this.users.forEach(element => {
-      if (element.email.trim() == email) {
-        if (element.password.trim() == password) {
-          localStorage.setItem('currentUser', element.email);
+    this.userService.getUserFromEmail(email).subscribe(
+    (user) => {
+      if (user) {
+        if (user.password.trim() == password) {
+          localStorage.setItem('currentUser', user.email);
           this.loginService.setLoggedIn(true);
           this.router.navigateByUrl('/home')
           return;
@@ -54,7 +48,6 @@ export class LoginComponent implements OnInit{
       }
       this.message = "Unkown Email";
     });
-
   }
 
   register(): void {

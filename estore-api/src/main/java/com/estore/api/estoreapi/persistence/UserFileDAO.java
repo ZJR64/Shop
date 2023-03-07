@@ -196,6 +196,21 @@ public class UserFileDAO implements UserDAO {
      ** {@inheritDoc}
      */
     @Override
+    public User getUser(String email) {
+        synchronized (users) {
+            for (User user : getUsersArray()) {
+                if (user.getEmail().equals(email)) {
+                    return user;
+                }
+            }
+            return null;
+        }
+    }
+
+    /**
+     ** {@inheritDoc}
+     */
+    @Override
     public User createUser(User user) throws IOException {
         synchronized (users) {
             // We create a new user object because the id field is immutable
