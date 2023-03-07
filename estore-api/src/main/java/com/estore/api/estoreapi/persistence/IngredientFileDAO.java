@@ -26,7 +26,7 @@ import com.estore.api.estoreapi.model.Ingredient;
 @Component
 public class IngredientFileDAO implements IngredientDAO {
     private static final Logger LOG = Logger.getLogger(IngredientFileDAO.class.getName());
-    Map<Integer, Ingredient> ingredients; // Provides a local cache of the Ingredient objects
+    public Map<Integer, Ingredient> ingredients; // Provides a local cache of the Ingredient objects
                                     // so that we don't need to read from the file
                                     // each time
     private ObjectMapper objectMapper; // Provides conversion between Ingredients
