@@ -1,10 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute, Router } from '@angular/router';
-import { Location } from '@angular/common';
+import { Router } from '@angular/router';
 
 import { User } from '../user';
 import { UserService } from '../services/user.service';
-import { LoginService } from '../services/login.service';
 
 @Component({
   selector: 'app-login',
@@ -18,14 +16,10 @@ export class LoginComponent implements OnInit{
   constructor(
     private router: Router,
     private userService: UserService,
-    private loginService: LoginService,
   ) {}
 
   ngOnInit(): void {
     this.message = "";
-    if (localStorage.getItem('currentUser') != null) {
-
-    }
   }
 
   verify(email: string, password: string): void {
@@ -39,7 +33,6 @@ export class LoginComponent implements OnInit{
       if (user) {
         if (user.password.trim() == password) {
           localStorage.setItem('currentUser', user.email);
-          this.loginService.setLoggedIn(true);
           this.router.navigateByUrl('/home')
           return;
         }

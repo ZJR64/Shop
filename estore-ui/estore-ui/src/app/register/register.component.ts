@@ -22,9 +22,6 @@ export class RegisterComponent implements OnInit{
 
   ngOnInit(): void {
     this.getUsers();
-    if (localStorage.getItem('currentUser') != null) {
-
-    }
   }
 
   getUsers(): void {

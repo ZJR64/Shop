@@ -1,7 +1,5 @@
 import { Component } from '@angular/core';
-import { Router, Event, NavigationEnd } from '@angular/router';
-import { LoginService } from '../services/login.service';
-import { Observable } from 'rxjs';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-menu',
@@ -11,7 +9,7 @@ import { Observable } from 'rxjs';
 export class MenuComponent {
   currentUser = localStorage.getItem('currentUser');
 
-  constructor(private router: Router, private loginService: LoginService) {}
+  constructor(private router: Router) {}
 
   goHome(): void {
     this.router.navigateByUrl('/home');
