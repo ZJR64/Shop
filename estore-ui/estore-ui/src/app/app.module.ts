@@ -11,6 +11,7 @@ import { LogoutComponent } from './logout/logout.component';
 import { MessagesComponent } from './messages/messages.component';
 
 import { AppRoutingModule } from './app-routing.module';
+import { MenuComponent } from './menu/menu.component';
 
 @NgModule({
   declarations: [
@@ -19,7 +20,8 @@ import { AppRoutingModule } from './app-routing.module';
     LoginComponent,
     RegisterComponent,
     LogoutComponent,
-    MessagesComponent
+    MessagesComponent,
+    MenuComponent
   ],
   imports: [
     BrowserModule,
