@@ -118,7 +118,7 @@ public class EstoreApiIngredientFileDAOTest {
     @Test
     public void testUpdateIngredient() {
         // Setup
-        Ingredient ingredient = new Ingredient(99,"update ingredient","Bean",13.50,85);
+        Ingredient ingredient = new Ingredient(1,"update ingredient","Bean",13.50,85);
 
         // Invoke
         Ingredient result = assertDoesNotThrow(() -> ingredientFileDAO.updateIngredient(ingredient),
