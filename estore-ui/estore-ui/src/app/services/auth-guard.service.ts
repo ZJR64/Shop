@@ -1,4 +1,5 @@
 import { Injectable } from '@angular/core';
+import { bootstrapApplication } from '@angular/platform-browser';
 import { Router, RouterStateSnapshot, ActivatedRouteSnapshot} from '@angular/router';
 import { map, Observable } from 'rxjs';
 import { LoginService } from './login.service';
@@ -12,6 +13,7 @@ export class AuthGuardService {
   ) {}
 
   canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Observable<boolean> | Promise<boolean> | boolean {
+    //ensure user is logged in
     return this.loginService.isLoggedIn$.pipe(
       map(isLoggedIn => {
         if (isLoggedIn) {
@@ -23,5 +25,5 @@ export class AuthGuardService {
       })
     );
   }
-  
+
 }

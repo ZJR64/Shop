@@ -1,7 +1,8 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 
-import { AuthGuardService } from './services/auth-gaurd.service';
+import { AuthGuardService } from './services/auth-guard.service';
+import { SafeGuardService } from './services/safe-guard.service';
 
 import { LoginComponent } from './login/login.component';
 import { LogoutComponent } from './logout/logout.component';
@@ -15,8 +16,8 @@ const routes: Routes = [
       { path: 'home', component: HomeComponent, canActivate: [AuthGuardService]},
     ],
   },
-    { path: 'login', component: LoginComponent },
-    { path: 'register', component: RegisterComponent },
+    { path: 'login', component: LoginComponent, canActivate: [SafeGuardService] },
+    { path: 'register', component: RegisterComponent, canActivate: [SafeGuardService] },
     { path: 'logout', component: LogoutComponent }
 ];
 
