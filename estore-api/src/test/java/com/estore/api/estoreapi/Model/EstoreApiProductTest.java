@@ -40,17 +40,17 @@ class EstoreApiProductTests {
     public void testSets(){
         //testing the set methods
         //change the already initialized variables, and use the set methods and then run the get tests again
-        expectedId = 78;
         expectedName = "productNameChanged";
         expectedType = "productTypeChanged";
         expectedModPrice = (float)42;
+        expectedIngredients = Map.of("test2", 17.0);
 
         //now change the values in testproduct;
         /*testProduct.setId(expectedId);
          * commented out because it's unclear if the Id is changable, because there's no setId() method*/
         testProduct.setName(expectedName);
         testProduct.setType(expectedType);
-        testProduct.setIngredients(Map.of("test2", 17.0));
+        testProduct.setIngredients(expectedIngredients);
         testProduct.setModPrice(expectedModPrice);
         testGets();
 
