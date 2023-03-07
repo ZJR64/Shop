@@ -21,7 +21,7 @@ import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.Test;
 
 /**
- * Test the Hero File DAO class
+ * Test the User File DAO class
  * 
  * @author SWEN Faculty
  */
@@ -78,16 +78,16 @@ public class EstoreApiUserFileDAOTest {
     }
 
     @Test
-    public void testGetHero() {
+    public void testGetUser() {
         // Invoke
-        User hero = userFileDAO.getUser(99);
+        User user = userFileDAO.getUser(99);
 
         // Analzye
-        assertEquals(hero,testUsers[0]);
+        assertEquals(user,testUsers[0]);
     }
 
     @Test
-    public void testDeleteHero() {
+    public void testDeleteUser() {
         // Invoke
         boolean result = assertDoesNotThrow(() -> userFileDAO.deleteUser(99),
                             "Unexpected exception thrown");
@@ -96,13 +96,13 @@ public class EstoreApiUserFileDAOTest {
         assertEquals(result,true);
         // We check the internal tree map size against the length
         // of the test users array - 1 (because of the delete)
-        // Because User attribute of HeroFileDAO is package private
+        // Because User attribute of UserFileDAO is package private
         // we can access it directly
         assertEquals(userFileDAO.users.size(),testUsers.length-1);
     }
 
     @Test
-    public void testCreateHero() {
+    public void testCreateUser() {
         // Setup
         // make array of strings
         String[] pay = {"ROLE_USER"};
@@ -121,7 +121,7 @@ public class EstoreApiUserFileDAOTest {
     }
 
     @Test
-    public void testUpdateHero() {
+    public void testUpdateUser() {
         // Setup
 
         String[] pay = {"ROLE_USER"};
@@ -154,7 +154,7 @@ public class EstoreApiUserFileDAOTest {
     }
 
     @Test
-    public void testGetHeroNotFound() {
+    public void testGetUserNotFound() {
         // Invoke
         User user = userFileDAO.getUser(98);
 
@@ -163,7 +163,7 @@ public class EstoreApiUserFileDAOTest {
     }
 
     @Test
-    public void testDeleteHeroNotFound() {
+    public void testDeleteUserNotFound() {
         // Invoke
         boolean result = assertDoesNotThrow(() -> userFileDAO.deleteUser(98),
                                                 "Unexpected exception thrown");
@@ -174,7 +174,7 @@ public class EstoreApiUserFileDAOTest {
     }
 
     @Test
-    public void testUpdateHeroNotFound() {
+    public void testUpdateUserNotFound() {
         // Setup
 
         String[] pay = {"ROLE_USER"};
@@ -195,7 +195,7 @@ public class EstoreApiUserFileDAOTest {
         // exception was raised during JSON object deseerialization
         // into Java objects
         // When the Mock Object Mapper readValue method is called
-        // from the HeroFileDAO load method, an IOException is
+        // from the UserFileDAO load method, an IOException is
         // raised
         doThrow(new IOException())
             .when(mockObjectMapper)
