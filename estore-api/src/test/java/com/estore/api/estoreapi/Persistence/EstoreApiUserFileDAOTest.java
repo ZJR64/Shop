@@ -87,6 +87,15 @@ public class EstoreApiUserFileDAOTest {
     }
 
     @Test
+    public void testGetUserByEmail() {
+        // Invoke
+        User user = userFileDAO.getUser("JaneDoe@example.com");
+
+        // Analzye
+        assertEquals(user,testUsers[0]);
+    }
+
+    @Test
     public void testDeleteUser() {
         // Invoke
         boolean result = assertDoesNotThrow(() -> userFileDAO.deleteUser(99),
@@ -159,6 +168,15 @@ public class EstoreApiUserFileDAOTest {
         User user = userFileDAO.getUser(98);
 
         // Analyze
+        assertEquals(user,null);
+    }
+
+    @Test
+    public void testGetUserByEmailNotFound() {
+        // Invoke
+        User user = userFileDAO.getUser("fail");
+
+        // Analzye
         assertEquals(user,null);
     }
 

@@ -174,12 +174,12 @@ public class IngredientControllerTest {
     }
 
     @Test
-    public void testGetIngredientes() throws IOException { // getIngredientes may throw IOException
+    public void testGetIngredients() throws IOException { // getIngredients may throw IOException
         // Setup
         Ingredient[] ingredients = new Ingredient[2];
         ingredients[0] = new Ingredient(99,"Is that even a bean?!?!", "Coffee", 0.01, 567);
         ingredients[1] = new Ingredient(100,"Oh god, another", "Coffee", 0.02, 123);
-        // When getIngredientes is called return the ingredients created above
+        // When getIngredients is called return the ingredients created above
         when(mockIngredientDAO.getIngredients()).thenReturn(ingredients);
 
         // Invoke
@@ -191,9 +191,9 @@ public class IngredientControllerTest {
     }
 
     @Test
-    public void testGetIngredientesHandleException() throws IOException { // getIngredientes may throw IOException
+    public void testGetIngredientsHandleException() throws IOException { // getIngredients may throw IOException
         // Setup
-        // When getIngredientes is called on the Mock Ingredient DAO, throw an IOException
+        // When getIngredients is called on the Mock Ingredient DAO, throw an IOException
         doThrow(new IOException()).when(mockIngredientDAO).getIngredients();
 
         // Invoke
@@ -204,13 +204,13 @@ public class IngredientControllerTest {
     }
 
     @Test
-    public void testSearchIngredientes() throws IOException { // findIngredientes may throw IOException
+    public void testSearchIngredients() throws IOException { // findIngredients may throw IOException
         // Setup
         String searchString = "Thee";
         Ingredient[] ingredients = new Ingredient[2];
         ingredients[0] = new Ingredient(99,"For Thee Search", "Coffee", 0.01, 567);
         ingredients[1] = new Ingredient(100,"Thee Will Never Be Found", "Coffee", 0.02, 123);
-        // When findIngredientes is called with the search string, return the two
+        // When findIngredients is called with the search string, return the two
         /// ingredients above
         when(mockIngredientDAO.findIngredients(searchString)).thenReturn(ingredients);
 
@@ -223,7 +223,7 @@ public class IngredientControllerTest {
     }
 
     @Test
-    public void testSearchIngredientesHandleException() throws IOException { // findIngredientes may throw IOException
+    public void testSearchIngredientsHandleException() throws IOException { // findIngredients may throw IOException
         // Setup
         String searchString = "an";
         // When createIngredient is called on the Mock Ingredient DAO, throw an IOException
@@ -234,6 +234,23 @@ public class IngredientControllerTest {
 
         // Analyze
         assertEquals(HttpStatus.INTERNAL_SERVER_ERROR,response.getStatusCode());
+    }
+
+    @Test
+    public void testSearchIngredientsFailed() throws IOException { // findIngredients may throw IOException
+        // Setup
+        String searchString = "ko";
+        Ingredient[] ingredients = null;
+        // when updateIngredient is called, return true simulating successful
+        // update and save
+        /// ingredients above
+        when(mockIngredientDAO.findIngredients(searchString)).thenReturn(ingredients);
+
+        // Invoke
+        ResponseEntity<Ingredient[]> response = ingredientController.searchIngredients(searchString);
+
+        // Analyze
+        assertEquals(HttpStatus.NOT_FOUND,response.getStatusCode());
     }
 
     @Test

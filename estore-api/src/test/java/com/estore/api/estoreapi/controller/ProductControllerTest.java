@@ -193,7 +193,7 @@ public class ProductControllerTest {
     }
 
     @Test
-    public void testGetProducts() throws IOException { // getProductes may throw IOException
+    public void testGetProducts() throws IOException { // getProducts may throw IOException
         // Setup
         Product[] products = new Product[2];
         Map<String, Double> test1 = new HashMap<String, Double>();
@@ -203,7 +203,7 @@ public class ProductControllerTest {
         test2.put("All White", 1.00);
         products[0]  = new Product(99,"MLK's Dream", "Coffee", 0.8, test1);
         products[1] = new Product(100,"Dixiecrats", "Tea", 0.11, test2);
-        // When getProductes is called return the products created above
+        // When getProducts is called return the products created above
         when(mockProductDAO.getProducts()).thenReturn(products);
 
         // Invoke
@@ -215,9 +215,9 @@ public class ProductControllerTest {
     }
 
     @Test
-    public void testGetProductesHandleException() throws IOException { // getProductes may throw IOException
+    public void testGetProductsHandleException() throws IOException { // getProducts may throw IOException
         // Setup
-        // When getProductes is called on the Mock Product DAO, throw an IOException
+        // When getProducts is called on the Mock Product DAO, throw an IOException
         doThrow(new IOException()).when(mockProductDAO).getProducts();
 
         // Invoke
@@ -228,7 +228,7 @@ public class ProductControllerTest {
     }
 
     @Test
-    public void testSearchProductes() throws IOException { // findProductes may throw IOException
+    public void testSearchProducts() throws IOException { // findProducts may throw IOException
         // Setup
         String searchString = "Blend";
         Product[] products = new Product[2];
@@ -239,7 +239,7 @@ public class ProductControllerTest {
         test2.put("nice leaf", 1.00);
         products[0]  = new Product(99,"Nerd Blend", "Coffee", 0.8, test1);
         products[1] = new Product(100,"Nice Guy Blend", "Tea", 0.11, test2);
-        // When findProductes is called with the search string, return the two
+        // When findProducts is called with the search string, return the two
         /// products above
         when(mockProductDAO.findProducts(searchString)).thenReturn(products);
 
@@ -252,7 +252,25 @@ public class ProductControllerTest {
     }
 
     @Test
-    public void testSearchProductesHandleException() throws IOException { // findProductes may throw IOException
+    public void testSearchProductsFailed() throws IOException { // findProducts may throw IOException
+        // Setup
+        // Setup
+        String searchString = "ko";
+        Product[] products = null;
+        // when updateProduct is called, return true simulating successful
+        // update and save
+        /// products above
+        when(mockProductDAO.findProducts(searchString)).thenReturn(products);
+
+        // Invoke
+        ResponseEntity<Product[]> response = productController.searchProducts(searchString);
+
+        // Analyze
+        assertEquals(HttpStatus.NOT_FOUND,response.getStatusCode());
+    }
+
+    @Test
+    public void testSearchProductsHandleException() throws IOException { // findProducts may throw IOException
         // Setup
         String searchString = "an";
         // When createProduct is called on the Mock Product DAO, throw an IOException
