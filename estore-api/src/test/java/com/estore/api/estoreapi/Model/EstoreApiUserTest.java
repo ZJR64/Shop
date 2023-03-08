@@ -14,7 +14,7 @@ import com.estore.api.estoreapi.model.User;
  */
 @Tag("Model-tier")
 @SpringBootTest
-class EstoreApiApplicationTests {
+class EstoreApiUserTests {
 
     @Test
     public void testCtor() {
@@ -60,6 +60,27 @@ class EstoreApiApplicationTests {
 
         // Analyze
         assertEquals(expected_name, user.getName());
+    }
+
+    @Test
+    public void testAddress() {
+        // Setup
+        int id = 69;
+        String email = "scammer@scam.com";
+        String name = "Deez Nuts";
+        String password = "password123";
+        String address = "129 balls lane";
+        Boolean admin = false;
+        String[] payInfo = new String[] { "123", "235", "1351135" };
+        User user = new User(id, email, name, password, address, admin, payInfo);
+
+        String expected_address = "Testicular Torsion Avenue";
+
+        // Invoke
+        user.setAddress(expected_address);
+
+        // Analyze
+        assertEquals(expected_address, user.getAddress());
     }
 
     @Test
@@ -134,7 +155,7 @@ class EstoreApiApplicationTests {
         String address = "129 balls lane";
         Boolean admin = false;
         String[] payInfo = new String[] { "123", "235", "1351135" };
-        String expected_string = String.format(User.STRING_FORMAT, id, name, password, admin, payInfo);
+        String expected_string = String.format(User.STRING_FORMAT, id, email, name, password, address, admin, payInfo);
         User user = new User(id, email, name, password, address, admin, payInfo);
 
         // Invoke

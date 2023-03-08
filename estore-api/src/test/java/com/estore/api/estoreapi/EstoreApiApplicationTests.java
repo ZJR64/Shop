@@ -15,4 +15,9 @@ class EstoreApiApplicationTests {
 	@Test
 	void testContextLoads() {
 	}
+
+	@Test
+	void testMain() {
+		EstoreApiApplication.main(new String[] {});
+	}
 }

@@ -13,7 +13,12 @@ public class Ingredient {
     private static final Logger LOG = Logger.getLogger(Ingredient.class.getName());
 
     // Package private for tests
-    public static final String STRING_FORMAT = "Ingredient [id=%d, name=%s, type=%s, price=%f, volume=%f]";
+    static final String STRING_FORMAT = "Ingredient [id=%d, name=%s, type=%s, price=%f, volume=%f]";
+    /** this is only needed because String_format is private and the test classes are located outside the package
+     * @return - the string format
+     */
+    public static String getSTRING_FORMAT(){return STRING_FORMAT;}
+
 
     @JsonProperty("id")
     private int id;

@@ -6,6 +6,7 @@ import java.util.*;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 
+
 /**
  * Represents a Product entity
  * 
