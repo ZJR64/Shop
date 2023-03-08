@@ -4,8 +4,11 @@ Welcome to the PROJECT Project!
 
 ## Team
 
-* MEMBER1
-* MEMBER2
+* Aadith Charugundla
+* Cullen Walsh
+* Jessica Phillips
+* Zachary Rutherford
+* Frank Andes
 
 ## [Design Documentation](DesignDoc)
 
