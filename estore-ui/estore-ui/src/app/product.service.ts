@@ -1,6 +1,5 @@
 import { Injectable } from '@angular/core';
 import { Product } from './product';
-import { PRODUCTS } from './mock-products';
 import { Observable, of } from 'rxjs';
 import { MessageService } from './message.service';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
@@ -83,7 +82,6 @@ export class ProductService {
       catchError(this.handleError<Product>('deleteProduct'))
     );
   }
-
 
   searchProducts(term: string): Observable<Product[]> {
     if (!term.trim()) {

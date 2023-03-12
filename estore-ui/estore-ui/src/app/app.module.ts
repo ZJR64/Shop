@@ -9,6 +9,7 @@ import { MessagesComponent } from './messages/messages.component';
 import { AppRoutingModule } from './app-routing.module';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { ProductSearchComponent } from './product-search/product-search.component';
+import { ProductIngredientsComponent } from './product-ingredients/product-ingredients.component';
 
 @NgModule({
   declarations: [
@@ -17,7 +18,8 @@ import { ProductSearchComponent } from './product-search/product-search.componen
     ProductDetailComponent,
     MessagesComponent,
     DashboardComponent,
-    ProductSearchComponent
+    ProductSearchComponent,
+    ProductIngredientsComponent
   ],
   imports: [
     BrowserModule,

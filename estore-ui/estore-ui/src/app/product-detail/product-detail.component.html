@@ -5,9 +5,12 @@
         <label for="product-name">Product name: </label>
         <input id="product-name" [(ngModel)]="product.name" placeholder="name">
     </div>
-    <div>type: {{product.type}}</div>
-    <div>mod price: {{product.modPrice}}</div>
-    <div>ingredient list (ingredient percent):</div>
+    <div>Type: {{product.type}}</div>
+    <div>
+        <label for="product-modPrice">Mod price: </label>
+        <input id="product-modPrice" [(ngModel)]="product.modPrice" placeholder="mod price">
+    </div>
+    <div>Ingredient list (ingredient percent):</div>
     <div *ngFor="let entry of product.ingredients | keyvalue">
         -- {{entry.key}} {{entry.value * 100}}%
     </div>
