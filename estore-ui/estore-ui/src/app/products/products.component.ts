@@ -9,15 +9,10 @@ import { MessageService } from '../message.service';
   styleUrls: ['./products.component.css']
 })
 export class ProductsComponent {
-  constructor(private productService: ProductService, private messageService: MessageService) { }
+  constructor(private productService: ProductService) { }
 
   products: Product[] = [];
-  selectedProduct?: Product;
 
-  onSelect(product: Product): void {
-    this.selectedProduct = product;
-    this.messageService.add(`ProductsComponent: Selected product id=${product.id}, name=${product.name}`);
-  }
 
   getProducts(): void {
     this.productService.getProducts().subscribe(products => this.products = products);

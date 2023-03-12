@@ -9,6 +9,7 @@
     <div>mod price: {{product.modPrice}}</div>
     <div>ingredient list (ingredient percent):</div>
     <div *ngFor="let entry of product.ingredients | keyvalue">
-        {{entry.key}} {{entry.value * 100}}%
+        -- {{entry.key}} {{entry.value * 100}}%
     </div>
+    <button type="button" (click)="goBack()">go back</button>
 </div>

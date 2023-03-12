@@ -1,10 +1,8 @@
 <h2>My Products</h2>
 <ul class="products">
     <li *ngFor="let product of products">
-        <button [class.selected]="product === selectedProduct" type="button" (click)="onSelect(product)">
+        <a routerLink="/detail/{{product.id}}">
             <span class="name">{{product.name}}</span>
-        </button>
+        </a>
     </li>
 </ul>
-
-<app-product-detail [product]="selectedProduct"></app-product-detail>
