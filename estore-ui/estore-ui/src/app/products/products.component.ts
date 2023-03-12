@@ -21,4 +21,18 @@ export class ProductsComponent {
   ngOnInit(): void {
     this.getProducts();
   }
+
+  add(name: string): void {
+    name = name.trim();
+    if (!name) { return; }
+    this.productService.addProduct({ name } as Product)
+      .subscribe(product => {
+        this.products.push(product);
+      });
+  }
+
+  delete(product: Product): void {
+    this.products = this.products.filter(h => h !== product);
+    this.productService.deleteProduct(product.id).subscribe();
+  }
 }
