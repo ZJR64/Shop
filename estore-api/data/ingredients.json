@@ -1,1 +1,16 @@
-[{"id":1,"name":"Pinto Beans","type":"Bean","price":0.69,"volume":10000},{"id":2,"name":"Black","type":"Bean","price":1.0,"volume":420000}]
+[
+    {
+        "id": 1,
+        "name": "Pinto Beans",
+        "type": "Bean",
+        "price": 0.69,
+        "volume": 10000
+    },
+    {
+        "id": 2,
+        "name": "Black",
+        "type": "Bean",
+        "price": 1.0,
+        "volume": 420000
+    }
+]

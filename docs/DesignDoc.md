@@ -11,14 +11,15 @@ geometry: margin=1in
 ## Team Information
 * Team name: TEAMNAME
 * Team members
-  * MEMBER1
-  * MEMBER2
-  * MEMBER3
-  * MEMBER4
+  * Aadith Charugundla
+  * Cullen Walsh
+  * Jessica Phillips
+  * Zachary Rutherford
+  * Frank Andes
 
 ## Executive Summary
 
-This is a summary of the project.
+E-Store for E-boys and E-girls. Selling E-coffee and E-Tea to all of E-America. For our project we created an online store that seels tea and coffee. We started by storing the ingredients for each blend instead of the product. In this way we made it easier to calculate the cost of each blend and quickly modify the cost based on the owner's preference. the pre-made blends are readily available to the users to bowse and search through. The users can add those blends to their carts and checkout using payment information.
 
 ### Purpose
 > _Provide a very brief statement about the project and the most
@@ -36,15 +37,30 @@ This is a summary of the project.
 
 This section describes the features of the application.
 
-> _In this section you do not need to be exhaustive and list every
-> story.  Focus on top-level features from the Vision document and
-> maybe Epics and critical Stories._
+> _Features of the application include browsing products,
+> purchasing tea or coffee, adding to cart, choosing a custom
+> packaging, inventory management, admin management, and customer
+> orders._
 
 ### Definition of MVP
-> _Provide a simple description of the Minimum Viable Product._
+> _The minimal Viable product will include minimal authentication
+> for customers and the e-store owner login and logout, customer
+> functionality, inventory management, data persistence, and a 
+> 10% feature._  
 
 ### MVP Features
-> _Provide a list of top-level Epics and/or Stories of the MVP._
+> _Prepackaged Tea/Coffee
+> Customer Orders
+> Single Cart
+> Remove Products
+> Modify Products
+> Add Products
+> Browse Products
+> Shipping Address
+> Add Admins
+> User Login
+> Modify Admin Priviledges
+> Remove Admins_
 
 ### Roadmap of Enhancements
 > _Provide a list of top-level features in the order you plan to consider them._
