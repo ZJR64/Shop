@@ -1,1 +1,27 @@
-<p>ingredients works!</p>
+<div class="center">
+  <input type="text" [(ngModel)]="searchTerm" (input)="onSearch()" placeholder="Search Ingredients">
+</div>
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Volume</th>
+      <th>Details</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let ingredient of ingredients">
+      <td>{{ ingredient.name }}</td>
+      <td>{{ingredient.volume}}</td>
+      <td>
+        <button (click)="goToIngredient(ingredient)">
+          Details
+        </button>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+<button (click)="addNewIngredient()">
+  Add Ingredient
+</button>

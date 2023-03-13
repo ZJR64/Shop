@@ -15,6 +15,7 @@ import { MenuComponent } from './menu/menu.component';
 import { AdminHomeComponent } from './admin-home/admin-home.component';
 import { AdminMenuComponent } from './admin-menu/admin-menu.component';
 import { IngredientsComponent } from './ingredients/ingredients.component';
+import { IngredientDetailsComponent } from './ingredient-details/ingredient-details.component';
 
 @NgModule({
   declarations: [
@@ -27,7 +28,8 @@ import { IngredientsComponent } from './ingredients/ingredients.component';
     MenuComponent,
     AdminHomeComponent,
     AdminMenuComponent,
-    IngredientsComponent
+    IngredientsComponent,
+    IngredientDetailsComponent
   ],
   imports: [
     BrowserModule,

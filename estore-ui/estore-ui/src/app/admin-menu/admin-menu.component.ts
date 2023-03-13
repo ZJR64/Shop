@@ -19,4 +19,16 @@ export class AdminMenuComponent {
   goHome(): void {
     this.router.navigateByUrl('/home');
   }
+
+  goAdmin(): void {
+    this.router.navigateByUrl('/admin');
+  }
+
+  goLogout(): void {
+    this.router.navigateByUrl('/logout');
+  }
+
+  goIngredients(): void {
+    this.router.navigateByUrl('/admin/ingredients');
+  }
 }
