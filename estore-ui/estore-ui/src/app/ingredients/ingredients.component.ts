@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { Ingredient } from '../ingredient';
 import { IngredientService } from '../services/ingredients.service'
 
@@ -11,7 +12,10 @@ export class IngredientsComponent implements OnInit {
   ingredients!: Ingredient[];
   searchTerm?: string;
 
-  constructor(private ingredientService: IngredientService) { }
+  constructor(
+    private ingredientService: IngredientService,
+    private router: Router,
+    ) { }
 
   ngOnInit(): void {
     this.getIngredients();
@@ -23,7 +27,7 @@ export class IngredientsComponent implements OnInit {
   }
 
   goToIngredient(ingredient: Ingredient): void {
-    //Go to Ingredient Details
+    this.router.navigateByUrl(`/ingredients/${ingredient.id}`);
   }
 
   addNewIngredient(): void {
