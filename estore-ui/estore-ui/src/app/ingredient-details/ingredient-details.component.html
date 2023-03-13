@@ -1,1 +1,15 @@
-<p>ingredient-details works!</p>
+<div *ngIf="ingredient">
+    <h2>{{product.name | uppercase}} Details</h2>
+    <div>id: {{product.id}}</div>
+    <div>
+        <label for="ingredient-name">Product name: </label>
+        <input id="ingredient-name" [(ngModel)]="ingredient.name" placeholder="name">
+    </div>
+    <div>type: {{ingredient.type}}</div>
+    <div>mod price: {{ingredient.modPrice}}</div>
+    <div>ingredient list (ingredient percent):</div>
+    <div *ngFor="let entry of product.ingredients | keyvalue">
+        -- {{entry.key}} {{entry.value * 100}}%
+    </div>
+    <button type="button" (click)="save()">save</button>
+</div>
