@@ -17,7 +17,7 @@ import com.estore.api.estoreapi.model.Ingredient;
  */
 @Tag("Model-tier")
 @SpringBootTest
-class EstoreApiIngredientTest {
+class EstoreApiIngredientTesst {
 
 	@Test
 	public void testCtor() {
@@ -25,17 +25,19 @@ class EstoreApiIngredientTest {
 		int expected_id = 69;
 		String expected_name = "Deez Nuts";
 		String expected_type = "Bean";
+		String expected_description = "Gottem";
 		double expected_price = 0.69;
 		double expected_volume = 420.69;
 
 		// Invoke
-		Ingredient ingredient = new Ingredient(expected_id, expected_name, expected_type, expected_price,
+		Ingredient ingredient = new Ingredient(expected_id, expected_name, expected_type, expected_description, expected_price,
 				expected_volume);
 
 		// Analyze
 		assertEquals(expected_id, ingredient.getId());
 		assertEquals(expected_name, ingredient.getName());
 		assertEquals(expected_type, ingredient.getType());
+		assertEquals(expected_description, ingredient.getDescription());
 		assertEquals(expected_price, ingredient.getPrice());
 		assertEquals(expected_volume, ingredient.getVolume());
 
@@ -47,9 +49,10 @@ class EstoreApiIngredientTest {
 		int id = 69;
 		String name = "Deez Nuts";
 		String type = "Bean";
+		String description = "Gottem";
 		double price = 0.69;
 		double volume = 420.69;
-		Ingredient ingredient = new Ingredient(id, name, type, price, volume);
+		Ingredient ingredient = new Ingredient(id, name, type, description, price, volume);
 
 		String expected_name = "Balls";
 
@@ -67,8 +70,9 @@ class EstoreApiIngredientTest {
 		String name = "Deez Nuts";
 		String type = "Bean";
 		double price = 0.69;
+		String description = "Gottem";
 		double volume = 420.69;
-		Ingredient ingredient = new Ingredient(id, name, type, price, volume);
+		Ingredient ingredient = new Ingredient(id, name, type, description, price, volume);
 
 		String expected_type = "Not Beans?";
 
@@ -80,14 +84,35 @@ class EstoreApiIngredientTest {
 	}
 
 	@Test
-	public void testPrice() {
+	public void testDescription() {
 		// Setup
 		int id = 69;
 		String name = "Deez Nuts";
 		String type = "Bean";
 		double price = 0.69;
+		String description = "Gottem";
 		double volume = 420.69;
-		Ingredient ingredient = new Ingredient(id, name, type, price, volume);
+		Ingredient ingredient = new Ingredient(id, name, type, description, price, volume);
+
+		String expected_description = "NAH";
+
+		// Invoke
+		ingredient.setDescription(expected_description);
+
+		// Analyze
+		assertEquals(expected_description, ingredient.getDescription());
+	}
+
+	@Test
+	public void testPrice() {
+		// Setup
+		int id = 69;
+		String name = "Deez Nuts";
+		String type = "Bean";
+		String description = "Gottem";
+		double price = 0.69;
+		double volume = 420.69;
+		Ingredient ingredient = new Ingredient(id, name, type, description, price, volume);
 
 		double expected_price = 0.21;
 
@@ -104,9 +129,10 @@ class EstoreApiIngredientTest {
 		int id = 69;
 		String name = "Deez Nuts";
 		String type = "Bean";
+		String description = "Gottem";
 		double price = 0.69;
 		double volume = 420.69;
-		Ingredient ingredient = new Ingredient(id, name, type, price, volume);
+		Ingredient ingredient = new Ingredient(id, name, type, description, price, volume);
 
 		double expected_volume = 69.420;
 
@@ -123,10 +149,11 @@ class EstoreApiIngredientTest {
 		int id = 69;
 		String name = "Deez Nuts";
 		String type = "Bean";
+		String description = "Gottem";
 		double price = 0.69;
 		double volume = 420.69;
 		String expected_string = String.format(Ingredient.getSTRING_FORMAT(), id, name, type, price, volume);
-		Ingredient ingredient = new Ingredient(id, name, type, price, volume);
+		Ingredient ingredient = new Ingredient(id, name, type, description, price, volume);
 
 		// Invoke
 		String actual_string = ingredient.toString();

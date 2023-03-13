@@ -22,7 +22,7 @@ export class IngredientDetailsComponent implements OnInit {
       });
   }
 
-  save(): void {
+  saveIngredient(): void {
     if (this.ingredient) {
       this.ingredientService.updateIngredient(this.ingredient)
     }

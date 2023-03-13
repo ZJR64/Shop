@@ -1,9 +1,6 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 
-import { User } from '../user';
-import { UserService } from '../services/user.service';
-
 @Component({
   selector: 'app-admin-menu',
   templateUrl: './admin-menu.component.html',
@@ -13,7 +10,6 @@ export class AdminMenuComponent {
 
   constructor(
     private router: Router,
-    private userService: UserService,
     ) {}
 
   goHome(): void {
