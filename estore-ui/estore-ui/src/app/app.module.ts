@@ -12,6 +12,8 @@ import { MessagesComponent } from './messages/messages.component';
 
 import { AppRoutingModule } from './app-routing.module';
 import { MenuComponent } from './menu/menu.component';
+import { AdminHomeComponent } from './admin-home/admin-home.component';
+import { AdminMenuComponent } from './admin-menu/admin-menu.component';
 
 @NgModule({
   declarations: [
@@ -21,7 +23,9 @@ import { MenuComponent } from './menu/menu.component';
     RegisterComponent,
     LogoutComponent,
     MessagesComponent,
-    MenuComponent
+    MenuComponent,
+    AdminHomeComponent,
+    AdminMenuComponent
   ],
   imports: [
     BrowserModule,
