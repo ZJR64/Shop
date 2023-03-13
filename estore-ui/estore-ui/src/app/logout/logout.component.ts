@@ -22,8 +22,4 @@ export class LogoutComponent implements OnInit{
     this.router.navigateByUrl('/login')
   }
 
-  back(): void {
-    this.router.navigateByUrl('/home')
-  }
-
 }
