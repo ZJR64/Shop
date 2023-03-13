@@ -12,6 +12,7 @@ export class UniversalMenuComponent {
   constructor(
     private router: Router,
     private userService: UserService,
+    private location: Location
     ) {}
 
   goBack(): void {
