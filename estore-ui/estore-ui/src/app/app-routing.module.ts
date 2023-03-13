@@ -13,19 +13,25 @@ import { RegisterComponent } from './register/register.component';
 import { MenuComponent } from './menu/menu.component';
 import { AdminMenuComponent } from './admin-menu/admin-menu.component';
 import { IngredientsComponent } from './ingredients/ingredients.component';
+import { UniversalMenuComponent } from './universal-menu/universal-menu.component';
 
 const routes: Routes = [
+  { path: '', component: UniversalMenuComponent, canActivate: [AuthGuardService], children: [
     { path: '', component: MenuComponent, children: [
       { path: '', redirectTo: 'home', pathMatch: 'full' },
-      { path: 'home', component: HomeComponent, canActivate: [AuthGuardService]}]},
+      { path: 'home', component: HomeComponent}
+    ]},
     
-    { path: 'admin', component: AdminMenuComponent, children: [
-      { path: '', component: AdminHomeComponent, canActivate: [AdminGuardService]},
-      { path: 'ingredients', component: IngredientsComponent, canActivate: [AdminGuardService]}]},
-
-    { path: 'login', component: LoginComponent, canActivate: [SafeGuardService] },
-    { path: 'register', component: RegisterComponent, canActivate: [SafeGuardService] },
+    { path: 'admin', component: AdminMenuComponent, canActivate: [AdminGuardService], children: [
+      { path: '', component: AdminHomeComponent},
+      { path: 'ingredients', component: IngredientsComponent}
+    ]},
+    
     { path: 'logout', component: LogoutComponent }
+  ]},
+
+  { path: 'login', component: LoginComponent, canActivate: [SafeGuardService] },
+  { path: 'register', component: RegisterComponent, canActivate: [SafeGuardService] },
 ];
 
 @NgModule({
