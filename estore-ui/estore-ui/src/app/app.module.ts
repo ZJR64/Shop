@@ -16,6 +16,7 @@ import { AdminHomeComponent } from './admin-home/admin-home.component';
 import { AdminMenuComponent } from './admin-menu/admin-menu.component';
 import { IngredientsComponent } from './ingredients/ingredients.component';
 import { IngredientDetailsComponent } from './ingredient-details/ingredient-details.component';
+import { UniversalMenuComponent } from './universal-menu/universal-menu.component';
 
 @NgModule({
   declarations: [
@@ -29,7 +30,8 @@ import { IngredientDetailsComponent } from './ingredient-details/ingredient-deta
     AdminHomeComponent,
     AdminMenuComponent,
     IngredientsComponent,
-    IngredientDetailsComponent
+    IngredientDetailsComponent,
+    UniversalMenuComponent
   ],
   imports: [
     BrowserModule,
