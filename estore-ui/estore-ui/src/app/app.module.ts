@@ -14,6 +14,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { MenuComponent } from './menu/menu.component';
 import { AdminHomeComponent } from './admin-home/admin-home.component';
 import { AdminMenuComponent } from './admin-menu/admin-menu.component';
+import { IngredientsComponent } from './ingredients/ingredients.component';
 
 @NgModule({
   declarations: [
@@ -25,7 +26,8 @@ import { AdminMenuComponent } from './admin-menu/admin-menu.component';
     MessagesComponent,
     MenuComponent,
     AdminHomeComponent,
-    AdminMenuComponent
+    AdminMenuComponent,
+    IngredientsComponent
   ],
   imports: [
     BrowserModule,
