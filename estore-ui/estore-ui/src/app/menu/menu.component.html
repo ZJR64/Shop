@@ -1,5 +1,5 @@
 <nav>
-    <!-- (click) passes input value to check if correct login -->
+<!-- (click) passes input value to check if correct login -->
 <button type="button" class="add-button" (click)="goHome();">
 Home
 </button>
@@ -8,6 +8,13 @@ Home
 <button type="button" class="add-button" (click)="goLogout();">
 Logout
 </button>
+
+<!-- (click) send to admin home -->
+<button *ngIf="isAdmin" type="button" class="add-button" (click)="goAdmin();">
+Manage Store
+</button>
+   
+
 </nav>
 <br>
 <router-outlet></router-outlet>

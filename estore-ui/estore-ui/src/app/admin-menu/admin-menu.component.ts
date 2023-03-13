@@ -5,9 +5,9 @@ import { User } from '../user';
 import { UserService } from '../services/user.service';
 
 @Component({
-  selector: 'app-menu',
-  templateUrl: './menu.component.html',
-  styleUrls: ['./menu.component.css']
+  selector: 'app-admin-menu',
+  templateUrl: './admin-menu.component.html',
+  styleUrls: ['./admin-menu.component.css']
 })
 export class AdminMenuComponent {
 
