@@ -1,15 +1,29 @@
-<div *ngIf="ingredient">
-    <h2>{{product.name | uppercase}} Details</h2>
-    <div>id: {{product.id}}</div>
+<div>
+    <h2>Edit Ingredient: {{ingredient.name}}</h2>
+  
     <div>
-        <label for="ingredient-name">Product name: </label>
-        <input id="ingredient-name" [(ngModel)]="ingredient.name" placeholder="name">
+      <label for="name">Name:</label>
+      <input type="text" [(ngModel)]="ingredient.name" name="name" required>
     </div>
-    <div>type: {{ingredient.type}}</div>
-    <div>mod price: {{ingredient.modPrice}}</div>
-    <div>ingredient list (ingredient percent):</div>
-    <div *ngFor="let entry of product.ingredients | keyvalue">
-        -- {{entry.key}} {{entry.value * 100}}%
+
+    <div>
+        {{ingredient.type}}
     </div>
-    <button type="button" (click)="save()">save</button>
-</div>
+  
+    <div>
+      <label for="description">Description:</label>
+      <textarea [(ngModel)]="ingredient.description" name="description"></textarea>
+    </div>
+  
+    <div>
+      <label for="price">Price:</label>
+      <input type="number" [(ngModel)]="ingredient.price" name="price" required>
+    </div>
+  
+    <div>
+      <label for="quantity">Quantity:</label>
+      <input type="number" [(ngModel)]="ingredient.quantity" name="quantity" required>
+    </div>
+  
+    <button (click)="saveIngredient()">Save Ingredient</button>
+  </div>
