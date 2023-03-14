@@ -17,7 +17,6 @@ export class ProductIngredientsComponent {
     this.messageService.add(`ProductService: ${message}`);
   }
   @Input() product?: Product;
-  @Input() ingredients?: Map<String, number>;
 
 
   constructor(
@@ -39,15 +38,10 @@ export class ProductIngredientsComponent {
   }
 
   ngOnInit(): void {
-    this.getIngredients();
-
     this.getProduct();
+    console.log(this.product);
   }
 
-  getIngredients(): void {
-    const id = Number(this.route.snapshot.paramMap.get('id'));
-    this.productService.getIngredients(id).subscribe(ingredients => this.ingredients = ingredients)
-  }
 
   getProduct(): void {
     const id = Number(this.route.snapshot.paramMap.get('id'));
@@ -57,16 +51,14 @@ export class ProductIngredientsComponent {
 
   addIngredient(): void {
     const id = Number(this.route.snapshot.paramMap.get('id'));
-    if (this.ingredients) {
-      this.productService.getIngredients(id).subscribe(ingredients => this.ingredients = ingredients);
-      this.ingredients.set((<HTMLInputElement>document.getElementById("iname")).value, parseFloat((<HTMLInputElement>document.getElementById("ivolume")).value));
-      this.ingredients.forEach((value: number, key: String) => {
-        console.log(key + " " + value);
-      })
-
-      console.log(this.product?.ingredients);
-      this.productService.updateIngredients(this.ingredients)
-        .subscribe(() => this.goBack());
+    if (this.product) {
+      const i = new Map<String, number>(Object.entries(this.product['ingredients']))
+      i.set((<HTMLInputElement>document.getElementById("iname")).value, parseFloat((<HTMLInputElement>document.getElementById("ivolume")).value));
+      console.log(i);
+      const i2 = Object.fromEntries(i);
+      Object.assign(this.product.ingredients, i2);
+      console.log(this.product);
+      this.productService.updateProduct(this.product).subscribe();
     }
   }
 }
