@@ -60,6 +60,21 @@ export class ProductService {
     );
   }
 
+  getIngredients(id: number): Observable<Map<String, number>> {
+    const url = `${this.productsUrl}/${id}`;
+    return this.http.get<Product["ingredients"]>(url).pipe(
+      tap(_ => this.log(`fetched product id=${id}`)),
+      catchError(this.handleError<Product["ingredients"]>(`getProduct id=${id}`))
+    );
+  }
+
+  updateIngredients(ingredients: Map<String, number>): Observable<any> {
+    return this.http.put(this.productsUrl, ingredients, this.httpOptions).pipe(
+      tap(_ => this.log(`updated ingredients`)),
+      catchError(this.handleError<any>('updateIngredients'))
+    );
+  }
+
   updateProduct(product: Product): Observable<any> {
     return this.http.put(this.productsUrl, product, this.httpOptions).pipe(
       tap(_ => this.log(`updated product id=${product.id}`)),

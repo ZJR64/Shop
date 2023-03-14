@@ -3,5 +3,5 @@ export interface Product {
     name: string;
     type: string;
     modPrice: number;
-    ingredients: Map<string, number>;
+    ingredients: Map<String, number>;
 }
