@@ -13,7 +13,7 @@ public class Ingredient {
     private static final Logger LOG = Logger.getLogger(Ingredient.class.getName());
 
     // Package private for tests
-    static final String STRING_FORMAT = "Ingredient [id=%d, name=%s, type=%s, price=%f, volume=%f]";
+    static final String STRING_FORMAT = "Ingredient [id=%d, name=%s, type=%s, description=%s, price=%f, volume=%f]";
     /** this is only needed because String_format is private and the test classes are located outside the package
      * @return - the string format
      */
@@ -56,6 +56,7 @@ public class Ingredient {
         this.id = id;
         this.name = name;
         this.type = type;
+        this.description = description;
         this.price = price;
         this.volume = volume;
     }
@@ -170,6 +171,6 @@ public class Ingredient {
      */
     @Override
     public String toString() {
-        return String.format(STRING_FORMAT, id, name, type, price, volume);
+        return String.format(STRING_FORMAT, id, name, type, description, price, volume);
     }
 }

@@ -27,11 +27,41 @@ export class IngredientsComponent implements OnInit {
   }
 
   goToIngredient(ingredient: Ingredient): void {
-    this.router.navigateByUrl(`/ingredients/${ingredient.id}`);
+    this.router.navigateByUrl(`admin/ingredients/${ingredient.id}`);
   }
 
   addNewIngredient(): void {
-    //Create a new ingredient
+    // Create Blank Ingredient
+    const newIngredient: Ingredient = {
+      id: 0,
+      name: 'name',
+      type: 'type',
+      description: 'description',
+      price: 0.0,
+      volume: 0.0
+    };
+
+    var id: number;
+
+    // to storage 
+    this.ingredientService.addIngredient(newIngredient)
+    .subscribe(ingredient => {
+      // Get the updated list of ingredients from the service
+      this.ingredientService.getIngredients()
+        .subscribe(ingredients => {
+          // Find the newly added ingredient by name and type
+          const matchingIngredients = ingredients.filter(
+            i => i.name === newIngredient.name && i.type === newIngredient.type
+          );
+          if (matchingIngredients.length > 0) {
+            // Go to the detail screen for the newly added ingredient
+            id = matchingIngredients[0].id;
+          }
+        });
+    });
+
+    // send to details page
+    this.router.navigateByUrl(`admin/ingredients/${id!}`);
   }
 
   onSearch() {

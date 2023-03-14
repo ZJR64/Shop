@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Ingredient } from '../ingredient';
 import { IngredientService } from '../services/ingredients.service';
 
@@ -11,9 +11,13 @@ import { IngredientService } from '../services/ingredients.service';
 export class IngredientDetailsComponent implements OnInit {
   ingredient!: Ingredient;
 
-  constructor(private route: ActivatedRoute, private ingredientService: IngredientService) { }
+  constructor(
+    private router: Router,
+    private route: ActivatedRoute,
+    private ingredientService: IngredientService) { }
 
   ngOnInit() {
+    console.log("opened details")
     const id = +this.route.snapshot.paramMap.get('id')!;
 
     this.ingredientService.getIngredient(id).subscribe(
@@ -23,9 +27,12 @@ export class IngredientDetailsComponent implements OnInit {
   }
 
   saveIngredient(): void {
-    if (this.ingredient) {
-      this.ingredientService.updateIngredient(this.ingredient)
-    }
+    this.ingredientService.updateIngredient(this.ingredient)
+  }
+
+  deleteIngredient(): void {
+    this.ingredientService.deleteIngredient(this.ingredient.id)
+    this.router.navigateByUrl(`admin/ingredients`);
   }
 
 }
