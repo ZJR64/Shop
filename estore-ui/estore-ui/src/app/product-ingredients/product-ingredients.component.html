@@ -6,10 +6,9 @@
     <div>Ingredient list (ingredient proportion):</div>
     <li *ngFor="let entry of product.ingredients | keyvalue">
 
-        -- <input id="ingredient-name" [ngModel]="entry.key" placeholder="ingredient name"
-            (ngModelChange)="product.ingredients.set(entry.key, $event)">
-        <input id="ingredient-volume" [(ngModel)]="entry.value" placeholder="ingredient volume">
-
+        -- <input id="ingredient-name" [(ngModel)]="entry.key" placeholder="ingredient name" readonly>
+        <input id="ingredient-volume" [(ngModel)]="entry.value" placeholder="ingredient volume" readonly>
+        <button type="button" class="delete" title="delete ingredient" (click)="deleteIngredient(entry.key)">x</button>
     </li>
     <hr>
     <form>

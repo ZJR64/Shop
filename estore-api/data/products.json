@@ -1,1 +1,1 @@
-[{"id":2,"name":"New Product","type":"Type 1","modPrice":1.62,"ingredients":{"Ingredient":1.0}},{"id":3,"name":"Dummy Product","type":null,"modPrice":0.0,"ingredients":null},{"id":5,"name":"Blend","type":"Coffee","modPrice":0.2,"ingredients":{}}]
+[{"id":2,"name":"New Product","type":"Type 1","modPrice":1.62,"ingredients":{"Ingredient3":1.0,"Ingredient":1.0}},{"id":3,"name":"Dummy Product","type":null,"modPrice":0.0,"ingredients":null},{"id":5,"name":"Blend","type":"Coffee","modPrice":0.2,"ingredients":{}}]

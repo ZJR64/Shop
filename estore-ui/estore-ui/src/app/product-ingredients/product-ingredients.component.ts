@@ -33,13 +33,12 @@ export class ProductIngredientsComponent {
   save(): void {
     if (this.product) {
       this.productService.updateProduct(this.product)
-        .subscribe(() => this.goBack());
+        .subscribe();
     }
   }
 
   ngOnInit(): void {
     this.getProduct();
-    console.log(this.product);
   }
 
 
@@ -49,16 +48,23 @@ export class ProductIngredientsComponent {
       .subscribe(product => this.product = product);
   }
 
+  deleteIngredient(key: String): void {
+    const id = Number(this.route.snapshot.paramMap.get('id'));
+    if (this.product) {
+      const i = new Map<String, number>(Object.entries(this.product['ingredients']))
+      i.delete(key);
+      const i2 = Object.fromEntries(i);
+      this.product['ingredients'] = i2;
+    }
+  }
+
   addIngredient(): void {
     const id = Number(this.route.snapshot.paramMap.get('id'));
     if (this.product) {
       const i = new Map<String, number>(Object.entries(this.product['ingredients']))
       i.set((<HTMLInputElement>document.getElementById("iname")).value, parseFloat((<HTMLInputElement>document.getElementById("ivolume")).value));
-      console.log(i);
       const i2 = Object.fromEntries(i);
-      Object.assign(this.product.ingredients, i2);
-      console.log(this.product);
-      this.productService.updateProduct(this.product).subscribe();
+      this.product['ingredients'] = i2;
     }
   }
 }
