@@ -35,6 +35,7 @@ export class IngredientDetailsComponent implements OnInit {
     this.ingredientService.updateIngredient(this.ingredient)
     .subscribe(() => {
       console.log('Ingredient saved');
+      this.router.navigateByUrl(`admin/ingredients`);
     });
   }
 
