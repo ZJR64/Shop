@@ -1,5 +1,5 @@
-<div>
-    <h2>Edit Ingredient: {{ingredient.name}}</h2>
+<div *ngIf="ingredient">
+    <h2>Edit Ingredient: {{ingredient?.name}}</h2>
   
     <div>
       <label for="name">Name:</label>
@@ -7,7 +7,9 @@
     </div>
 
     <div>
-        {{ingredient.type}}
+      <label>Type:</label>
+      <input type="radio" [(ngModel)]="ingredient.type" name="type" value="Bean" required>Bean
+      <input type="radio" [(ngModel)]="ingredient.type" name="type" value="Leaf" required>Leaf
     </div>
   
     <div>

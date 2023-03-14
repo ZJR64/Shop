@@ -35,13 +35,11 @@ export class IngredientsComponent implements OnInit {
     const newIngredient: Ingredient = {
       id: 0,
       name: 'name',
-      type: 'type',
+      type: 'Bean',
       description: 'description',
       price: 0.0,
       volume: 0.0
     };
-
-    var id: number;
 
     // to storage 
     this.ingredientService.addIngredient(newIngredient)
@@ -55,13 +53,10 @@ export class IngredientsComponent implements OnInit {
           );
           if (matchingIngredients.length > 0) {
             // Go to the detail screen for the newly added ingredient
-            id = matchingIngredients[0].id;
+            this.goToIngredient(matchingIngredients[0]);
           }
         });
     });
-
-    // send to details page
-    this.router.navigateByUrl(`admin/ingredients/${id!}`);
   }
 
   onSearch() {
