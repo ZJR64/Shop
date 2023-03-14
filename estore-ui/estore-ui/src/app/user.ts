@@ -6,4 +6,5 @@ export interface User {
     address : string;
     admin : boolean;
     payInfo : string[];
+    [key: string]: any;
   }

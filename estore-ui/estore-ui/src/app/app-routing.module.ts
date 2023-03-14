@@ -15,6 +15,7 @@ import { AdminMenuComponent } from './admin-menu/admin-menu.component';
 import { IngredientsComponent } from './ingredients/ingredients.component';
 import { UniversalMenuComponent } from './universal-menu/universal-menu.component';
 import { IngredientDetailsComponent } from './ingredient-details/ingredient-details.component';
+import { AdminsComponent } from './admins/admins.component';
 
 const routes: Routes = [
   { path: '', component: UniversalMenuComponent, canActivate: [AuthGuardService], children: [
@@ -26,7 +27,8 @@ const routes: Routes = [
     { path: 'admin', component: AdminMenuComponent, canActivate: [AdminGuardService], children: [
       { path: '', component: AdminHomeComponent},
       { path: 'ingredients', component: IngredientsComponent},
-      { path: 'ingredients/:id', component: IngredientDetailsComponent }
+      { path: 'ingredients/:id', component: IngredientDetailsComponent },
+      { path: 'admins', component: AdminsComponent},
     ]},
     
     { path: 'logout', component: LogoutComponent }
