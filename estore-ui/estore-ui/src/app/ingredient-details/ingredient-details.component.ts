@@ -14,24 +14,32 @@ export class IngredientDetailsComponent implements OnInit {
   constructor(
     private router: Router,
     private route: ActivatedRoute,
-    private ingredientService: IngredientService) { }
-
-  ngOnInit() {
-    console.log("opened details")
+    private ingredientService: IngredientService) {
     const id = +this.route.snapshot.paramMap.get('id')!;
 
     this.ingredientService.getIngredient(id).subscribe(
       (ingredient) => {
         this.ingredient = ingredient;
       });
+     }
+
+  ngOnInit() {
+    console.log("opened details")
   }
 
   saveIngredient(): void {
     this.ingredientService.updateIngredient(this.ingredient)
+    .subscribe(() => {
+      console.log('Ingredient saved');
+    });
   }
 
   deleteIngredient(): void {
     this.ingredientService.deleteIngredient(this.ingredient.id)
+    .subscribe(() => {
+        console.log(`Deleted ingredient with id=${this.ingredient.id}`);
+        this.router.navigateByUrl(`admin/ingredients`);
+    });
     this.router.navigateByUrl(`admin/ingredients`);
   }
 
