@@ -3,6 +3,7 @@ package com.estore.api.estoreapi.persistence;
 import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.List;
 import java.util.Map;
 import java.util.TreeMap;
 import java.util.logging.Logger;
@@ -175,7 +176,14 @@ public class UserFileDAO implements UserDAO {
     @Override
     public User[] findUsers(String containsText) {
         synchronized (users) {
-            return getUsersArray(containsText);
+            String searchLowerCase = containsText.toLowerCase();
+            List<User> matches = new ArrayList<>();
+            for (User user : getUsersArray()) {
+                if (user.getName().toLowerCase().contains(searchLowerCase)) {
+                    matches.add(user);
+                }
+            }
+            return matches.toArray(new User[0]);
         }
     }
 
