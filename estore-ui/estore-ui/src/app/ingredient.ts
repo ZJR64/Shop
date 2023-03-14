@@ -5,4 +5,5 @@ export interface Ingredient {
     description: string;
     price: number;
     volume: number;
+    [key: string]: any;
 }

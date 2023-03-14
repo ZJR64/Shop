@@ -11,6 +11,8 @@ import { IngredientService } from '../services/ingredients.service'
 export class IngredientsComponent implements OnInit {
   ingredients!: Ingredient[];
   searchTerm?: string;
+  sortOrder: string = '';
+  sortReverse: boolean = false;
 
   constructor(
     private ingredientService: IngredientService,
@@ -19,6 +21,7 @@ export class IngredientsComponent implements OnInit {
 
   ngOnInit(): void {
     this.getIngredients();
+
   }
 
   getIngredients(): void {
@@ -67,5 +70,26 @@ export class IngredientsComponent implements OnInit {
     } else {
       this.getIngredients();
     }
+  }
+
+  sort(column: string) {
+    if (this.sortOrder === column) {
+      this.sortReverse = !this.sortReverse;
+    } else {
+      this.sortOrder = column;
+      this.sortReverse = false;
+    }
+    this.ingredients.sort((a, b) => {
+      if (this.sortReverse) {
+        [a, b] = [b, a];
+      }
+      if (a[column] < b[column]) {
+        return -1;
+      }
+      if (a[column] > b[column]) {
+        return 1;
+      }
+      return 0;
+    });
   }
 }

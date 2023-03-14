@@ -4,8 +4,8 @@
 <table>
   <thead>
     <tr>
-      <th>Name</th>
-      <th>Volume</th>
+      <th (click)="sort('name')">Name {{sortOrder == 'name' ? (sortReverse ? '↑' : '↓') : ''}}</th>
+      <th (click)="sort('volume')">Volume {{sortOrder == 'volume' ? (sortReverse ? '↑' : '↓') : ''}}</th>
       <th>Details</th>
     </tr>
   </thead>
