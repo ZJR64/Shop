@@ -27,6 +27,10 @@ export class IngredientDetailsComponent implements OnInit {
     console.log("opened details")
   }
 
+  addToVolume(amount: string): void {
+    this.ingredient.volume += parseFloat(amount);
+  }
+
   saveIngredient(): void {
     this.ingredientService.updateIngredient(this.ingredient)
     .subscribe(() => {
@@ -40,7 +44,6 @@ export class IngredientDetailsComponent implements OnInit {
         console.log(`Deleted ingredient with id=${this.ingredient.id}`);
         this.router.navigateByUrl(`admin/ingredients`);
     });
-    this.router.navigateByUrl(`admin/ingredients`);
   }
 
 }
