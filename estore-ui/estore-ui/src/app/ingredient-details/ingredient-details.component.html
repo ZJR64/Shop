@@ -27,7 +27,7 @@
       |   |
       <button (click)="addToVolume(volumeInput.value); volumeInput.value='';">Add to Volume</button>
       New Stock:
-      <input type="number" #volumeInput name="volume" required>
+      <input type="number" #volumeInput name="volume" (input)="volumeInput.value = volumeInput.value.replace('[^0-9\.]', '')" required>
     </div>
     <br>
     <button (click)="saveIngredient();">Save Ingredient</button>

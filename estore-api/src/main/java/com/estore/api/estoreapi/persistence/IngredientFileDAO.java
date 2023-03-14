@@ -3,6 +3,7 @@ package com.estore.api.estoreapi.persistence;
 import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.List;
 import java.util.Map;
 import java.util.TreeMap;
 import java.util.logging.Logger;
@@ -176,7 +177,14 @@ public class IngredientFileDAO implements IngredientDAO {
     @Override
     public Ingredient[] findIngredients(String containsText) {
         synchronized (ingredients) {
-            return getIngredientsArray(containsText);
+            String searchLowerCase = containsText.toLowerCase();
+            List<Ingredient> matches = new ArrayList<>();
+            for (Ingredient ingredient : getIngredientsArray()) {
+                if (ingredient.getName().toLowerCase().contains(searchLowerCase)) {
+                    matches.add(ingredient);
+                }
+            }
+            return matches.toArray(new Ingredient[0]);
         }
     }
 
