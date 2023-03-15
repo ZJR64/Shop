@@ -40,6 +40,10 @@ export class UserSettingsComponent implements OnInit{
     this.user.payInfo.splice(index, 1);
   }
 
+  trackByFn(index: number, item: any): any {
+    return index;
+  }
+
   saveUser(): void {
     // Check that all payment info strings are non-empty
     if (this.user.payInfo.some((pay) => pay.trim() === '')) {
@@ -51,7 +55,7 @@ export class UserSettingsComponent implements OnInit{
     // You can use a regular expression to validate the format
     const regex = /[0-9]{4}-[0-9]{4}-[0-9]{4}-[0-9]{4}/; // Example regex for credit card numbers
     if (this.user.payInfo.some((pay) => !regex.test(pay))) {
-      alert('Please enter payment information in the correct format');
+      alert('Please enter payment information in the correct format: xxxx-xxxx-xxxx-xxxx');
       return;
     }
 

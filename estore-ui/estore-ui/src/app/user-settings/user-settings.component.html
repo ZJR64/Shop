@@ -1,5 +1,5 @@
 <div *ngIf="user">
-    <h2>Edit User: {{user?.name}}</h2>
+    <h2>User Settings</h2>
     <br>
     <div>
       <label for="email">Email:</label>
@@ -10,6 +10,7 @@
       <label for="name">Name:</label>
       <input type="text" [(ngModel)]="user.name" name="name" required>
     </div>
+    <br>
     <div>
       <label for="password">Password:</label>
       <input type="text" [(ngModel)]="user.password" name="password" required>
@@ -20,10 +21,10 @@
       <input type="text" [(ngModel)]="user.address" name="address" required>
     </div>
     <br>
-    <div *ngFor="let pay of user.payInfo; let i = index">
+    <div *ngFor="let pay of user.payInfo; let i = index; trackBy: trackByFn">
       <div class="pay-info">
         <label for="pay">Payment Method {{ i + 1 }}:</label>
-        <input type="text" [(ngModel)]="user.payInfo[i]" name="pay" (input)="user.payInfo[i] = $event.target.value.replace('[^0-9\.]', '')" required>
+        <input type="text" [(ngModel)]="user.payInfo[i]" name="pay" required>
         <button class="delete-button" (click)="deletePay(user.payInfo[i])">X</button>
       </div>
     </div>
