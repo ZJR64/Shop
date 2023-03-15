@@ -10,8 +10,13 @@ import { RegisterComponent } from './register/register.component';
 import { LogoutComponent } from './logout/logout.component';
 import { MessagesComponent } from './messages/messages.component';
 
-import { AppRoutingModule } from './app-routing.module';
 import { MenuComponent } from './menu/menu.component';
+import { ProductsComponent } from './products/products.component';
+import { ProductDetailComponent } from './product-detail/product-detail.component';
+import { AppRoutingModule } from './app-routing.module';
+import { DashboardComponent } from './dashboard/dashboard.component';
+import { ProductSearchComponent } from './product-search/product-search.component';
+import { ProductIngredientsComponent } from './product-ingredients/product-ingredients.component';
 
 @NgModule({
   declarations: [
@@ -21,13 +26,19 @@ import { MenuComponent } from './menu/menu.component';
     RegisterComponent,
     LogoutComponent,
     MessagesComponent,
-    MenuComponent
+    MenuComponent,
+    ProductsComponent,
+    ProductDetailComponent,
+    MessagesComponent,
+    DashboardComponent,
+    ProductSearchComponent,
+    ProductIngredientsComponent
   ],
   imports: [
     BrowserModule,
     FormsModule,
     HttpClientModule,
-    AppRoutingModule
+    AppRoutingModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
