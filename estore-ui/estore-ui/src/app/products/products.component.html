@@ -1,24 +1,21 @@
 <h2>My Products</h2>
+<div>
+    <label for="new-product">Product name: </label>
+    <input id="new-product" #productName />
+
+    <!-- (click) passes input value to add() and then clears the input -->
+    <button type="button" class="add-button" (click)="add(productName.value); productName.value=''">
+        Add product
+    </button>
+</div>
 <ul class="products">
     <li *ngFor="let product of products">
-        <button [class.selected]="product === selectedProduct" type="button" (click)="onSelect(product)">
-            <span class="id">{{product.id}}</span>
+        <a routerLink="/detail/{{product.id}}">
             <span class="name">{{product.name}}</span>
-            <span class="type">{{product.type}}</span>
-            <span class="modPrice">{{product.modPrice}}</span>
-            <span class="ingredients">{{product.ingredients}}</span>"
-        </button>
+        </a>
+        <button type="button" class="delete" title="delete product" (click)="delete(product)">x</button>
+        <a routerLink="/detail/{{product.id}}/ingredients">
+            <span class="ingredients">Edit Ingredients</span>
+        </a>
     </li>
 </ul>
-
-<div *ngIf="selectedProduct">
-    <h2>{{selectedProduct.name | uppercase}} Details</h2>
-    <div>id: {{selectedProduct.id}}</div>
-    <div>
-        <label for="product-name">Product name: </label>
-        <input id="product-name" [(ngModel)]="selectedProduct.name" placeholder="name">
-    </div>
-    <div>type: {{selectedProduct.type}}</div>
-    <div>mod price: {{selectedProduct.modPrice}}</div>
-    <div>ingredients: {{selectedProduct.ingredients}}</div>
-</div>
