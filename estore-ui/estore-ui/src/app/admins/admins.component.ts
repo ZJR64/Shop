@@ -66,12 +66,16 @@ export class AdminsComponent {
   }
 
   changeAdmin(user: User): void {
+    if (localStorage.getItem('currentUser') == user.email) {
+      return;
+    }
+
     user.admin = !user.admin;
     this.userService.updateUser(user)
     .subscribe(() => {
       console.log('Ingredient saved');
+      this.getUsers();
     });
-    this.getUsers();
   }
 
   sort(column: string) {
