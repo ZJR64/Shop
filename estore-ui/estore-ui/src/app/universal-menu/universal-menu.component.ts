@@ -20,4 +20,12 @@ export class UniversalMenuComponent {
   goBack(): void {
     this.location.back();
   }
+
+  gogoLogout(): void {
+    this.router.navigateByUrl('/logout');
+  }
+
+  goSettings(): void {
+    this.router.navigateByUrl('/settings');
+  }
 }
