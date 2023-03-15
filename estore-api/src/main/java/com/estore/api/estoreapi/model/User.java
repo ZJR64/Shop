@@ -1,6 +1,7 @@
 package com.estore.api.estoreapi.model;
 
 import java.util.logging.Logger;
+import java.util.*;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 
@@ -13,7 +14,7 @@ public class User {
     private static final Logger LOG = Logger.getLogger(User.class.getName());
 
     // Package private for tests
-    public static final String STRING_FORMAT = "Product [int=%d, email=%s, name=%s, password=%s, address=%s, admin=%b, payInfo=%s]";
+    public static final String STRING_FORMAT = "Product [int=%d, email=%s, name=%s, password=%s, address=%s, admin=%b, payInfo=%s, cart=%s]";
 
     @JsonProperty("id")
     private int id;
@@ -29,10 +30,12 @@ public class User {
     private Boolean admin;
     @JsonProperty("payInfo")
     private String[] payInfo;
+    @JsonProperty("cart")
+    private Map<Integer, Integer[]> cart;
 
     /**
-     * Create a user with the given email, name, password, address, admin, and
-     * payInfo
+     * Create a user with the given email, name, password, address, admin, payInfo,
+     * and cart
      * 
      * @param email    The email of the User
      * @param name     The name of the User
@@ -40,6 +43,7 @@ public class User {
      * @param address  The address of the User
      * @param admin    Whether or not the User is an admin
      * @param payInfo  An array containing credit card info
+     * @param cart     A map which contains the user's shopping cart
      * 
      *                 {@literal @}JsonProperty is used in serialization and
      *                 deserialization
@@ -52,7 +56,8 @@ public class User {
      */
     public User(@JsonProperty("id") int id, @JsonProperty("email") String email, @JsonProperty("name") String name,
             @JsonProperty("password") String password, @JsonProperty("address") String address,
-            @JsonProperty("admin") Boolean admin, @JsonProperty("payInfo") String[] payInfo) {
+            @JsonProperty("admin") Boolean admin, @JsonProperty("payInfo") String[] payInfo,
+            @JsonProperty("cart") Map<Integer, Integer[]> cart) {
         this.id = id;
         this.email = email;
         this.name = name;
@@ -60,6 +65,7 @@ public class User {
         this.address = address;
         this.admin = admin;
         this.payInfo = payInfo;
+        this.cart = cart;
     }
 
     /**
@@ -158,8 +164,7 @@ public class User {
 
     /**
      * Sets the payInfo of the user - necessary for JSON object to Java
-     * object
-     * deserialization
+     * object deserialization
      * 
      * @param payInfo The payInfo of the user
      */
@@ -177,10 +182,29 @@ public class User {
     }
 
     /**
+     * Retrieves the user's shopping cart
+     * 
+     * @return user's shopping cart
+     */
+    public Map<Integer, Integer[]> getCart() {
+        return cart;
+    }
+
+    /**
+     * Sets the cart of the user - necessary for JSON object to Java
+     * object deserialization
+     * 
+     * @param cart new cart to set user's cart to
+     */
+    public void setCart(Map<Integer, Integer[]> cart) {
+        this.cart = cart;
+    }
+
+    /**
      * {@inheritDoc}
      */
     @Override
     public String toString() {
-        return String.format(STRING_FORMAT, id, email, name, password, address, admin, payInfo);
+        return String.format(STRING_FORMAT, id, email, name, password, address, admin, payInfo, cart);
     }
 }

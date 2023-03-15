@@ -27,8 +27,8 @@ import com.estore.api.estoreapi.model.User;
 public class UserFileDAO implements UserDAO {
     private static final Logger LOG = Logger.getLogger(UserFileDAO.class.getName());
     public Map<Integer, User> users; // Provides a local cache of the User objects
-                              // so that we don't need to read from the file
-                              // each time
+    // so that we don't need to read from the file
+    // each time
     private ObjectMapper objectMapper; // Provides conversion between Users
                                        // objects and JSON text format written
                                        // to the file
@@ -216,7 +216,7 @@ public class UserFileDAO implements UserDAO {
             // We create a new user object because the id field is immutable
             // and we need to assign the next unique id
             User newUser = new User(nextId(), user.getEmail(), user.getName(), user.getPassword(), user.getAddress(),
-                    user.getAdmin(), user.getPayInfo());
+                    user.getAdmin(), user.getPayInfo(), user.getCart());
             users.put(newUser.getId(), newUser);
             save(); // may throw an IOException
             return newUser;

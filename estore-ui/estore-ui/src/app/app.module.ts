@@ -22,6 +22,7 @@ import { AdminHomeComponent } from './admin-home/admin-home.component';
 import { AdminMenuComponent } from './admin-menu/admin-menu.component';
 import { IngredientDetailsComponent } from './ingredient-details/ingredient-details.component';
 import { UniversalMenuComponent } from './universal-menu/universal-menu.component';
+import { CartComponent } from './cart/cart.component';
 
 @NgModule({
   declarations: [
@@ -42,7 +43,8 @@ import { UniversalMenuComponent } from './universal-menu/universal-menu.componen
     MessagesComponent,
     DashboardComponent,
     ProductSearchComponent,
-    ProductIngredientsComponent
+    ProductIngredientsComponent,
+    CartComponent
   ],
   imports: [
     BrowserModule,
