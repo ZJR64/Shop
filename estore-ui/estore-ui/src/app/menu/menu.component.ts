@@ -33,5 +33,9 @@ export class MenuComponent {
   goAdmin(): void {
     this.router.navigateByUrl('/admin');
   }
+
+  goDashboard(): void {
+    this.router.navigateByUrl('/dashboard');
+  }
   
 }

@@ -24,7 +24,8 @@ const routes: Routes = [
   { path: '', component: UniversalMenuComponent, canActivate: [AuthGuardService], children: [
     { path: '', component: MenuComponent, children: [
       { path: '', redirectTo: 'home', pathMatch: 'full' },
-      { path: 'home', component: HomeComponent}
+      { path: 'home', component: HomeComponent},
+      { path: 'dashboard', component: DashboardComponent },
     ]},
     
     { path: 'admin', component: AdminMenuComponent, canActivate: [AdminGuardService], children: [
@@ -35,7 +36,6 @@ const routes: Routes = [
       { path: 'products/:id', component: ProductDetailComponent },
       { path: 'products/:id/ingredients', component: ProductIngredientsComponent },
     ]},
-      { path: 'dashboard', component: DashboardComponent }, //TODO
 
       { path: 'logout', component: LogoutComponent }
     ],
