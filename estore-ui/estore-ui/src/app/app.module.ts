@@ -1,11 +1,18 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule } from '@angular/forms';
-import { AppComponent } from './app.component';
 import { HttpClientModule } from '@angular/common/http';
+
+import { AppComponent } from './app.component';
+import { HomeComponent } from './home/home.component';
+import { LoginComponent } from './login/login.component';
+import { RegisterComponent } from './register/register.component';
+import { LogoutComponent } from './logout/logout.component';
+import { MessagesComponent } from './messages/messages.component';
+
+import { MenuComponent } from './menu/menu.component';
 import { ProductsComponent } from './products/products.component';
 import { ProductDetailComponent } from './product-detail/product-detail.component';
-import { MessagesComponent } from './messages/messages.component';
 import { AppRoutingModule } from './app-routing.module';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { ProductSearchComponent } from './product-search/product-search.component';
@@ -14,6 +21,12 @@ import { ProductIngredientsComponent } from './product-ingredients/product-ingre
 @NgModule({
   declarations: [
     AppComponent,
+    HomeComponent,
+    LoginComponent,
+    RegisterComponent,
+    LogoutComponent,
+    MessagesComponent,
+    MenuComponent,
     ProductsComponent,
     ProductDetailComponent,
     MessagesComponent,
@@ -25,11 +38,9 @@ import { ProductIngredientsComponent } from './product-ingredients/product-ingre
     BrowserModule,
     FormsModule,
     HttpClientModule,
-    AppRoutingModule
+    AppRoutingModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
 })
-export class AppModule {
-
-}
+export class AppModule { }

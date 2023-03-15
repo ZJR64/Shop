@@ -1,15 +1,18 @@
 # PROJECT Home
 
-Welcome to the PROJECT Project!
+Welcome to the Estore Project!
 
 ## Team
 
-* MEMBER1
-* MEMBER2
+* Aadith Charugundla
+* Cullen Walsh
+* Jessica Phillips
+* Zachary Rutherford
+* Frank Andes
 
 ## [Design Documentation](DesignDoc)
 
-Click above for details of the PROJECT design documentation.
+Click above for details of the Estore design documentation.
 
 ## [Setup Guide](SetupGuide)
 
