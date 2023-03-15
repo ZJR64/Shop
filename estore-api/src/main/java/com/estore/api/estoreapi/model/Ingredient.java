@@ -13,7 +13,7 @@ public class Ingredient {
     private static final Logger LOG = Logger.getLogger(Ingredient.class.getName());
 
     // Package private for tests
-    static final String STRING_FORMAT = "Ingredient [id=%d, name=%s, type=%s, price=%f, volume=%f]";
+    static final String STRING_FORMAT = "Ingredient [id=%d, name=%s, type=%s, description=%s, price=%f, volume=%f]";
     /** this is only needed because String_format is private and the test classes are located outside the package
      * @return - the string format
      */
@@ -26,6 +26,8 @@ public class Ingredient {
     private String name;
     @JsonProperty("type")
     private String type;
+    @JsonProperty("description")
+    private String description;
     @JsonProperty("price")
     private double price;
     @JsonProperty("volume")
@@ -34,11 +36,12 @@ public class Ingredient {
     /**
      * Create a ingredient with the given id, name, type, price, and volume
      * 
-     * @param id     The id of the ingredient
-     * @param name   The name of the ingredient
-     * @param type   The type of the ingredient
-     * @param price  The price of one ounce of the ingredient
-     * @param volume The volume in ounces of the ingredient
+     * @param id            The id of the ingredient
+     * @param name          The name of the ingredient
+     * @param type          The type of the ingredient
+     * @param description   The description of the ingredient
+     * @param price         The price of one ounce of the ingredient
+     * @param volume        The volume in ounces of the ingredient
      * 
      *               {@literal @}JsonProperty is used in serialization and
      *               deserialization
@@ -49,10 +52,11 @@ public class Ingredient {
      *               value, i.e. 0 for int
      */
     public Ingredient(@JsonProperty("id") int id, @JsonProperty("name") String name, @JsonProperty("type") String type,
-            @JsonProperty("price") double price, @JsonProperty("volume") double volume) {
+    @JsonProperty("description") String description, @JsonProperty("price") double price, @JsonProperty("volume") double volume) {
         this.id = id;
         this.name = name;
         this.type = type;
+        this.description = description;
         this.price = price;
         this.volume = volume;
     }
@@ -105,6 +109,26 @@ public class Ingredient {
     }
 
     /**
+     * Sets the description of the ingredient - necessary for JSON object to Java object
+     * deserialization
+     * 
+     * @param description The description of the ingredi ent
+     */
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
+    /**
+     * Retrieves the description of the ingredient
+     * 
+     * @return The description of the ingredient
+     */
+    public String getDescription() {
+        return description;
+    }
+
+
+    /**
      * Sets the price of the ingredient - necessary for JSON object to Java object
      * deserialization
      * 
@@ -147,6 +171,6 @@ public class Ingredient {
      */
     @Override
     public String toString() {
-        return String.format(STRING_FORMAT, id, name, type, price, volume);
+        return String.format(STRING_FORMAT, id, name, type, description, price, volume);
     }
 }

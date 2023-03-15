@@ -1,0 +1,36 @@
+<div *ngIf="ingredient">
+    <h2>Edit Ingredient: {{ingredient?.name}}</h2>
+    <br>
+    <div>
+      <label for="name">Name:</label>
+      <input type="text" [(ngModel)]="ingredient.name" name="name" required>
+    </div>
+    <br>
+    <div>
+      <label>Type:</label>
+      <input type="radio" [(ngModel)]="ingredient.type" name="type" value="Bean" required>Bean
+      <input type="radio" [(ngModel)]="ingredient.type" name="type" value="Leaf" required>Leaf
+    </div>
+    <br>
+    <div>
+      <label for="description">Description:</label>
+      <textarea [(ngModel)]="ingredient.description" name="description"></textarea>
+    </div>
+    <br>
+    <div>
+      <label for="price">Price:</label>
+      <input type="number" [(ngModel)]="ingredient.price" name="price" required>
+    </div>
+    <br>
+    <div>
+      <label>Volume: {{ingredient.volume}}</label>
+      |   |
+      <button (click)="addToVolume(volumeInput.value); volumeInput.value='';">Add to Volume</button>
+      New Stock:
+      <input type="number" #volumeInput name="volume" (input)="volumeInput.value = volumeInput.value.replace('[^0-9\.]', '')" required>
+    </div>
+    <br>
+    <button (click)="saveIngredient();">Save Ingredient</button>
+
+    <button (click)="deleteIngredient();">Delete Ingredient</button>
+  </div>

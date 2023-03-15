@@ -17,6 +17,11 @@ import { AppRoutingModule } from './app-routing.module';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { ProductSearchComponent } from './product-search/product-search.component';
 import { ProductIngredientsComponent } from './product-ingredients/product-ingredients.component';
+import { IngredientsComponent } from './ingredients/ingredients.component';
+import { AdminHomeComponent } from './admin-home/admin-home.component';
+import { AdminMenuComponent } from './admin-menu/admin-menu.component';
+import { IngredientDetailsComponent } from './ingredient-details/ingredient-details.component';
+import { UniversalMenuComponent } from './universal-menu/universal-menu.component';
 
 @NgModule({
   declarations: [
@@ -27,6 +32,11 @@ import { ProductIngredientsComponent } from './product-ingredients/product-ingre
     LogoutComponent,
     MessagesComponent,
     MenuComponent,
+    AdminHomeComponent,
+    AdminMenuComponent,
+    IngredientsComponent,
+    IngredientDetailsComponent,
+    UniversalMenuComponent,
     ProductsComponent,
     ProductDetailComponent,
     MessagesComponent,

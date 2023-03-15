@@ -3,32 +3,45 @@ import { RouterModule, Routes } from '@angular/router';
 
 import { AuthGuardService } from './services/auth-guard.service';
 import { SafeGuardService } from './services/safe-guard.service';
+import { AdminGuardService } from './services/admin-guard.service';
 
 import { LoginComponent } from './login/login.component';
 import { LogoutComponent } from './logout/logout.component';
 import { HomeComponent } from './home/home.component';
+import { AdminHomeComponent } from './admin-home/admin-home.component';
 import { RegisterComponent } from './register/register.component';
 import { MenuComponent } from './menu/menu.component';
+import { AdminMenuComponent } from './admin-menu/admin-menu.component';
+import { IngredientsComponent } from './ingredients/ingredients.component';
+import { UniversalMenuComponent } from './universal-menu/universal-menu.component';
+import { IngredientDetailsComponent } from './ingredient-details/ingredient-details.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { ProductIngredientsComponent } from './product-ingredients/product-ingredients.component';
 import { ProductsComponent } from './products/products.component';
 import { ProductDetailComponent } from './product-detail/product-detail.component';
 
 const routes: Routes = [
+  { path: '', component: UniversalMenuComponent, canActivate: [AuthGuardService], children: [
     { path: '', component: MenuComponent, children: [
       { path: '', redirectTo: 'home', pathMatch: 'full' },
-      { path: 'home', component: HomeComponent, canActivate: [AuthGuardService]},
-
+      { path: 'home', component: HomeComponent},
+      { path: 'dashboard', component: DashboardComponent },
+    ]},
+    
+    { path: 'admin', component: AdminMenuComponent, canActivate: [AdminGuardService], children: [
+      { path: '', component: AdminHomeComponent},
+      { path: 'ingredients', component: IngredientsComponent},
+      { path: 'ingredients/:id', component: IngredientDetailsComponent },
       { path: 'products', component: ProductsComponent },
-      { path: 'detail/:id', component: ProductDetailComponent },
-      { path: 'detail/:id/ingredients', component: ProductIngredientsComponent },
-      { path: '', redirectTo: '/dashboard', pathMatch: 'full' },
-      { path: 'dashboard', component: DashboardComponent }
+      { path: 'products/:id', component: ProductDetailComponent },
+      { path: 'products/:id/ingredients', component: ProductIngredientsComponent },
+    ]},
+
+    { path: 'logout', component: LogoutComponent }
     ],
   },
-    { path: 'login', component: LoginComponent, canActivate: [SafeGuardService] },
-    { path: 'register', component: RegisterComponent, canActivate: [SafeGuardService] },
-    { path: 'logout', component: LogoutComponent }
+  { path: 'login', component: LoginComponent, canActivate: [SafeGuardService] },
+  { path: 'register', component: RegisterComponent, canActivate: [SafeGuardService] },
 ];
 
 @NgModule({

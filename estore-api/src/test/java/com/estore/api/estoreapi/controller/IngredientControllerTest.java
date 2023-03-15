@@ -39,7 +39,7 @@ public class IngredientControllerTest {
     @Test
     public void testGetIngredient() throws IOException {  // getIngredient may throw IOException
         // Setup
-        Ingredient ingredient = new Ingredient(99,"Blackest Coffee", "Coffee", 0.67, 10000);
+        Ingredient ingredient = new Ingredient(99,"Blackest Coffee", "Coffee", "Some Decription", 0.67, 10000);
         // When the same id is passed in, our mock Ingredient DAO will return the Ingredient object
         when(mockIngredientDAO.getIngredient(ingredient.getId())).thenReturn(ingredient);
 
@@ -83,7 +83,7 @@ public class IngredientControllerTest {
     @Test
     public void testCreateIngredient() throws IOException {  // createIngredient may throw IOException
         // Setup
-        Ingredient ingredient = new Ingredient(99,"Not Coffee Leaf", "Tea", 0.67, 10000);
+        Ingredient ingredient = new Ingredient(99,"Not Coffee Leaf", "Tea", "Some Decription", 0.67, 10000);
         // when createIngredient is called, return true simulating successful
         // creation and save
         when(mockIngredientDAO.createIngredient(ingredient)).thenReturn(ingredient);
@@ -99,7 +99,7 @@ public class IngredientControllerTest {
     @Test
     public void testCreateIngredientFailed() throws IOException {  // createIngredient may throw IOException
         // Setup
-        Ingredient ingredient = new Ingredient(99,"Failure Fuel", "Coffee", 0.01, 1000);
+        Ingredient ingredient = new Ingredient(99,"Failure Fuel", "Coffee", "Some Decription", 0.01, 1000);
         // when createIngredient is called, return false simulating failed
         // creation and save
         when(mockIngredientDAO.createIngredient(ingredient)).thenReturn(null);
@@ -114,7 +114,7 @@ public class IngredientControllerTest {
     @Test
     public void testCreateIngredientHandleException() throws IOException {  // createIngredient may throw IOException
         // Setup
-        Ingredient ingredient = new Ingredient(99,"Failure Fuel", "Coffee", 0.01, 1000);
+        Ingredient ingredient = new Ingredient(99,"Failure Fuel", "Coffee", "Some Decription", 0.01, 1000);
 
         // When createIngredient is called on the Mock Ingredient DAO, throw an IOException
         doThrow(new IOException()).when(mockIngredientDAO).createIngredient(ingredient);
@@ -129,7 +129,7 @@ public class IngredientControllerTest {
     @Test
     public void testUpdateIngredient() throws IOException { // updateIngredient may throw IOException
         // Setup
-        Ingredient ingredient = new Ingredient(99,"The Newest Grind", "Tea", 4.20, 100000);
+        Ingredient ingredient = new Ingredient(99,"The Newest Grind", "Tea", "Some Decription", 4.20, 100000);
         // when updateIngredient is called, return true simulating successful
         // update and save
         when(mockIngredientDAO.updateIngredient(ingredient)).thenReturn(ingredient);
@@ -147,7 +147,7 @@ public class IngredientControllerTest {
     @Test
     public void testUpdateIngredientFailed() throws IOException { // updateIngredient may throw IOException
         // Setup
-        Ingredient ingredient = new Ingredient(99,"The Newest Failure", "Tea", 4.69, 100000);
+        Ingredient ingredient = new Ingredient(99,"The Newest Failure", "Tea","Some Decription", 4.69, 100000);
         // when updateIngredient is called, return true simulating successful
         // update and save
         when(mockIngredientDAO.updateIngredient(ingredient)).thenReturn(null);
@@ -162,7 +162,7 @@ public class IngredientControllerTest {
     @Test
     public void testUpdateIngredientHandleException() throws IOException { // updateIngredient may throw IOException
         // Setup
-        Ingredient ingredient = new Ingredient(99,"The Newest Exception", "Tea", 4.20, 100000);
+        Ingredient ingredient = new Ingredient(99,"The Newest Exception", "Tea", "Some Decription", 4.20, 100000);
         // When updateIngredient is called on the Mock Ingredient DAO, throw an IOException
         doThrow(new IOException()).when(mockIngredientDAO).updateIngredient(ingredient);
 
@@ -177,8 +177,8 @@ public class IngredientControllerTest {
     public void testGetIngredients() throws IOException { // getIngredients may throw IOException
         // Setup
         Ingredient[] ingredients = new Ingredient[2];
-        ingredients[0] = new Ingredient(99,"Is that even a bean?!?!", "Coffee", 0.01, 567);
-        ingredients[1] = new Ingredient(100,"Oh god, another", "Coffee", 0.02, 123);
+        ingredients[0] = new Ingredient(99,"Is that even a bean?!?!", "Coffee", "Some Decription", 0.01, 567);
+        ingredients[1] = new Ingredient(100,"Oh god, another", "Coffee", "Some Decription", 0.02, 123);
         // When getIngredients is called return the ingredients created above
         when(mockIngredientDAO.getIngredients()).thenReturn(ingredients);
 
@@ -208,8 +208,8 @@ public class IngredientControllerTest {
         // Setup
         String searchString = "Thee";
         Ingredient[] ingredients = new Ingredient[2];
-        ingredients[0] = new Ingredient(99,"For Thee Search", "Coffee", 0.01, 567);
-        ingredients[1] = new Ingredient(100,"Thee Will Never Be Found", "Coffee", 0.02, 123);
+        ingredients[0] = new Ingredient(99,"For Thee Search", "Coffee", "Some Decription", 0.01, 567);
+        ingredients[1] = new Ingredient(100,"Thee Will Never Be Found", "Coffee", "Some Decription", 0.02, 123);
         // When findIngredients is called with the search string, return the two
         /// ingredients above
         when(mockIngredientDAO.findIngredients(searchString)).thenReturn(ingredients);

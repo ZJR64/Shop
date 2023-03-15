@@ -3,6 +3,7 @@ package com.estore.api.estoreapi.persistence;
 import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.List;
 import java.util.Map;
 import java.util.TreeMap;
 import java.util.logging.Logger;
@@ -176,7 +177,14 @@ public class IngredientFileDAO implements IngredientDAO {
     @Override
     public Ingredient[] findIngredients(String containsText) {
         synchronized (ingredients) {
-            return getIngredientsArray(containsText);
+            String searchLowerCase = containsText.toLowerCase();
+            List<Ingredient> matches = new ArrayList<>();
+            for (Ingredient ingredient : getIngredientsArray()) {
+                if (ingredient.getName().toLowerCase().contains(searchLowerCase)) {
+                    matches.add(ingredient);
+                }
+            }
+            return matches.toArray(new Ingredient[0]);
         }
     }
 
@@ -201,8 +209,8 @@ public class IngredientFileDAO implements IngredientDAO {
         synchronized (ingredients) {
             // We create a new ingredient object because the id field is immutable
             // and we need to assign the next unique id
-            Ingredient newIngredient = new Ingredient(nextId(), ingredient.getName(), ingredient.getType(), ingredient.getPrice(),
-            ingredient.getVolume());
+            Ingredient newIngredient = new Ingredient(nextId(), ingredient.getName(), ingredient.getType(), ingredient.getDescription(),
+            ingredient.getPrice(), ingredient.getVolume());
             ingredients.put(newIngredient.getId(), newIngredient);
             save(); // may throw an IOException
             return newIngredient;

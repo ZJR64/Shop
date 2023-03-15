@@ -40,9 +40,9 @@ public class EstoreApiIngredientFileDAOTest {
     public void setupIngredientFileDAO() throws IOException {
         mockObjectMapper = mock(ObjectMapper.class);
         testIngredients = new Ingredient[3];
-        testIngredients[0] = new Ingredient(1,"Pinto Beans","Bean",0.70,100);
-        testIngredients[1] = new Ingredient(2,"Black Beans","Bean",1.00,230);
-        testIngredients[2] = new Ingredient(3,"Cocao Beans","Bean",3.25,175);
+        testIngredients[0] = new Ingredient(1,"Pinto Beans","Bean","some description",0.70,100);
+        testIngredients[1] = new Ingredient(2,"Black Beans","Bean","some description",1.00,230);
+        testIngredients[2] = new Ingredient(3,"Cocao Beans","Bean","some description",3.25,175);
 
         // When the object mapper is supposed to read from the file
         // the mock object mapper will return the hero array above
@@ -102,7 +102,7 @@ public class EstoreApiIngredientFileDAOTest {
     @Test
     public void testCreateIngredient() {
         // Setup
-        Ingredient ingredient = new Ingredient(102,"Wonder-Person","Bean",0.50,130);
+        Ingredient ingredient = new Ingredient(102,"Wonder-Person","Bean","some description",0.50,130);
 
         // Invoke
         Ingredient result = assertDoesNotThrow(() -> ingredientFileDAO.createIngredient(ingredient),
@@ -118,7 +118,7 @@ public class EstoreApiIngredientFileDAOTest {
     @Test
     public void testUpdateIngredient() {
         // Setup
-        Ingredient ingredient = new Ingredient(1,"update ingredient","Bean",13.50,85);
+        Ingredient ingredient = new Ingredient(1,"update ingredient","Bean","some description",13.50,85);
 
         // Invoke
         Ingredient result = assertDoesNotThrow(() -> ingredientFileDAO.updateIngredient(ingredient),
@@ -136,7 +136,7 @@ public class EstoreApiIngredientFileDAOTest {
             .when(mockObjectMapper)
                 .writeValue(any(File.class),any(Ingredient[].class));
 
-        Ingredient ingredient = new Ingredient(102,"Wi-Fire","Beans",12.00,135);
+        Ingredient ingredient = new Ingredient(102,"Wi-Fire","Beans","some description",12.00,135);
 
         assertThrows(IOException.class,
                         () -> ingredientFileDAO.createIngredient(ingredient),
@@ -166,7 +166,7 @@ public class EstoreApiIngredientFileDAOTest {
     @Test
     public void testUpdateIngredientNotFound() {
         // Setup
-        Ingredient ingredient = new Ingredient(98,"Bolt","Beans",1.35,260);
+        Ingredient ingredient = new Ingredient(98,"Bolt","Beans","some description",1.35,260);
 
         // Invoke
         Ingredient result = assertDoesNotThrow(() -> ingredientFileDAO.updateIngredient(ingredient),
