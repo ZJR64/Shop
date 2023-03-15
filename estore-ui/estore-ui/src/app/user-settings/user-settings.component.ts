@@ -1,15 +1,18 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { Location } from '@angular/common';
+
+import { NgModule } from '@angular/core';
+
 import { UserService } from '../services/user.service';
 import { User } from '../user';
 
 @Component({
   selector: 'app-users',
-  templateUrl: './users.component.html',
-  styleUrls: ['./users.component.css']
+  templateUrl: './user-settings.component.html',
+  styleUrls: ['./user-settings.component.css']
 })
-export class UserSettingsComponent {
+export class UserSettingsComponent implements OnInit{
   user!: User;
 
   constructor(
@@ -22,6 +25,10 @@ export class UserSettingsComponent {
       (user) => {
         this.user = user;
       });
+  }
+
+  ngOnInit() {
+    console.log("opened details")
   }
 
   newPay(): void {

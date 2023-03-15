@@ -21,7 +21,7 @@ export class UniversalMenuComponent {
     this.location.back();
   }
 
-  gogoLogout(): void {
+  goLogout(): void {
     this.router.navigateByUrl('/logout');
   }
 
