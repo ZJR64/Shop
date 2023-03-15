@@ -37,7 +37,7 @@ const routes: Routes = [
       { path: 'products/:id/ingredients', component: ProductIngredientsComponent },
     ]},
 
-      { path: 'logout', component: LogoutComponent }
+    { path: 'logout', component: LogoutComponent }
     ],
   },
   { path: 'login', component: LoginComponent, canActivate: [SafeGuardService] },
