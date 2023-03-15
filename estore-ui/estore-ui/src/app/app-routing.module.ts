@@ -15,6 +15,10 @@ import { AdminMenuComponent } from './admin-menu/admin-menu.component';
 import { IngredientsComponent } from './ingredients/ingredients.component';
 import { UniversalMenuComponent } from './universal-menu/universal-menu.component';
 import { IngredientDetailsComponent } from './ingredient-details/ingredient-details.component';
+import { DashboardComponent } from './dashboard/dashboard.component';
+import { ProductIngredientsComponent } from './product-ingredients/product-ingredients.component';
+import { ProductsComponent } from './products/products.component';
+import { ProductDetailComponent } from './product-detail/product-detail.component';
 
 const routes: Routes = [
   { path: '', component: UniversalMenuComponent, canActivate: [AuthGuardService], children: [
@@ -26,18 +30,22 @@ const routes: Routes = [
     { path: 'admin', component: AdminMenuComponent, canActivate: [AdminGuardService], children: [
       { path: '', component: AdminHomeComponent},
       { path: 'ingredients', component: IngredientsComponent},
-      { path: 'ingredients/:id', component: IngredientDetailsComponent }
+      { path: 'ingredients/:id', component: IngredientDetailsComponent },
+      { path: 'products', component: ProductsComponent },
+      { path: 'products/:id', component: ProductDetailComponent },
+      { path: 'products/:id/ingredients', component: ProductIngredientsComponent },
     ]},
-    
-    { path: 'logout', component: LogoutComponent }
-  ]},
+      { path: 'dashboard', component: DashboardComponent }, //TODO
 
+      { path: 'logout', component: LogoutComponent }
+    ],
+  },
   { path: 'login', component: LoginComponent, canActivate: [SafeGuardService] },
   { path: 'register', component: RegisterComponent, canActivate: [SafeGuardService] },
 ];
 
 @NgModule({
-    imports: [ RouterModule.forRoot(routes) ],
-    exports: [ RouterModule ]
-  })
-export class AppRoutingModule {}
+  imports: [RouterModule.forRoot(routes)],
+  exports: [RouterModule]
+})
+export class AppRoutingModule { }
