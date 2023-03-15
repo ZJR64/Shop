@@ -43,7 +43,7 @@ public class OrderControllerTest {
         Map<String, Double>[] products = (Map<String, Double>[]) new Map[2];
         products[0] = Map.of("first ingredient", 8.0);
         products[1] = Map.of("second ingredient", 12.0);
-        Order order = new Order(100, "new@email.wooo", "new phone who dis 2", "9632-4745-0183", 864.55, products);
+        Order order = new Order(100, "new@email.wooo", "new phone who dis 2", "9632-4745-0183", 864.55, products, true);
         // When the same id is passed in, our mock Order DAO will return the Order object
         when(mockOrderDAO.getOrder(order.getId())).thenReturn(order);
 
@@ -90,7 +90,7 @@ public class OrderControllerTest {
         Map<String, Double>[] products = (Map<String, Double>[]) new Map[2];
         products[0] = Map.of("first ingredient", 8.0);
         products[1] = Map.of("second ingredient", 12.0);
-        Order order = new Order(100, "new@email.wooo", "new phone who dis 2", "9632-4745-0183", 864.55, products);
+        Order order = new Order(100, "new@email.wooo", "new phone who dis 2", "9632-4745-0183", 864.55, products, true);
         // when createOrder is called, return true simulating successful
         // creation and save
         when(mockOrderDAO.createOrder(order)).thenReturn(order);
@@ -109,7 +109,7 @@ public class OrderControllerTest {
         Map<String, Double>[] products = (Map<String, Double>[]) new Map[2];
         products[0] = Map.of("first ingredient", 8.0);
         products[1] = Map.of("second ingredient", 12.0);
-        Order order = new Order(100, "new@email.wooo", "new phone who dis 2", "9632-4745-0183", 864.55, products);
+        Order order = new Order(100, "new@email.wooo", "new phone who dis 2", "9632-4745-0183", 864.55, products, true);
         // when createOrder is called, return false simulating failed
         // creation and save
         when(mockOrderDAO.createOrder(order)).thenReturn(null);
@@ -127,7 +127,7 @@ public class OrderControllerTest {
         Map<String, Double>[] products = (Map<String, Double>[]) new Map[2];
         products[0] = Map.of("first ingredient", 8.0);
         products[1] = Map.of("second ingredient", 12.0);
-        Order order = new Order(100, "new@email.wooo", "new phone who dis 2", "9632-4745-0183", 864.55, products);
+        Order order = new Order(100, "new@email.wooo", "new phone who dis 2", "9632-4745-0183", 864.55, products, true);
 
         // When createOrder is called on the Mock Order DAO, throw an IOException
         doThrow(new IOException()).when(mockOrderDAO).createOrder(order);
@@ -145,7 +145,7 @@ public class OrderControllerTest {
         Map<String, Double>[] products = (Map<String, Double>[]) new Map[2];
         products[0] = Map.of("first ingredient", 8.0);
         products[1] = Map.of("second ingredient", 12.0);
-        Order order = new Order(100, "new@email.wooo", "new phone who dis 2", "9632-4745-0183", 864.55, products);
+        Order order = new Order(100, "new@email.wooo", "new phone who dis 2", "9632-4745-0183", 864.55, products, true);
         // when updateOrder is called, return true simulating successful
         // update and save
         when(mockOrderDAO.updateOrder(order)).thenReturn(order);
@@ -166,7 +166,7 @@ public class OrderControllerTest {
         Map<String, Double>[] products = (Map<String, Double>[]) new Map[2];
         products[0] = Map.of("first ingredient", 8.0);
         products[1] = Map.of("second ingredient", 12.0);
-        Order order = new Order(100, "new@email.wooo", "new phone who dis 2", "9632-4745-0183", 864.55, products);
+        Order order = new Order(100, "new@email.wooo", "new phone who dis 2", "9632-4745-0183", 864.55, products, true);
         // when updateOrder is called, return true simulating successful
         // update and save
         when(mockOrderDAO.updateOrder(order)).thenReturn(null);
@@ -184,7 +184,7 @@ public class OrderControllerTest {
         Map<String, Double>[] products = (Map<String, Double>[]) new Map[2];
         products[0] = Map.of("first ingredient", 8.0);
         products[1] = Map.of("second ingredient", 12.0);
-        Order order = new Order(100, "new@email.wooo", "new phone who dis 2", "9632-4745-0183", 864.55, products);
+        Order order = new Order(100, "new@email.wooo", "new phone who dis 2", "9632-4745-0183", 864.55, products, true);
         // When updateOrder is called on the Mock Order DAO, throw an IOException
         doThrow(new IOException()).when(mockOrderDAO).updateOrder(order);
 
@@ -207,9 +207,9 @@ public class OrderControllerTest {
         Map<String, Double>[] products2 = (Map<String, Double>[]) new Map[1];
         products1[0] = Map.of("another ingredient", 10.0);
 
-		orders[0] = new Order(98, "example@test.com", "12345 made up road", "1234-5678-9012-3456", 12.57, products0);
-        orders[1] = new Order(99, "test@fake.net", "99999 not a gov secret", "1111-1111-1111-1111", 5000.99, products1);
-        orders[2] = new Order(100, "null@no.thing", "oopse, no address", "xxxx-xxxx-xxxx-xxxx", 0.0, products2);
+		orders[0] = new Order(98, "example@test.com", "12345 made up road", "1234-5678-9012-3456", 12.57, products0, true);
+        orders[1] = new Order(99, "test@fake.net", "99999 not a gov secret", "1111-1111-1111-1111", 5000.99, products1, true);
+        orders[2] = new Order(100, "null@no.thing", "oopse, no address", "xxxx-xxxx-xxxx-xxxx", 0.0, products2, true);
         // When getOrders is called return the orders created above
         when(mockOrderDAO.getOrders()).thenReturn(orders);
 
@@ -247,9 +247,9 @@ public class OrderControllerTest {
         Map<String, Double>[] products2 = (Map<String, Double>[]) new Map[1];
         products1[0] = Map.of("another ingredient", 10.0);
 
-		orders[0] = new Order(98, "example@test.com", "12345 made up road", "1234-5678-9012-3456", 12.57, products0);
-        orders[1] = new Order(99, "test@fake.com", "99999 not a gov secret", "1111-1111-1111-1111", 5000.99, products1);
-        orders[2] = new Order(100, "null@no.com", "oopse, no address", "xxxx-xxxx-xxxx-xxxx", 0.0, products2);
+		orders[0] = new Order(98, "example@test.com", "12345 made up road", "1234-5678-9012-3456", 12.57, products0, true);
+        orders[1] = new Order(99, "test@fake.com", "99999 not a gov secret", "1111-1111-1111-1111", 5000.99, products1, true);
+        orders[2] = new Order(100, "null@no.com", "oopse, no address", "xxxx-xxxx-xxxx-xxxx", 0.0, products2, true);
         // When findOrders is called with the search string, return the three
         /// orders above
         when(mockOrderDAO.findOrders(searchString)).thenReturn(orders);

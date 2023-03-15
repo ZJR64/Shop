@@ -49,9 +49,9 @@ public class EstoreApiOrderFileDAOTest {
         Map<String, Double>[] products2 = (Map<String, Double>[]) new Map[1];
         products1[0] = Map.of("another ingredient", 10.0);
 
-		testOrders[0] = new Order(98, "example@test.com", "12345 made up road", "1234-5678-9012-3456", 12.57, products0);
-        testOrders[1] = new Order(99, "test@fake.net", "99999 not a gov secret", "1111-1111-1111-1111", 5000.99, products1);
-        testOrders[2] = new Order(100, "null@no.thing", "oopse, no address", "xxxx-xxxx-xxxx-xxxx", 0.0, products2);
+		testOrders[0] = new Order(98, "example@test.com", "12345 made up road", "1234-5678-9012-3456", 12.57, products0, true);
+        testOrders[1] = new Order(99, "test@fake.net", "99999 not a gov secret", "1111-1111-1111-1111", 5000.99, products1, false);
+        testOrders[2] = new Order(100, "null@no.thing", "oopse, no address", "xxxx-xxxx-xxxx-xxxx", 0.0, products2, true);
 
         // When the object mapper is supposed to read from the file
         // the mock object mapper will return the order array above
@@ -111,7 +111,7 @@ public class EstoreApiOrderFileDAOTest {
     @Test
     public void testCreateOrder() {
         // Setup
-        Order order = new Order(1, "new@email.aaahhh", "new phone who dis", "9632-4745-0183", 864.44, null);
+        Order order = new Order(1, "new@email.aaahhh", "new phone who dis", "9632-4745-0183", 864.44, null, false);
 
         // Invoke
         Order result = assertDoesNotThrow(() -> orderFileDAO.createOrder(order),
@@ -130,7 +130,7 @@ public class EstoreApiOrderFileDAOTest {
         Map<String, Double>[] products = (Map<String, Double>[]) new Map[2];
         products[0] = Map.of("first ingredient", 8.0);
         products[1] = Map.of("second ingredient", 12.0);
-        Order order = new Order(100, "new@email.wooo", "new phone who dis 2", "9632-4745-0183", 864.55, products);
+        Order order = new Order(100, "new@email.wooo", "new phone who dis 2", "9632-4745-0183", 864.55, products, true);
 
         // Invoke
         Order result = assertDoesNotThrow(() -> orderFileDAO.updateOrder(order),
@@ -148,7 +148,7 @@ public class EstoreApiOrderFileDAOTest {
             .when(mockObjectMapper)
                 .writeValue(any(File.class),any(Order[].class));
 
-        Order order = new Order(10000, "new@email.wooo", "new phone who dis 2", "9632-4745-0183", 864.55, null);
+        Order order = new Order(10000, "new@email.wooo", "new phone who dis 2", "9632-4745-0183", 864.55, null, false);
 
         assertThrows(IOException.class,
                         () -> orderFileDAO.createOrder(order),
@@ -178,7 +178,7 @@ public class EstoreApiOrderFileDAOTest {
     @Test
     public void testUpdateOrderNotFound() {
         // Setup
-        Order order = new Order(1000, "new@email.wooo", "new phone who dis 2", "9632-4745-0183", 864.55, null);
+        Order order = new Order(1000, "new@email.wooo", "new phone who dis 2", "9632-4745-0183", 864.55, null, false);
 
         // Invoke
         Order result = assertDoesNotThrow(() -> orderFileDAO.updateOrder(order),

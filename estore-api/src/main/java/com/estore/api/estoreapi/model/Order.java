@@ -15,7 +15,7 @@ public class Order {
     private static final Logger LOG = Logger.getLogger(Order.class.getName());
 
     // Package private for tests
-    static final String STRING_FORMAT = "Order [id=%d, email=%s, address=%s, payment=%s, price=%f, products=%s]";
+    static final String STRING_FORMAT = "Order [id=%d, email=%s, address=%s, payment=%s, price=%f, products=%s, fullfilled=%b]";
     /** this is only needed because String_format is private and the test classes are located outside the package
      * @return - the string format
      */
@@ -34,9 +34,11 @@ public class Order {
     private double price;
     @JsonProperty("products")
     private Map<String, Double>[] products;
+    @JsonProperty("fullfilled")
+    private boolean fullfilled;
 
     /**
-     * Create a order with the given id, address, payment, price, and products
+     * Create a order with the given id, address, payment, price, products, and if fullfilled
      * 
      * @param id            The id of the order
      * @param email         The email of the user who made order
@@ -44,6 +46,7 @@ public class Order {
      * @param payment       The payment for the order
      * @param price         The price of the order
      * @param products      The products and their sizes
+     * @param fullfilled    If the order has been fullfilled or not
      * 
      *               {@literal @}JsonProperty is used in serialization and
      *               deserialization
@@ -54,13 +57,14 @@ public class Order {
      *               value, i.e. 0 for int
      */
     public Order(@JsonProperty("id") int id, @JsonProperty("email") String email, @JsonProperty("address") String address, @JsonProperty("payment") String payment,
-    @JsonProperty("price") double price, @JsonProperty("products") Map<String, Double>[] products) {
+    @JsonProperty("price") double price, @JsonProperty("products") Map<String, Double>[] products, @JsonProperty("fullfilled") boolean fullfilled) {
         this.id = id;
         this.email = email;
         this.address = address;
         this.payment = payment;
         this.price = price;
         this.products = products;
+        this.fullfilled = fullfilled;
     }
 
     /**
@@ -169,10 +173,29 @@ public class Order {
     }
 
     /**
+     * Sets the fullfilled status of the order - necessary for JSON object to Java object
+     * deserialization
+     * 
+     * @param fullfilled Boolean representing whether the order is fullfilled
+     */
+    public void setFullfilled(Boolean fullfilled) {
+        this.fullfilled = fullfilled;
+    }
+
+    /**
+     * Retrieves the fullfilled status of the user
+     * 
+     * @return Whether the order is fullfilled
+     */
+    public Boolean getFullfilled() {
+        return fullfilled;
+    }
+
+    /**
      * {@inheritDoc}
      */
     @Override
     public String toString() {
-        return String.format(STRING_FORMAT, id, email, address, payment, price, products);
+        return String.format(STRING_FORMAT, id, email, address, payment, price, products, fullfilled);
     }
 }
