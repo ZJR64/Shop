@@ -9,11 +9,15 @@ Home
 Logout
 </button>
 
+<!-- (click) send to dashboard -->
+<button type="button" class="add-button" (click)="goDashboard();">
+Dashboard
+</button>
+
 <!-- (click) send to admin home -->
 <button *ngIf="isAdmin" type="button" class="add-button" (click)="goAdmin();">
 Manage Store
 </button>
-   
 
 </nav>
 <br>

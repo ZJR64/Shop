@@ -16,12 +16,17 @@ import { IngredientsComponent } from './ingredients/ingredients.component';
 import { UniversalMenuComponent } from './universal-menu/universal-menu.component';
 import { IngredientDetailsComponent } from './ingredient-details/ingredient-details.component';
 import { AdminsComponent } from './admins/admins.component';
+import { DashboardComponent } from './dashboard/dashboard.component';
+import { ProductIngredientsComponent } from './product-ingredients/product-ingredients.component';
+import { ProductsComponent } from './products/products.component';
+import { ProductDetailComponent } from './product-detail/product-detail.component';
 
 const routes: Routes = [
   { path: '', component: UniversalMenuComponent, canActivate: [AuthGuardService], children: [
     { path: '', component: MenuComponent, children: [
       { path: '', redirectTo: 'home', pathMatch: 'full' },
-      { path: 'home', component: HomeComponent}
+      { path: 'home', component: HomeComponent},
+      { path: 'dashboard', component: DashboardComponent },
     ]},
     
     { path: 'admin', component: AdminMenuComponent, canActivate: [AdminGuardService], children: [
@@ -29,17 +34,20 @@ const routes: Routes = [
       { path: 'ingredients', component: IngredientsComponent},
       { path: 'ingredients/:id', component: IngredientDetailsComponent },
       { path: 'admins', component: AdminsComponent},
+      { path: 'products', component: ProductsComponent },
+      { path: 'products/:id', component: ProductDetailComponent },
+      { path: 'products/:id/ingredients', component: ProductIngredientsComponent },
     ]},
-    
-    { path: 'logout', component: LogoutComponent }
-  ]},
 
+    { path: 'logout', component: LogoutComponent }
+    ],
+  },
   { path: 'login', component: LoginComponent, canActivate: [SafeGuardService] },
   { path: 'register', component: RegisterComponent, canActivate: [SafeGuardService] },
 ];
 
 @NgModule({
-    imports: [ RouterModule.forRoot(routes) ],
-    exports: [ RouterModule ]
-  })
-export class AppRoutingModule {}
+  imports: [RouterModule.forRoot(routes)],
+  exports: [RouterModule]
+})
+export class AppRoutingModule { }

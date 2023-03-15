@@ -10,11 +10,16 @@ import { RegisterComponent } from './register/register.component';
 import { LogoutComponent } from './logout/logout.component';
 import { MessagesComponent } from './messages/messages.component';
 
-import { AppRoutingModule } from './app-routing.module';
 import { MenuComponent } from './menu/menu.component';
+import { ProductsComponent } from './products/products.component';
+import { ProductDetailComponent } from './product-detail/product-detail.component';
+import { AppRoutingModule } from './app-routing.module';
+import { DashboardComponent } from './dashboard/dashboard.component';
+import { ProductSearchComponent } from './product-search/product-search.component';
+import { ProductIngredientsComponent } from './product-ingredients/product-ingredients.component';
+import { IngredientsComponent } from './ingredients/ingredients.component';
 import { AdminHomeComponent } from './admin-home/admin-home.component';
 import { AdminMenuComponent } from './admin-menu/admin-menu.component';
-import { IngredientsComponent } from './ingredients/ingredients.component';
 import { IngredientDetailsComponent } from './ingredient-details/ingredient-details.component';
 import { UniversalMenuComponent } from './universal-menu/universal-menu.component';
 import { AdminsComponent } from './admins/admins.component';
@@ -33,13 +38,19 @@ import { AdminsComponent } from './admins/admins.component';
     IngredientsComponent,
     IngredientDetailsComponent,
     UniversalMenuComponent,
-    AdminsComponent
+    AdminsComponent,
+    ProductsComponent,
+    ProductDetailComponent,
+    MessagesComponent,
+    DashboardComponent,
+    ProductSearchComponent,
+    ProductIngredientsComponent
   ],
   imports: [
     BrowserModule,
     FormsModule,
     HttpClientModule,
-    AppRoutingModule
+    AppRoutingModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

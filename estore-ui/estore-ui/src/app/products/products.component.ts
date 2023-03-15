@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { Product } from '../product';
-import { PRODUCTS } from '../mock-products';
+import { ProductService } from '../product.service';
 
 @Component({
   selector: 'app-products',
@@ -8,10 +8,30 @@ import { PRODUCTS } from '../mock-products';
   styleUrls: ['./products.component.css']
 })
 export class ProductsComponent {
-  products = PRODUCTS;
-  selectedProduct?: Product;
+  constructor(private productService: ProductService) { }
 
-  onSelect(product: Product): void {
-    this.selectedProduct = product;
+  products: Product[] = [];
+
+
+  getProducts(): void {
+    this.productService.getProducts().subscribe(products => this.products = products);
+  }
+
+  ngOnInit(): void {
+    this.getProducts();
+  }
+
+  add(name: string): void {
+    name = name.trim();
+    if (!name) { return; }
+    this.productService.addProduct({ name } as Product)
+      .subscribe(product => {
+        this.products.push(product);
+      });
+  }
+
+  delete(product: Product): void {
+    this.products = this.products.filter(h => h !== product);
+    this.productService.deleteProduct(product.id).subscribe();
   }
 }
