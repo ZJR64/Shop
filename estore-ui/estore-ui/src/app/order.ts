@@ -4,7 +4,10 @@ export interface Order {
     address: string;
     payment : string;
     price : number;
-    products: Map<String, number[]>;
+    products: {
+        [key: string]: number[];
+      };
     fulfilled : boolean;
     [key: string]: any;
   }
+

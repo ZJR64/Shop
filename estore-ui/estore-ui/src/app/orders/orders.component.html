@@ -6,7 +6,7 @@
       <tr>
         <th (click)="sort('email')">Email {{sortOrder == 'email' ? (sortReverse ? '↑' : '↓') : ''}}</th>
         <th (click)="sort('address')">Address {{sortOrder == 'address' ? (sortReverse ? '↑' : '↓') : ''}}</th>
-        <th (click)="sort('products')">Address {{sortOrder == 'products' ? (sortReverse ? '↑' : '↓') : ''}}</th>
+        <th (click)="sort('products')">Products {{sortOrder == 'products' ? (sortReverse ? '↑' : '↓') : ''}}</th>
         <th></th>
       </tr>
     </thead>
@@ -14,7 +14,11 @@
       <tr *ngFor="let order of orders">
         <td>{{order.email}}</td>
         <td>{{order.address}}</td>
-        <td *ngFor="let product of order.products">{{product}}</td>
+        <td>
+            <div *ngFor="let product of order.products | keyvalue">
+                Key: {{product.key}}, value: {{product.value}}
+            </div>
+        </td>
         <td>
           <button (click)="changeFullfilled(order)">
             {{ orderView ? 'Fulfill' : 'Unfulfill' }}

@@ -31,14 +31,14 @@ export class OrdersComponent {
 
   getOrders(): void {
     if (this.orderView) {
-      this.getFullfilledOrders();
+      this.getUnfulfilledOrders();
     }
     else {
-      this.getUnfulfilledOrders();
+      this.getFulfilledOrders();
     }
   }
 
-  getFullfilledOrders(): void {
+  getFulfilledOrders(): void {
     this.orderService.getOrders()
       .subscribe((orders: Order[]) =>
       this.orders = orders.filter(order => order.fulfilled)
@@ -99,9 +99,10 @@ export class OrdersComponent {
 
   test() {
     // Create Blank Ingredient
-    var newProducts: Map<String, number[]> = new Map<String, number[]>();
-    newProducts.set("Pint o Pinto", [8.0, 12.0]);
-    newProducts.set("Royal Blend", [32.0]);
+    const newProducts = {
+      "Pint o Pinto": [8.0, 12.0],
+      "Royal Blend": [32.0]
+    };
     const newOrder: Order = {
       id: 0,
       email: 'test@attempt.com',

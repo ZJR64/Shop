@@ -1,1 +1,1 @@
-[{"id":1,"email":"test@attempt.com","address":"123 Sesame Street","payment":"1234-5678-9012-3456","price":50.67,"products":{},"fullfilled":false}]
+[{"id":1,"email":"test@attempt.com","address":"123 Sesame Street","payment":"1234-5678-9012-3456","price":50.67,"products":{"Pint o Pinto":[8.0,12.0],"Royal Blend":[32.0]},"fulfilled":false}]
