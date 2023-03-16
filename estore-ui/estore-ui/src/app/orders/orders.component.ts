@@ -98,7 +98,7 @@ export class OrdersComponent {
   }
 
   test() {
-    // Create Blank Ingredient
+    // Create Test Ingredient
     const newProducts = {
       "Pint o Pinto": [8.0, 12.0],
       "Royal Blend": [32.0]

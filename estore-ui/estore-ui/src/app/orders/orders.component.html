@@ -1,12 +1,14 @@
 <div class="center">
-    <input type="text" [(ngModel)]="searchTerm" (input)="onSearch()" placeholder="Search Users">
+    <input type="text" [(ngModel)]="searchTerm" (input)="onSearch()" placeholder="Search Orders By Email">
   </div>
   <table>
     <thead>
       <tr>
         <th (click)="sort('email')">Email {{sortOrder == 'email' ? (sortReverse ? '↑' : '↓') : ''}}</th>
         <th (click)="sort('address')">Address {{sortOrder == 'address' ? (sortReverse ? '↑' : '↓') : ''}}</th>
-        <th (click)="sort('products')">Products {{sortOrder == 'products' ? (sortReverse ? '↑' : '↓') : ''}}</th>
+        <th>Payment</th>
+        <th>Price</th>
+        <th>Products</th>
         <th></th>
       </tr>
     </thead>
@@ -14,14 +16,16 @@
       <tr *ngFor="let order of orders">
         <td>{{order.email}}</td>
         <td>{{order.address}}</td>
+        <td>{{order.payment}}</td>
+        <td>{{order.price}}</td>
         <td>
             <div *ngFor="let product of order.products | keyvalue">
-                Key: {{product.key}}, value: {{product.value}}
+                Product: {{product.key}}, Size(s): {{product.value}}
             </div>
         </td>
         <td>
           <button (click)="changeFullfilled(order)">
-            {{ orderView ? 'Fulfill' : 'Unfulfill' }}
+            {{ orderView ? 'Complete' : 'Re-Order' }}
           </button>
         </td>
       </tr>
@@ -30,7 +34,4 @@
   
   <button (click)="switch()">
     {{ orderView ? 'Fulfilled Orders' : 'Unfulfilled Orders' }}
-  </button>
-  <button (click)="test()">
-    Create Order
   </button>
