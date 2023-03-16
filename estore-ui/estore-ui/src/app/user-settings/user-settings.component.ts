@@ -2,8 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { Location } from '@angular/common';
 
-import { NgModule } from '@angular/core';
-
 import { UserService } from '../services/user.service';
 import { User } from '../user';
 
@@ -67,12 +65,7 @@ export class UserSettingsComponent implements OnInit{
   }
 
   deleteUser(): void {
-    this.userService.deleteUser(this.user.id)
-    .subscribe(() => {
-        console.log(`Deleted user with id=${this.user.id}`);
-        localStorage.removeItem('currentUser');
-        this.router.navigateByUrl(`login`);
-    });
+    this.router.navigateByUrl(`delete`);
   }
 
 }

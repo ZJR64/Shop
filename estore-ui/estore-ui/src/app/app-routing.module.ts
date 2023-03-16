@@ -23,6 +23,7 @@ import { ProductIngredientsComponent } from './product-ingredients/product-ingre
 import { ProductsComponent } from './products/products.component';
 import { ProductDetailComponent } from './product-detail/product-detail.component';
 import { UserSettingsComponent } from './user-settings/user-settings.component';
+import { DeleteAccountComponent } from './delete-account/delete-account.component';
 
 const routes: Routes = [
   { path: '', component: UniversalMenuComponent, canActivate: [AuthGuardService], children: [
@@ -43,7 +44,8 @@ const routes: Routes = [
     ]},
 
     { path: 'settings', component: UserSettingsComponent },
-    { path: 'logout', component: LogoutComponent }
+    { path: 'logout', component: LogoutComponent },
+    { path: 'delete', component: DeleteAccountComponent }
     ],
   },
   { path: 'login', component: LoginComponent, canActivate: [SafeGuardService] },
