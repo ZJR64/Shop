@@ -25,6 +25,8 @@ import { UniversalMenuComponent } from './universal-menu/universal-menu.componen
 import { AdminsComponent } from './admins/admins.component';
 import { UserSettingsComponent } from './user-settings/user-settings.component';
 import { DeleteAccountComponent } from './delete-account/delete-account.component';
+import { StoreComponent } from './store/store.component';
+import { StoreDetailsComponent } from './store-details/store-details.component';
 
 @NgModule({
   declarations: [
@@ -48,7 +50,9 @@ import { DeleteAccountComponent } from './delete-account/delete-account.componen
     ProductSearchComponent,
     ProductIngredientsComponent,
     UserSettingsComponent,
-    DeleteAccountComponent
+    DeleteAccountComponent,
+    StoreComponent,
+    StoreDetailsComponent
   ],
   imports: [
     BrowserModule,
