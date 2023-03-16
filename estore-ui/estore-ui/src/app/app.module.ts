@@ -24,6 +24,7 @@ import { IngredientDetailsComponent } from './ingredient-details/ingredient-deta
 import { UniversalMenuComponent } from './universal-menu/universal-menu.component';
 import { AdminsComponent } from './admins/admins.component';
 import { UserSettingsComponent } from './user-settings/user-settings.component';
+import { OrdersComponent } from './orders/orders.component';
 
 @NgModule({
   declarations: [
@@ -46,7 +47,8 @@ import { UserSettingsComponent } from './user-settings/user-settings.component';
     DashboardComponent,
     ProductSearchComponent,
     ProductIngredientsComponent,
-    UserSettingsComponent
+    UserSettingsComponent,
+    OrdersComponent
   ],
   imports: [
     BrowserModule,
