@@ -2,19 +2,25 @@ table {
     width: 100%;
     margin: 0 auto;
     text-align: center;
-  }
+    background-color: #a2d3acaa;
+}
   
-  th, td {
+th, td {
     padding: 10px;
-  }
+}
   
-  thead {
+thead {
     background-color: #ccc;
-  }
-  
-  tbody tr:nth-child(even) {
-    background-color: #f2f2f2;
-  }
+}
+
+tbody tr {
+    height: 100px;
+    background-color: #929090aa;
+}
+
+tbody tr:hover {
+    background-color: #aaaa;
+}
 
 input {
     width: 50%;
