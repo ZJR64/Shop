@@ -8,7 +8,7 @@ import { ProductService } from '../services/product.service'
   templateUrl: './products.component.html',
   styleUrls: ['./products.component.css']
 })
-export class ProductsComponent implements OnInit {
+export class StoreComponent implements OnInit {
   products!: Product[];
   searchTerm?: string;
   sortOrder: string = '';
@@ -21,7 +21,6 @@ export class ProductsComponent implements OnInit {
 
   ngOnInit(): void {
     this.getProducts();
-
   }
 
   getProducts(): void {
@@ -30,36 +29,7 @@ export class ProductsComponent implements OnInit {
   }
 
   goToProduct(product: Product): void {
-    this.router.navigateByUrl(`admin/products/${product.id}`);
-  }
-
-  addNewProduct(): void {
-    // Create Blank Product
-    const newProduct: Product = {
-      id: 0,
-      name: 'name',
-      type: 'Bean',
-      description: 'description',
-      price: 0.0,
-      volume: 0.0
-    };
-
-    // to storage 
-    this.productService.addProduct(newProduct)
-    .subscribe(product => {
-      // Get the updated list of products from the service
-      this.productService.getProducts()
-        .subscribe(products => {
-          // Find the newly added product by name and type
-          const matchingProducts = products.filter(
-            i => i.name === newProduct.name && i.type === newProduct.type
-          );
-          if (matchingProducts.length > 0) {
-            // Go to the detail screen for the newly added product
-            this.goToProduct(matchingProducts[0]);
-          }
-        });
-    });
+    this.router.navigateByUrl(`store/${product.id}`);
   }
 
   onSearch() {

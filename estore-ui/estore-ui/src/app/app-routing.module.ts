@@ -24,6 +24,8 @@ import { ProductsComponent } from './products/products.component';
 import { ProductDetailComponent } from './product-detail/product-detail.component';
 import { UserSettingsComponent } from './user-settings/user-settings.component';
 import { DeleteAccountComponent } from './delete-account/delete-account.component';
+import { StoreComponent } from './store/store.component';
+import { StoreDetailComponent } from './store-detail/store-detail.component';
 
 const routes: Routes = [
   { path: '', component: UniversalMenuComponent, canActivate: [AuthGuardService], children: [
@@ -31,6 +33,8 @@ const routes: Routes = [
       { path: '', redirectTo: 'home', pathMatch: 'full' },
       { path: 'home', component: HomeComponent},
       { path: 'dashboard', component: DashboardComponent },
+      { path: 'store', component: StoreComponent },
+      { path: 'store/:id', component: StoreDetailComponent },
     ]},
     
     { path: 'admin', component: AdminMenuComponent, canActivate: [AdminGuardService], children: [

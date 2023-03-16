@@ -4,4 +4,5 @@ export interface Product {
     type: string;
     modPrice: number;
     ingredients: Map<String, number>;
+    [key: string]: any;
 }

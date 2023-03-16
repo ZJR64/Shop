@@ -9,6 +9,11 @@ Home
 Dashboard
 </button>
 
+<!-- (click) send to store -->
+<button type="button" class="add-button" (click)="goStore();">
+    Store
+</button>
+
 <!-- (click) send to admin home -->
 <button *ngIf="isAdmin" type="button" class="add-button" (click)="goAdmin();">
 Manage Store

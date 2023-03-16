@@ -26,7 +26,7 @@ import { AdminsComponent } from './admins/admins.component';
 import { UserSettingsComponent } from './user-settings/user-settings.component';
 import { DeleteAccountComponent } from './delete-account/delete-account.component';
 import { StoreComponent } from './store/store.component';
-import { StoreDetailsComponent } from './store-details/store-details.component';
+import { StoreDetailsComponent } from './store-detail/store-detail.component';
 
 @NgModule({
   declarations: [

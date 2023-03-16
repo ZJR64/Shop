@@ -1,1 +1,23 @@
-<p>store works!</p>
+<div class="center">
+    <input type="text" [(ngModel)]="searchTerm" (input)="onSearch()" placeholder="Search by name or Ingredient">
+  </div>
+  <table>
+    <thead>
+      <tr>
+        <th (click)="sort('name')">Name {{sortOrder == 'name' ? (sortReverse ? '↑' : '↓') : ''}}</th>
+        <th>Blend Type</th>
+        <th>Ingredients</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let product of products" (click)="goToProduct(product)">
+        <td>{{ product.name }}</td>
+        <td>{{product.type}}</td>
+        <td>
+          <div *ngFor="let ingredient of ingredients | keyvalue">
+            {{ingredient.key}}
+          </div>
+        </td>
+      </tr>
+    </tbody>
+  </table>

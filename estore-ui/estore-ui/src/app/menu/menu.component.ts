@@ -33,5 +33,9 @@ export class MenuComponent {
   goDashboard(): void {
     this.router.navigateByUrl('/dashboard');
   }
+
+  goStore(): void {
+    this.router.navigateByUrl('/store');
+  }
   
 }
