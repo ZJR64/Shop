@@ -1,1 +1,8 @@
-<p>cart works!</p>
+<div *ngIf="user">
+    <h2>{{user.name}}'s Cart:</h2>
+    <li *ngFor="let entry of user.cart | keyvalue">
+        <input id="product-id" [(ngModel)]="entry.key" readonly>
+        <input id="product-size" [(ngModel)]="entry.value[0]" readonly>
+        <input id="product-quantity" [(ngModel)]="entry.value[1]" readonly>
+    </li>
+</div>
