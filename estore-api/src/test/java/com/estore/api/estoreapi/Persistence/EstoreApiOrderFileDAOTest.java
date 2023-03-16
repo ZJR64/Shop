@@ -12,7 +12,7 @@ import static org.mockito.Mockito.when;
 
 import java.io.File;
 import java.io.IOException;
-import java.util.Map;
+import java.util.*;
 
 import com.estore.api.estoreapi.model.Order;
 import com.estore.api.estoreapi.persistence.OrderFileDAO;
@@ -41,13 +41,17 @@ public class EstoreApiOrderFileDAOTest {
     public void setupOrderFileDAO() throws IOException {
         mockObjectMapper = mock(ObjectMapper.class);
         testOrders = new Order[3];
-        Map<String, Double>[] products0 = (Map<String, Double>[]) new Map[2];
-        products0[0] = Map.of("first ingredient", 8.0);
-        products0[1] = Map.of("second ingredient", 12.0);
-        Map<String, Double>[] products1 = (Map<String, Double>[]) new Map[1];
-        products1[0] = Map.of("some ingredient", 30.0);
-        Map<String, Double>[] products2 = (Map<String, Double>[]) new Map[1];
-        products1[0] = Map.of("another ingredient", 10.0);
+        Map<String, Double[]> products1 = new HashMap<String, Double[]>();
+        Double[] values1 = {8.0, 12.9};
+        products1.put("product 1", values1);
+        Map<String, Double[]> products2 = new HashMap<String, Double[]>();
+        Double[] values2 = {1.0, 15.2};
+        products2.put("product 2", values2);
+        Map<String, Double[]> products0 = new HashMap<String, Double[]>();
+        Double[] values3 = {8.0, 12.9};
+        Double[] values4 = {32.0};
+        products0.put("product 3", values3);
+        products0.put("product 4", values4);
 
 		testOrders[0] = new Order(98, "example@test.com", "12345 made up road", "1234-5678-9012-3456", 12.57, products0, true);
         testOrders[1] = new Order(99, "test@fake.net", "99999 not a gov secret", "1111-1111-1111-1111", 5000.99, products1, false);
@@ -127,9 +131,9 @@ public class EstoreApiOrderFileDAOTest {
     @Test
     public void testUpdateOrder() {
         // Setup
-        Map<String, Double>[] products = (Map<String, Double>[]) new Map[2];
-        products[0] = Map.of("first ingredient", 8.0);
-        products[1] = Map.of("second ingredient", 12.0);
+        Map<String, Double[]> products = new HashMap<String, Double[]>();
+        Double[] values = {8.0, 12.9};
+        products.put("product 1", values);
         Order order = new Order(100, "new@email.wooo", "new phone who dis 2", "9632-4745-0183", 864.55, products, true);
 
         // Invoke

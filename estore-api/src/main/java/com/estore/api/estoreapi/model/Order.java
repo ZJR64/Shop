@@ -33,7 +33,7 @@ public class Order {
     @JsonProperty("price")
     private double price;
     @JsonProperty("products")
-    private Map<String, Double>[] products;
+    private Map<String, Double[]> products;
     @JsonProperty("fullfilled")
     private boolean fullfilled;
 
@@ -57,7 +57,7 @@ public class Order {
      *               value, i.e. 0 for int
      */
     public Order(@JsonProperty("id") int id, @JsonProperty("email") String email, @JsonProperty("address") String address, @JsonProperty("payment") String payment,
-    @JsonProperty("price") double price, @JsonProperty("products") Map<String, Double>[] products, @JsonProperty("fullfilled") boolean fullfilled) {
+    @JsonProperty("price") double price, @JsonProperty("products") Map<String, Double[]> products, @JsonProperty("fullfilled") boolean fullfilled) {
         this.id = id;
         this.email = email;
         this.address = address;
@@ -159,7 +159,7 @@ public class Order {
      * 
      * @param products The products of the order
      */
-    public void setProducts(Map<String, Double>[] products) {
+    public void setProducts(Map<String, Double[]> products) {
         this.products = products;
     }
 
@@ -168,7 +168,7 @@ public class Order {
      * 
      * @return The products of the order
      */
-    public Map<String, Double>[] getProducts() {
+    public Map<String, Double[]> getProducts() {
         return products;
     }
 

@@ -6,6 +6,7 @@ import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.when;
 
 import java.io.IOException;
+import java.util.HashMap;
 import java.util.Map;
 
 import com.estore.api.estoreapi.persistence.OrderDAO;
@@ -40,9 +41,9 @@ public class OrderControllerTest {
     @Test
     public void testGetOrder() throws IOException {  // getOrder may throw IOException
         // Setup
-        Map<String, Double>[] products = (Map<String, Double>[]) new Map[2];
-        products[0] = Map.of("first ingredient", 8.0);
-        products[1] = Map.of("second ingredient", 12.0);
+        Map<String, Double[]> products = new HashMap<String, Double[]>();
+        Double[] values = {8.0, 12.9};
+        products.put("product 1", values);
         Order order = new Order(100, "new@email.wooo", "new phone who dis 2", "9632-4745-0183", 864.55, products, true);
         // When the same id is passed in, our mock Order DAO will return the Order object
         when(mockOrderDAO.getOrder(order.getId())).thenReturn(order);
@@ -87,9 +88,9 @@ public class OrderControllerTest {
     @Test
     public void testCreateOrder() throws IOException {  // createOrder may throw IOException
         // Setup
-        Map<String, Double>[] products = (Map<String, Double>[]) new Map[2];
-        products[0] = Map.of("first ingredient", 8.0);
-        products[1] = Map.of("second ingredient", 12.0);
+        Map<String, Double[]> products = new HashMap<String, Double[]>();
+        Double[] values = {8.0, 12.9};
+        products.put("product 1", values);
         Order order = new Order(100, "new@email.wooo", "new phone who dis 2", "9632-4745-0183", 864.55, products, true);
         // when createOrder is called, return true simulating successful
         // creation and save
@@ -106,9 +107,9 @@ public class OrderControllerTest {
     @Test
     public void testCreateOrderFailed() throws IOException {  // createOrder may throw IOException
         // Setup
-        Map<String, Double>[] products = (Map<String, Double>[]) new Map[2];
-        products[0] = Map.of("first ingredient", 8.0);
-        products[1] = Map.of("second ingredient", 12.0);
+        Map<String, Double[]> products = new HashMap<String, Double[]>();
+        Double[] values = {8.0, 12.9};
+        products.put("product 1", values);
         Order order = new Order(100, "new@email.wooo", "new phone who dis 2", "9632-4745-0183", 864.55, products, true);
         // when createOrder is called, return false simulating failed
         // creation and save
@@ -124,9 +125,9 @@ public class OrderControllerTest {
     @Test
     public void testCreateOrderHandleException() throws IOException {  // createOrder may throw IOException
         // Setup
-        Map<String, Double>[] products = (Map<String, Double>[]) new Map[2];
-        products[0] = Map.of("first ingredient", 8.0);
-        products[1] = Map.of("second ingredient", 12.0);
+        Map<String, Double[]> products = new HashMap<String, Double[]>();
+        Double[] values = {8.0, 12.9};
+        products.put("product 1", values);
         Order order = new Order(100, "new@email.wooo", "new phone who dis 2", "9632-4745-0183", 864.55, products, true);
 
         // When createOrder is called on the Mock Order DAO, throw an IOException
@@ -142,9 +143,9 @@ public class OrderControllerTest {
     @Test
     public void testUpdateOrder() throws IOException { // updateOrder may throw IOException
         // Setup
-        Map<String, Double>[] products = (Map<String, Double>[]) new Map[2];
-        products[0] = Map.of("first ingredient", 8.0);
-        products[1] = Map.of("second ingredient", 12.0);
+        Map<String, Double[]> products = new HashMap<String, Double[]>();
+        Double[] values = {8.0, 12.9};
+        products.put("product 1", values);
         Order order = new Order(100, "new@email.wooo", "new phone who dis 2", "9632-4745-0183", 864.55, products, true);
         // when updateOrder is called, return true simulating successful
         // update and save
@@ -163,9 +164,9 @@ public class OrderControllerTest {
     @Test
     public void testUpdateOrderFailed() throws IOException { // updateOrder may throw IOException
         // Setup
-        Map<String, Double>[] products = (Map<String, Double>[]) new Map[2];
-        products[0] = Map.of("first ingredient", 8.0);
-        products[1] = Map.of("second ingredient", 12.0);
+        Map<String, Double[]> products = new HashMap<String, Double[]>();
+        Double[] values = {8.0, 12.9};
+        products.put("product 1", values);
         Order order = new Order(100, "new@email.wooo", "new phone who dis 2", "9632-4745-0183", 864.55, products, true);
         // when updateOrder is called, return true simulating successful
         // update and save
@@ -181,9 +182,9 @@ public class OrderControllerTest {
     @Test
     public void testUpdateOrderHandleException() throws IOException { // updateOrder may throw IOException
         // Setup
-        Map<String, Double>[] products = (Map<String, Double>[]) new Map[2];
-        products[0] = Map.of("first ingredient", 8.0);
-        products[1] = Map.of("second ingredient", 12.0);
+        Map<String, Double[]> products = new HashMap<String, Double[]>();
+        Double[] values = {8.0, 12.9};
+        products.put("product 1", values);
         Order order = new Order(100, "new@email.wooo", "new phone who dis 2", "9632-4745-0183", 864.55, products, true);
         // When updateOrder is called on the Mock Order DAO, throw an IOException
         doThrow(new IOException()).when(mockOrderDAO).updateOrder(order);
@@ -199,15 +200,19 @@ public class OrderControllerTest {
     public void testGetOrders() throws IOException { // getOrders may throw IOException
         // Setup
         Order[] orders = new Order[3];
-        Map<String, Double>[] products0 = (Map<String, Double>[]) new Map[2];
-        products0[0] = Map.of("first ingredient", 8.0);
-        products0[1] = Map.of("second ingredient", 12.0);
-        Map<String, Double>[] products1 = (Map<String, Double>[]) new Map[1];
-        products1[0] = Map.of("some ingredient", 30.0);
-        Map<String, Double>[] products2 = (Map<String, Double>[]) new Map[1];
-        products1[0] = Map.of("another ingredient", 10.0);
+        Map<String, Double[]> products1 = new HashMap<String, Double[]>();
+        Double[] values1 = {8.0, 12.9};
+        products1.put("product 1", values1);
+        Map<String, Double[]> products2 = new HashMap<String, Double[]>();
+        Double[] values2 = {1.0, 15.2};
+        products2.put("product 2", values2);
+        Map<String, Double[]> products3 = new HashMap<String, Double[]>();
+        Double[] values3 = {8.0, 12.9};
+        Double[] values4 = {32.0};
+        products3.put("product 3", values3);
+        products3.put("product 4", values4);
 
-		orders[0] = new Order(98, "example@test.com", "12345 made up road", "1234-5678-9012-3456", 12.57, products0, true);
+		orders[0] = new Order(98, "example@test.com", "12345 made up road", "1234-5678-9012-3456", 12.57, products3, true);
         orders[1] = new Order(99, "test@fake.net", "99999 not a gov secret", "1111-1111-1111-1111", 5000.99, products1, true);
         orders[2] = new Order(100, "null@no.thing", "oopse, no address", "xxxx-xxxx-xxxx-xxxx", 0.0, products2, true);
         // When getOrders is called return the orders created above
@@ -239,15 +244,19 @@ public class OrderControllerTest {
         // Setup
         String searchString = ".com";
         Order[] orders = new Order[3];
-        Map<String, Double>[] products0 = (Map<String, Double>[]) new Map[2];
-        products0[0] = Map.of("first ingredient", 8.0);
-        products0[1] = Map.of("second ingredient", 12.0);
-        Map<String, Double>[] products1 = (Map<String, Double>[]) new Map[1];
-        products1[0] = Map.of("some ingredient", 30.0);
-        Map<String, Double>[] products2 = (Map<String, Double>[]) new Map[1];
-        products1[0] = Map.of("another ingredient", 10.0);
+        Map<String, Double[]> products1 = new HashMap<String, Double[]>();
+        Double[] values1 = {8.0, 12.9};
+        products1.put("product 1", values1);
+        Map<String, Double[]> products2 = new HashMap<String, Double[]>();
+        Double[] values2 = {1.0, 15.2};
+        products2.put("product 2", values2);
+        Map<String, Double[]> products3 = new HashMap<String, Double[]>();
+        Double[] values3 = {8.0, 12.9};
+        Double[] values4 = {32.0};
+        products3.put("product 3", values3);
+        products3.put("product 4", values4);
 
-		orders[0] = new Order(98, "example@test.com", "12345 made up road", "1234-5678-9012-3456", 12.57, products0, true);
+		orders[0] = new Order(98, "example@test.com", "12345 made up road", "1234-5678-9012-3456", 12.57, products3, true);
         orders[1] = new Order(99, "test@fake.com", "99999 not a gov secret", "1111-1111-1111-1111", 5000.99, products1, true);
         orders[2] = new Order(100, "null@no.com", "oopse, no address", "xxxx-xxxx-xxxx-xxxx", 0.0, products2, true);
         // When findOrders is called with the search string, return the three

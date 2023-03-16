@@ -30,9 +30,9 @@ class EstoreApiOrderTests {
 		String expected_payment = "1234-5678-9012-3456";
 		double expected_price = 12.57;
 		boolean expected_fullfilled = true;
-        Map<String, Double>[] expected_products = (Map<String, Double>[]) new Map[2];
-        expected_products[0] = Map.of("first ingredient", 8.0);
-        expected_products[1] = Map.of("second ingredient", 12.0);
+        Map<String, Double[]> expected_products = new HashMap<String, Double[]>();
+        Double[] values = {8.0, 12.9};
+        expected_products.put("product 1", values);
 
 		// Invoke
 		Order order = new Order(expected_id, expected_email, expected_address, expected_payment, expected_price, expected_products, expected_fullfilled);
@@ -55,9 +55,9 @@ class EstoreApiOrderTests {
 		String address = "12345 made up road";
 		String payment = "1234-5678-9012-3456";
 		double price = 12.57;
-        Map<String, Double>[] products = (Map<String, Double>[]) new Map[2];
-        products[0] = Map.of("first ingredient", 8.0);
-        products[1] = Map.of("second ingredient", 12.0);
+        Map<String, Double[]> products = new HashMap<String, Double[]>();
+        Double[] values = {8.0, 12.9};
+        products.put("product 1", values);
 		Order order = new Order(id, email, address, payment, price, products, true);
         String expected_email = "test@this.com";
 
@@ -76,9 +76,9 @@ class EstoreApiOrderTests {
 		String address = "12345 made up road";
 		String payment = "1234-5678-9012-3456";
 		double price = 12.57;
-        Map<String, Double>[] products = (Map<String, Double>[]) new Map[2];
-        products[0] = Map.of("first ingredient", 8.0);
-        products[1] = Map.of("second ingredient", 12.0);
+        Map<String, Double[]> products = new HashMap<String, Double[]>();
+        Double[] values = {8.0, 12.9};
+        products.put("product 1", values);
 		Order order = new Order(id, email, address, payment, price, products, true);
         String expected_address = "99999 testing boulevard";
 
@@ -97,9 +97,9 @@ class EstoreApiOrderTests {
 		String address = "12345 made up road";
 		String payment = "1234-5678-9012-3456";
 		double price = 12.57;
-        Map<String, Double>[] products = (Map<String, Double>[]) new Map[2];
-        products[0] = Map.of("first ingredient", 8.0);
-        products[1] = Map.of("second ingredient", 12.0);
+        Map<String, Double[]> products = new HashMap<String, Double[]>();
+        Double[] values = {8.0, 12.9};
+        products.put("product 1", values);
 		Order order = new Order(id, email, address, payment, price, products, false);
         String expected_payment = "0000-0000-0000-0000";
 
@@ -118,9 +118,9 @@ class EstoreApiOrderTests {
 		String address = "12345 made up road";
 		String payment = "1234-5678-9012-3456";
 		double price = 12.57;
-        Map<String, Double>[] products = (Map<String, Double>[]) new Map[2];
-        products[0] = Map.of("first ingredient", 8.0);
-        products[1] = Map.of("second ingredient", 12.0);
+        Map<String, Double[]> products = new HashMap<String, Double[]>();
+        Double[] values = {8.0, 12.9};
+        products.put("product 1", values);
 		Order order = new Order(id, email, address, payment, price, products, false);
         double expected_price = 1000000000;
 
@@ -139,12 +139,13 @@ class EstoreApiOrderTests {
 		String address = "12345 made up road";
 		String payment = "1234-5678-9012-3456";
 		double price = 12.57;
-        Map<String, Double>[] products = (Map<String, Double>[]) new Map[2];
-        products[0] = Map.of("first ingredient", 8.0);
-        products[1] = Map.of("second ingredient", 12.0);
+        Map<String, Double[]> products = new HashMap<String, Double[]>();
+        Double[] values = {8.0, 12.9};
+        products.put("product 1", values);
 		Order order = new Order(id, email, address, payment, price, products, true);
-        Map<String, Double>[] expected_products = (Map<String, Double>[]) new Map[1];
-        expected_products[0] = Map.of("test ingredient", 30.0);
+        Map<String, Double[]> expected_products = new HashMap<String, Double[]>();
+        Double[] newValues = {12.0, 12.0};
+        products.put("product 2", newValues);
 
 		// Invoke
 		order.setProducts(expected_products);
@@ -161,9 +162,9 @@ class EstoreApiOrderTests {
 		String address = "12345 made up road";
 		String payment = "1234-5678-9012-3456";
 		double price = 12.57;
-        Map<String, Double>[] products = (Map<String, Double>[]) new Map[2];
-        products[0] = Map.of("first ingredient", 8.0);
-        products[1] = Map.of("second ingredient", 12.0);
+        Map<String, Double[]> products = new HashMap<String, Double[]>();
+        Double[] values = {8.0, 12.9};
+        products.put("product 1", values);
 		Order order = new Order(id, email, address, payment, price, products, false);
         boolean expected_fullfilled = true;
 
@@ -183,9 +184,9 @@ class EstoreApiOrderTests {
 		String payment = "1234-5678-9012-3456";
 		double price = 12.57;
 		boolean fullfilled = true;
-        Map<String, Double>[] products = (Map<String, Double>[]) new Map[2];
-        products[0] = Map.of("first ingredient", 8.0);
-        products[1] = Map.of("second ingredient", 12.0);
+        Map<String, Double[]> products = new HashMap<String, Double[]>();
+        Double[] values = {8.0, 12.9};
+        products.put("product 1", values);
 		Order order = new Order(id, email, address, payment, price, products, fullfilled);
         String expected_string = String.format(Order.getSTRING_FORMAT(), id, email, address, payment, price, products, fullfilled);
 
