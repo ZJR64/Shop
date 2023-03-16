@@ -4,9 +4,9 @@ import { Product } from '../product';
 import { ProductService } from '../services/product.service'
 
 @Component({
-  selector: 'app-products',
-  templateUrl: './products.component.html',
-  styleUrls: ['./products.component.css']
+  selector: 'app-store',
+  templateUrl: './store.component.html',
+  styleUrls: ['./store.component.css']
 })
 export class StoreComponent implements OnInit {
   products!: Product[];
