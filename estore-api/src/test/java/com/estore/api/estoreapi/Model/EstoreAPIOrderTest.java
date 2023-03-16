@@ -29,13 +29,13 @@ class EstoreApiOrderTests {
 		String expected_address = "12345 made up road";
 		String expected_payment = "1234-5678-9012-3456";
 		double expected_price = 12.57;
-		boolean expected_fullfilled = true;
+		boolean expected_fulfilled = true;
         Map<String, Double[]> expected_products = new HashMap<String, Double[]>();
         Double[] values = {8.0, 12.9};
         expected_products.put("product 1", values);
 
 		// Invoke
-		Order order = new Order(expected_id, expected_email, expected_address, expected_payment, expected_price, expected_products, expected_fullfilled);
+		Order order = new Order(expected_id, expected_email, expected_address, expected_payment, expected_price, expected_products, expected_fulfilled);
 
 		// Analyze
 		assertEquals(expected_id, order.getId());
@@ -44,7 +44,7 @@ class EstoreApiOrderTests {
 		assertEquals(expected_payment, order.getPayment());
 		assertEquals(expected_price, order.getPrice());
 		assertEquals(expected_products, order.getProducts());
-		assertEquals(expected_fullfilled, order.getFullfilled());
+		assertEquals(expected_fulfilled, order.getFulfilled());
 	}
 
 	@Test
@@ -155,7 +155,7 @@ class EstoreApiOrderTests {
 	}
 
 	@Test
-	public void testFullfilled() {
+	public void testFulfilled() {
 		// Setup
 		int id = 100;
 		String email = "example@test.com";
@@ -166,13 +166,13 @@ class EstoreApiOrderTests {
         Double[] values = {8.0, 12.9};
         products.put("product 1", values);
 		Order order = new Order(id, email, address, payment, price, products, false);
-        boolean expected_fullfilled = true;
+        boolean expected_fulfilled = true;
 
 		// Invoke
-		order.setFullfilled(expected_fullfilled);
+		order.setFulfilled(expected_fulfilled);
 
 		// Analyze
-		assertEquals(expected_fullfilled, order.getFullfilled());
+		assertEquals(expected_fulfilled, order.getFulfilled());
 	}
 
 	@Test
@@ -183,12 +183,12 @@ class EstoreApiOrderTests {
 		String address = "12345 made up road";
 		String payment = "1234-5678-9012-3456";
 		double price = 12.57;
-		boolean fullfilled = true;
+		boolean fulfilled = true;
         Map<String, Double[]> products = new HashMap<String, Double[]>();
         Double[] values = {8.0, 12.9};
         products.put("product 1", values);
-		Order order = new Order(id, email, address, payment, price, products, fullfilled);
-        String expected_string = String.format(Order.getSTRING_FORMAT(), id, email, address, payment, price, products, fullfilled);
+		Order order = new Order(id, email, address, payment, price, products, fulfilled);
+        String expected_string = String.format(Order.getSTRING_FORMAT(), id, email, address, payment, price, products, fulfilled);
 
 		// Invoke
 		String actual_string = order.toString();

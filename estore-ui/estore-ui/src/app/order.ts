@@ -5,6 +5,6 @@ export interface Order {
     payment : string;
     price : number;
     products: Map<String, number[]>;
-    fullfilled : boolean;
+    fulfilled : boolean;
     [key: string]: any;
   }

@@ -209,7 +209,7 @@ public class OrderFileDAO implements OrderDAO {
         synchronized (orders) {
             // We create a new order object because the id field is immutable
             // and we need to assign the next unique id
-            Order newOrder = new Order(nextId(), order.getEmail(), order.getAddress(), order.getPayment(), order.getPrice(), order.getProducts(), order.getFullfilled());
+            Order newOrder = new Order(nextId(), order.getEmail(), order.getAddress(), order.getPayment(), order.getPrice(), order.getProducts(), order.getFulfilled());
             orders.put(newOrder.getId(), newOrder);
             save(); // may throw an IOException
             return newOrder;
