@@ -23,6 +23,7 @@ import { ProductIngredientsComponent } from './product-ingredients/product-ingre
 import { ProductsComponent } from './products/products.component';
 import { ProductDetailComponent } from './product-detail/product-detail.component';
 import { UserSettingsComponent } from './user-settings/user-settings.component';
+import { OrdersComponent } from './orders/orders.component';
 
 const routes: Routes = [
   { path: '', component: UniversalMenuComponent, canActivate: [AuthGuardService], children: [
@@ -36,6 +37,7 @@ const routes: Routes = [
       { path: '', component: AdminHomeComponent},
       { path: 'ingredients', component: IngredientsComponent},
       { path: 'ingredients/:id', component: IngredientDetailsComponent },
+      { path: 'orders', component: OrdersComponent},
       { path: 'admins', component: AdminsComponent},
       { path: 'products', component: ProductsComponent },
       { path: 'products/:id', component: ProductDetailComponent },
