@@ -1,11 +1,12 @@
 import { User } from '../user';
 import { Product } from '../product';
 
-import { Component, OnInit } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Location } from '@angular/common';
 import { UserService } from '../services/user.service';
 import { ProductService } from '../product.service';
+import { take } from 'rxjs';
 
 
 @Component({
@@ -14,8 +15,7 @@ import { ProductService } from '../product.service';
   styleUrls: ['./cart.component.css']
 })
 export class CartComponent {
-  user!: User;
-  product!: Product;
+  @Input() user?: User;
 
   constructor(
     private route: ActivatedRoute,
@@ -23,24 +23,35 @@ export class CartComponent {
     private productService: ProductService,
     private location: Location
   ) {
+    this.getUser();
 
-    this.userService.getUserFromEmail(localStorage.getItem('currentUser')!).subscribe(
-      (user) => {
-        this.user = user;
-      });
   }
 
   ngOnInit() {
     console.log("opened cart")
   }
 
-  findProduct(id: number): String {
-    this.getProduct(id);
-    return this.product.name;
+  goBack(): void {
+    this.location.back();
   }
 
-  getProduct(id: number): void {
-    this.productService.getProduct(id)
-      .subscribe(product => this.product = product);
+  save(): void {
+    if (this.user) {
+      this.userService.updateUser(this.user)
+        .subscribe(() => this.goBack());
+    }
+  }
+
+  getUser(): void {
+    this.userService.getUserFromEmail(localStorage.getItem('currentUser')!).subscribe(user => this.user = user);
+  }
+
+  delete(key: number): void {
+    if (this.user) {
+      const i = new Map<String, String[]>(Object.entries(this.user['cart']))
+      i.delete("" + key);
+      const i2 = Object.fromEntries(i);
+      this.user['cart'] = i2;
+    }
   }
 }

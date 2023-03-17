@@ -31,7 +31,7 @@ public class User {
     @JsonProperty("payInfo")
     private String[] payInfo;
     @JsonProperty("cart")
-    private Map<Integer, Integer[]> cart;
+    private Map<Integer, String[]> cart;
 
     /**
      * Create a user with the given email, name, password, address, admin, payInfo,
@@ -57,7 +57,7 @@ public class User {
     public User(@JsonProperty("id") int id, @JsonProperty("email") String email, @JsonProperty("name") String name,
             @JsonProperty("password") String password, @JsonProperty("address") String address,
             @JsonProperty("admin") Boolean admin, @JsonProperty("payInfo") String[] payInfo,
-            @JsonProperty("cart") Map<Integer, Integer[]> cart) {
+            @JsonProperty("cart") Map<Integer, String[]> cart) {
         this.id = id;
         this.email = email;
         this.name = name;
@@ -186,7 +186,7 @@ public class User {
      * 
      * @return user's shopping cart
      */
-    public Map<Integer, Integer[]> getCart() {
+    public Map<Integer, String[]> getCart() {
         return cart;
     }
 
@@ -196,7 +196,7 @@ public class User {
      * 
      * @param cart new cart to set user's cart to
      */
-    public void setCart(Map<Integer, Integer[]> cart) {
+    public void setCart(Map<Integer, String[]> cart) {
         this.cart = cart;
     }
 

@@ -42,8 +42,8 @@ public class EstoreApiUserFileDAOTest {
         mockObjectMapper = mock(ObjectMapper.class);
         testUsers = new User[3];
         String[] pay = { "ROLE_USER" };
-        Integer[] temp = new Integer[] { 0, 4 };
-        Map<Integer, Integer[]> cart = Map.of(3, temp);
+        String[] temp = new String[] { "testName2", "medium", "5" };
+        Map<Integer, String[]> cart = Map.of(3, temp);
         testUsers[0] = new User(99, "JaneDoe@example.com", "Jane Doe", "password123", "123 Main Street", false, pay,
                 cart);
         testUsers[1] = new User(100, "JohnDoe@example.com", "John Doe", "password123", "1234 Main Street", false, pay,
@@ -121,8 +121,8 @@ public class EstoreApiUserFileDAOTest {
         // Setup
         // make array of strings
         String[] pay = { "ROLE_USER" };
-        Integer[] temp = new Integer[] { 0, 4 };
-        Map<Integer, Integer[]> cart = Map.of(3, temp);
+        String[] temp = new String[] { "testName2", "medium", "5" };
+        Map<Integer, String[]> cart = Map.of(3, temp);
 
         User user = new User(98, "Clap@example.com", "Ja Booty Clap", "password123", "123 Jabooty Street", false, pay,
                 cart);
@@ -143,8 +143,8 @@ public class EstoreApiUserFileDAOTest {
         // Setup
 
         String[] pay = { "ROLE_USER" };
-        Integer[] temp = new Integer[] { 0, 4 };
-        Map<Integer, Integer[]> cart = Map.of(3, temp);
+        String[] temp = new String[] { "testName2", "medium", "5" };
+        Map<Integer, String[]> cart = Map.of(3, temp);
 
         User user = new User(99, "Za@example.com", "Za Clap", "password123", "123 Jabooty Street", false, pay, cart);
 
@@ -161,8 +161,8 @@ public class EstoreApiUserFileDAOTest {
     @Test
     public void testSaveException() throws IOException {
         String[] pay = { "ROLE_USER" };
-        Integer[] temp = new Integer[] { 0, 4 };
-        Map<Integer, Integer[]> cart = Map.of(3, temp);
+        String[] temp = new String[] { "testName2", "medium", "5" };
+        Map<Integer, String[]> cart = Map.of(3, temp);
 
         doThrow(new IOException())
                 .when(mockObjectMapper)
@@ -209,8 +209,8 @@ public class EstoreApiUserFileDAOTest {
         // Setup
 
         String[] pay = { "ROLE_USER" };
-        Integer[] temp = new Integer[] { 0, 4 };
-        Map<Integer, Integer[]> cart = Map.of(3, temp);
+        String[] temp = new String[] { "testName2", "medium", "5" };
+        Map<Integer, String[]> cart = Map.of(3, temp);
 
         User user = new User(98, "RadioHead@example.com", "Saul Goodman", "password123", "123 Jabooty Street", false,
                 pay, cart);

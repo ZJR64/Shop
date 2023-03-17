@@ -28,8 +28,8 @@ class EstoreApiUserTests {
         String expected_address = "129 balls lane";
         Boolean expected_admin = false;
         String[] expected_payInfo = new String[] { "123", "235", "1351135" };
-        Integer[] temp = new Integer[] { 0, 4 };
-        Map<Integer, Integer[]> expected_cart = Map.of(3, temp);
+        String[] temp = new String[] { "testName2", "medium", "5" };
+        Map<Integer, String[]> expected_cart = Map.of(3, temp);
 
         // Invoke
         User user = new User(expected_id, expected_email, expected_name, expected_password, expected_address,
@@ -55,8 +55,8 @@ class EstoreApiUserTests {
         String address = "129 balls lane";
         Boolean admin = false;
         String[] payInfo = new String[] { "123", "235", "1351135" };
-        Integer[] temp = new Integer[] { 0, 4 };
-        Map<Integer, Integer[]> cart = Map.of(3, temp);
+        String[] temp = new String[] { "testName2", "medium", "5" };
+        Map<Integer, String[]> cart = Map.of(3, temp);
         User user = new User(id, email, name, password, address, admin, payInfo, cart);
 
         String expected_name = "Balls";
@@ -78,8 +78,8 @@ class EstoreApiUserTests {
         String address = "129 balls lane";
         Boolean admin = false;
         String[] payInfo = new String[] { "123", "235", "1351135" };
-        Integer[] temp = new Integer[] { 0, 4 };
-        Map<Integer, Integer[]> cart = Map.of(3, temp);
+        String[] temp = new String[] { "testName2", "medium", "5" };
+        Map<Integer, String[]> cart = Map.of(3, temp);
         User user = new User(id, email, name, password, address, admin, payInfo, cart);
 
         String expected_address = "Testicular Torsion Avenue";
@@ -101,8 +101,8 @@ class EstoreApiUserTests {
         String address = "129 balls lane";
         Boolean admin = false;
         String[] payInfo = new String[] { "123", "235", "1351135" };
-        Integer[] temp = new Integer[] { 0, 4 };
-        Map<Integer, Integer[]> cart = Map.of(3, temp);
+        String[] temp = new String[] { "testName2", "medium", "5" };
+        Map<Integer, String[]> cart = Map.of(3, temp);
         User user = new User(id, email, name, password, address, admin, payInfo, cart);
 
         String expected_password = "Not Beans?";
@@ -124,8 +124,8 @@ class EstoreApiUserTests {
         String address = "129 balls lane";
         Boolean admin = false;
         String[] payInfo = new String[] { "123", "235", "1351135" };
-        Integer[] temp = new Integer[] { 0, 4 };
-        Map<Integer, Integer[]> cart = Map.of(3, temp);
+        String[] temp = new String[] { "testName2", "medium", "5" };
+        Map<Integer, String[]> cart = Map.of(3, temp);
         User user = new User(id, email, name, password, address, admin, payInfo, cart);
 
         boolean expected_admin = true;
@@ -146,8 +146,8 @@ class EstoreApiUserTests {
         String address = "129 balls lane";
         Boolean admin = false;
         String[] payInfo = new String[] { "123", "235", "1351135" };
-        Integer[] temp = new Integer[] { 0, 4 };
-        Map<Integer, Integer[]> cart = Map.of(3, temp);
+        String[] temp = new String[] { "testName2", "medium", "5" };
+        Map<Integer, String[]> cart = Map.of(3, temp);
         User user = new User(id, email, name, password, address, admin, payInfo, cart);
 
         String[] expected_payInfo = new String[] { "135135", "13616457", "9876" };
@@ -170,8 +170,8 @@ class EstoreApiUserTests {
         Boolean admin = false;
         String[] payInfo = new String[] { "123", "235", "1351135" };
         String expected_string = String.format(User.STRING_FORMAT, id, email, name, password, address, admin, payInfo);
-        Integer[] temp = new Integer[] { 0, 4 };
-        Map<Integer, Integer[]> cart = Map.of(3, temp);
+        String[] temp = new String[] { "testName2", "medium", "5" };
+        Map<Integer, String[]> cart = Map.of(3, temp);
         User user = new User(id, email, name, password, address, admin, payInfo, cart);
 
         // Invoke
