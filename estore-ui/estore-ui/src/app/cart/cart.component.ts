@@ -1,12 +1,10 @@
 import { User } from '../user';
-import { Product } from '../product';
 
 import { Component, Input } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Location } from '@angular/common';
 import { UserService } from '../services/user.service';
 import { ProductService } from '../product.service';
-import { take } from 'rxjs';
 
 
 @Component({
