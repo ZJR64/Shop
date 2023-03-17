@@ -23,6 +23,8 @@ import { AdminMenuComponent } from './admin-menu/admin-menu.component';
 import { IngredientDetailsComponent } from './ingredient-details/ingredient-details.component';
 import { UniversalMenuComponent } from './universal-menu/universal-menu.component';
 import { AdminsComponent } from './admins/admins.component';
+import { UserSettingsComponent } from './user-settings/user-settings.component';
+import { DeleteAccountComponent } from './delete-account/delete-account.component';
 
 @NgModule({
   declarations: [
@@ -44,7 +46,9 @@ import { AdminsComponent } from './admins/admins.component';
     MessagesComponent,
     DashboardComponent,
     ProductSearchComponent,
-    ProductIngredientsComponent
+    ProductIngredientsComponent,
+    UserSettingsComponent,
+    DeleteAccountComponent
   ],
   imports: [
     BrowserModule,

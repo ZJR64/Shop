@@ -1,8 +1,20 @@
-<nav>
-    <!-- (click) goes back a page -->
-    <button type="button" class="add-button" (click)="goBack();">
+<nav class="menu">
+    <div class="menu-left">
+      <!-- (click) goes back a page -->
+      <button type="button" class="add-button" (click)="goBack();">
         Back
-    </button>
-</nav>
+      </button>
+      <!-- (click) goes to logout screen -->
+      <button type="button" class="add-button" (click)="goLogout();">
+        Logout
+      </button>
+    </div>
+    <div class="menu-right">
+      <!-- (click) goes to User Settings -->
+      <button type="button" class="add-button" (click)="goSettings();">
+        Settings
+      </button>
+    </div>
+  </nav>
 <br>
 <router-outlet></router-outlet>
