@@ -15,6 +15,7 @@ import { AdminMenuComponent } from './admin-menu/admin-menu.component';
 import { IngredientsComponent } from './ingredients/ingredients.component';
 import { UniversalMenuComponent } from './universal-menu/universal-menu.component';
 import { IngredientDetailsComponent } from './ingredient-details/ingredient-details.component';
+import { AdminsComponent } from './admins/admins.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { ProductIngredientsComponent } from './product-ingredients/product-ingredients.component';
 import { ProductsComponent } from './products/products.component';
@@ -32,6 +33,7 @@ const routes: Routes = [
       { path: '', component: AdminHomeComponent},
       { path: 'ingredients', component: IngredientsComponent},
       { path: 'ingredients/:id', component: IngredientDetailsComponent },
+      { path: 'admins', component: AdminsComponent},
       { path: 'products', component: ProductsComponent },
       { path: 'products/:id', component: ProductDetailComponent },
       { path: 'products/:id/ingredients', component: ProductIngredientsComponent },
