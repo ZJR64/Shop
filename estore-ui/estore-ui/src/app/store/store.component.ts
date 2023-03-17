@@ -6,7 +6,7 @@ import { ProductService } from '../services/product.service'
 
 import { Ingredient } from '../ingredient';
 import { IngredientService } from '../services/ingredients.service';
-import { forkJoin, Observable } from 'rxjs';
+import { forkJoin, Observable, tap } from 'rxjs';
 
 @Component({
   selector: 'app-store',
@@ -39,17 +39,34 @@ export class StoreComponent implements OnInit {
   }
 
   getPrices(): void {
+    this. removeOutOfStock();
     this.products?.forEach((product: Product) => {
       this.prices.set(product.name, this.calcPrice(product));
     });
   }
 
   getProducts(): void {
-    this.productService.getProducts()
-      .subscribe((products: Product[]) =>
-      this.products = products
-      );
-    this.getPrices();
+    this.productService.getProducts().pipe(
+      tap((products: Product[]) => {
+        this.products = products;
+        this.getPrices();
+      })
+    ).subscribe();
+  }
+
+  removeOutOfStock(): void {
+    this.products = this.products.filter((product: Product) => {
+      const keysArray = Object.keys(product.ingredients);
+      const valuesArray = Object.values(product.ingredients);
+      for (let i = 0; i < keysArray.length; i++) {
+        const ingredientName = keysArray[i];
+        const ingredient = this.ingredients.find((ingredient: Ingredient) => ingredient.name === ingredientName);
+        if (!ingredient || ingredient.volume < valuesArray[i] * 10) {
+          return false; // remove product from list
+        }
+      }
+      return true; // keep product in list
+    });
   }
 
   goToProduct(product: Product): void {
@@ -58,9 +75,12 @@ export class StoreComponent implements OnInit {
 
   onSearch() {
     if (this.searchTerm) {
-      this.productService.searchProducts(this.searchTerm).subscribe((data: any[]) => {
-        this.products = data;
-      });
+      this.productService.searchProducts(this.searchTerm).pipe(
+        tap((products: Product[]) => {
+          this.products = products;
+          this.getPrices();
+        })
+      ).subscribe();
     } else {
       this.getProducts();
     }
