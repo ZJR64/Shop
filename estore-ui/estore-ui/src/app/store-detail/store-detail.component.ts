@@ -100,7 +100,7 @@ export class StoreDetailComponent {
       this.ingredients.forEach((ingredient: Ingredient) => {
         if (name == ingredient.name) {
           ingredient.volume -= this.size * valuesArray[i];
-          this.ingredientService.updateIngredient(ingredient);
+          this.ingredientService.updateIngredient(ingredient).subscribe();
         }
       })
     });
