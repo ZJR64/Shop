@@ -5,10 +5,10 @@
       <label>Blend: {{product.type}}</label>
     </div>
     <div>
-        <label>Sizes:</label>
-        <button (click)="changeSize(10);">10</button>
-        <button (click)="changeSize(20);">20</button>
-        <button (click)="changeSize(30);">30</button>
+      <label>Sizes:</label>
+      <button (click)="changeSize(10);" [disabled]="!canMakeProduct(10)">10</button>
+      <button (click)="changeSize(20);" [disabled]="!canMakeProduct(20)">20</button>
+      <button (click)="changeSize(30);" [disabled]="!canMakeProduct(30)">30</button>
     </div>
     <br>
     <div>

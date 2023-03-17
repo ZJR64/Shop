@@ -67,7 +67,7 @@ export class StoreDetailComponent {
     price = price * this.size;
   
   
-    this.price = parseFloat(price.toFixed(2));;
+    this.price = parseFloat(price.toFixed(2));
   }
 
   changeSize(size: number) {
@@ -75,13 +75,44 @@ export class StoreDetailComponent {
     this.calcPrice();
   }
 
+  canMakeProduct(size: number): boolean {
+    const keysArray = Object.keys(this.product.ingredients);
+    const valuesArray = Object.values(this.product.ingredients);
+    let canMake = true;
+    let i = -1;
+    keysArray.forEach((name: String) => {
+      i++;
+      this.ingredients.forEach((ingredient: Ingredient) => {
+        if (name == ingredient.name && ingredient.volume < size * valuesArray[i]) {
+          canMake = false;
+        }
+      })
+    });
+    return canMake;
+  }
+
+  removeIngredients(): void {
+    const keysArray = Object.keys(this.product.ingredients);
+    const valuesArray = Object.values(this.product.ingredients);
+    var i = -1;
+    keysArray.forEach((name: String) => {
+      i++;
+      this.ingredients.forEach((ingredient: Ingredient) => {
+        if (name == ingredient.name) {
+          ingredient.volume -= this.size * valuesArray[i];
+          this.ingredientService.updateIngredient(ingredient);
+        }
+      })
+    });
+  }
+
   addToCart(): void {
-    //TODO
-    //
-    //
-    //
-    //
-    this.router.navigateByUrl('store');
+    if (this.canMakeProduct(this.size)) {
+      this.removeIngredients();
+      //TODO: Add the product to the cart
+    } else {
+      alert("Not enough ingredients to make this product!");
+    }
   }
 
 }
