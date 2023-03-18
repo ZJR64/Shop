@@ -1,10 +1,12 @@
 import { User } from '../user';
+import { ModalModule } from 'ngx-bootstrap/modal';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { Component, Input } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Location } from '@angular/common';
 import { UserService } from '../services/user.service';
-import { ProductService } from '../product.service';
+import { ProductService } from '../services/product.service';
 
 
 @Component({
@@ -29,27 +31,14 @@ export class CartComponent {
     console.log("opened cart")
   }
 
-  goBack(): void {
-    this.location.back();
-  }
-
-  save(): void {
-    if (this.user) {
-      this.userService.updateUser(this.user)
-        .subscribe(() => this.goBack());
-    }
-  }
-
   getUser(): void {
     this.userService.getUserFromEmail(localStorage.getItem('currentUser')!).subscribe(user => this.user = user);
   }
 
-  delete(key: number): void {
+  delete(key: String): void {
     if (this.user) {
-      const i = new Map<String, String[]>(Object.entries(this.user['cart']))
-      i.delete("" + key);
-      const i2 = Object.fromEntries(i);
-      this.user['cart'] = i2;
+      this.user.cart.delete(key);
+      this.userService.updateUser(this.user).subscribe();
     }
   }
 }

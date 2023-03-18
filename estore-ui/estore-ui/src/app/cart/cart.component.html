@@ -1,11 +1,11 @@
 <div *ngIf="user">
     <h2>{{user.name}}'s Cart:</h2>
-    <li *ngFor="let entry of user.cart | keyvalue">
-        <input id="product-id" [(ngModel)]="entry.value[0]" readonly>
-        <input id="product-size" [(ngModel)]="entry.value[1]" readonly>
-        <input id="product-quantity" [(ngModel)]="entry.value[2]" readonly>
+    <div *ngFor="let entry of user.cart | keyvalue">
+        <label>{{entry.key}} |    |</label>
+        <div *ngFor="let item of entry.value; index as i">
+            <label>{{item}}</label>
+            <label>: {{entry.value[i+1]}}</label>
+          </div>
         <button type="button" class="delete" title="delete item" (click)="delete(entry.key)">x</button>
-    </li>
-    <button type="button" (click)="goBack()">go back</button>
-    <button type="button" (click)="save()">save</button>
+    </div>
 </div>
