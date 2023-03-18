@@ -35,9 +35,11 @@ export class CartComponent {
     this.userService.getUserFromEmail(localStorage.getItem('currentUser')!).subscribe(user => this.user = user);
   }
 
-  delete(key: String): void {
+  delete(key: String, index: number): void {
     if (this.user) {
-      this.user.cart.delete(key);
+      const values: number[] = this.user.cart.get(key) || [];
+      values.splice(index, 2); // remove the value at the specified index
+      this.user.cart.set(key, values);
       this.userService.updateUser(this.user).subscribe();
     }
   }
