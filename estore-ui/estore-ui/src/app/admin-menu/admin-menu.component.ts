@@ -20,12 +20,12 @@ export class AdminMenuComponent {
     this.router.navigateByUrl('/admin');
   }
 
-  goLogout(): void {
-    this.router.navigateByUrl('/logout');
-  }
-
   goIngredients(): void {
     this.router.navigateByUrl('/admin/ingredients');
+  }
+
+  goAdmins(): void {
+    this.router.navigateByUrl('/admin/admins');
   }
 
   goProducts(): void {

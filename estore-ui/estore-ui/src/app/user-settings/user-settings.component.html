@@ -1,0 +1,35 @@
+<div *ngIf="user">
+    <h2>User Settings</h2>
+    <br>
+    Email: {{user.email}}
+    <br>
+    <div>
+      <label for="name">Name:</label>
+      <input type="text" [(ngModel)]="user.name" name="name" required>
+    </div>
+    <br>
+    <div>
+      <label for="password">Password:</label>
+      <input type="text" [(ngModel)]="user.password" name="password" required>
+    </div>
+    <br>
+    <div>
+      <label for="address">Address:</label>
+      <input type="text" [(ngModel)]="user.address" name="address" required>
+    </div>
+    <br>
+    <div *ngFor="let pay of user.payInfo; let i = index; trackBy: trackByFn">
+      <div class="pay-info">
+        <label for="pay">Payment Method {{ i + 1 }}:</label>
+        <input type="text" [(ngModel)]="user.payInfo[i]" name="pay" required>
+        <button class="delete-button" (click)="deletePay(user.payInfo[i])">X</button>
+      </div>
+    </div>
+    <button (click)="newPay()">Add Payment Method</button>
+    <br>
+
+
+    <button (click)="saveUser();">Save User</button>
+
+    <button (click)="deleteUser();">Delete User</button>
+  </div>

@@ -8,3 +8,4 @@ export interface User {
   payInfo: string[];
   cart: Map<number, String[]>;
 }
+

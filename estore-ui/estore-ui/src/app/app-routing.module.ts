@@ -7,19 +7,24 @@ import { AdminGuardService } from './services/admin-guard.service';
 
 import { LoginComponent } from './login/login.component';
 import { LogoutComponent } from './logout/logout.component';
-import { HomeComponent } from './home/home.component';
-import { AdminHomeComponent } from './admin-home/admin-home.component';
 import { RegisterComponent } from './register/register.component';
+
+import { UniversalMenuComponent } from './universal-menu/universal-menu.component';
+import { AdminHomeComponent } from './admin-home/admin-home.component';
 import { MenuComponent } from './menu/menu.component';
+
+import { HomeComponent } from './home/home.component';
 import { AdminMenuComponent } from './admin-menu/admin-menu.component';
 import { IngredientsComponent } from './ingredients/ingredients.component';
-import { UniversalMenuComponent } from './universal-menu/universal-menu.component';
 import { IngredientDetailsComponent } from './ingredient-details/ingredient-details.component';
+import { AdminsComponent } from './admins/admins.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { ProductIngredientsComponent } from './product-ingredients/product-ingredients.component';
 import { ProductsComponent } from './products/products.component';
 import { ProductDetailComponent } from './product-detail/product-detail.component';
 import { CartComponent } from './cart/cart.component';
+import { UserSettingsComponent } from './user-settings/user-settings.component';
+import { DeleteAccountComponent } from './delete-account/delete-account.component';
 
 const routes: Routes = [
   {
@@ -39,13 +44,16 @@ const routes: Routes = [
           { path: 'ingredients', component: IngredientsComponent },
           { path: 'ingredients/:id', component: IngredientDetailsComponent },
           { path: 'products', component: ProductsComponent },
+          { path: 'admins', component: AdminsComponent},
           { path: 'products/:id', component: ProductDetailComponent },
           { path: 'products/:id/ingredients', component: ProductIngredientsComponent },
           { path: 'cart', component: CartComponent }
         ]
       },
 
-      { path: 'logout', component: LogoutComponent }
+      { path: 'settings', component: UserSettingsComponent },
+      { path: 'logout', component: LogoutComponent },
+      { path: 'delete', component: DeleteAccountComponent }
     ],
   },
   { path: 'login', component: LoginComponent, canActivate: [SafeGuardService] },

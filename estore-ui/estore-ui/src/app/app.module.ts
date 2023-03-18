@@ -23,6 +23,9 @@ import { AdminMenuComponent } from './admin-menu/admin-menu.component';
 import { IngredientDetailsComponent } from './ingredient-details/ingredient-details.component';
 import { UniversalMenuComponent } from './universal-menu/universal-menu.component';
 import { CartComponent } from './cart/cart.component';
+import { AdminsComponent } from './admins/admins.component';
+import { UserSettingsComponent } from './user-settings/user-settings.component';
+import { DeleteAccountComponent } from './delete-account/delete-account.component';
 
 @NgModule({
   declarations: [
@@ -38,13 +41,16 @@ import { CartComponent } from './cart/cart.component';
     IngredientsComponent,
     IngredientDetailsComponent,
     UniversalMenuComponent,
+    AdminsComponent,
     ProductsComponent,
     ProductDetailComponent,
     MessagesComponent,
     DashboardComponent,
     ProductSearchComponent,
     ProductIngredientsComponent,
-    CartComponent
+    CartComponent,
+    UserSettingsComponent,
+    DeleteAccountComponent
   ],
   imports: [
     BrowserModule,

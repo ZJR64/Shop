@@ -26,10 +26,6 @@ export class MenuComponent {
     this.router.navigateByUrl('/home');
   }
 
-  goLogout(): void {
-    this.router.navigateByUrl('/logout');
-  }
-
   goAdmin(): void {
     this.router.navigateByUrl('/admin');
   }
