@@ -14,7 +14,7 @@
         Manage Store
     </button>
 
-    <button type="button" class="add-button" (click)="goCart();">
+    <button *nfIf="isAdmin == false" class="add-button" (click)="goCart();">
         Shopping Cart
     </button>
 
