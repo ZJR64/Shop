@@ -169,9 +169,9 @@ class EstoreApiUserTests {
         String address = "129 balls lane";
         Boolean admin = false;
         String[] payInfo = new String[] { "123", "235", "1351135" };
-        String expected_string = String.format(User.STRING_FORMAT, id, email, name, password, address, admin, payInfo);
         String[] temp = new String[] { "testName2", "medium", "5" };
         Map<Integer, String[]> cart = Map.of(3, temp);
+        String expected_string = String.format(User.STRING_FORMAT, id, email, name, password, address, admin, payInfo, cart);
         User user = new User(id, email, name, password, address, admin, payInfo, cart);
 
         // Invoke
