@@ -1,10 +1,7 @@
 <div *ngIf="user">
     <h2>User Settings</h2>
     <br>
-    <div>
-      <label for="email">Email:</label>
-      <input type="text" [(ngModel)]="user.email" name="email" required>
-    </div>
+    Email: {{user.email}}
     <br>
     <div>
       <label for="name">Name:</label>
