@@ -10,7 +10,7 @@ export class AdminMenuComponent {
 
   constructor(
     private router: Router,
-    ) {}
+  ) { }
 
   goHome(): void {
     this.router.navigateByUrl('/home');
@@ -30,5 +30,9 @@ export class AdminMenuComponent {
 
   goProducts(): void {
     this.router.navigateByUrl('/admin/products');
+  }
+
+  goCart(): void {
+    this.router.navigateByUrl('/cart');
   }
 }

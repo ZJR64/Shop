@@ -15,12 +15,12 @@ export class MenuComponent {
   constructor(
     private router: Router,
     private userService: UserService,
-    ) {
-      this.userService.getUserFromEmail(localStorage.getItem('currentUser')!).subscribe(
-        (user) => {
-          this.isAdmin = user.admin;
-        });
-    }
+  ) {
+    this.userService.getUserFromEmail(localStorage.getItem('currentUser')!).subscribe(
+      (user) => {
+        this.isAdmin = user.admin;
+      });
+  }
 
   goHome(): void {
     this.router.navigateByUrl('/home');
@@ -33,5 +33,9 @@ export class MenuComponent {
   goDashboard(): void {
     this.router.navigateByUrl('/dashboard');
   }
-  
+
+  goCart(): void {
+    this.router.navigateByUrl('/cart');
+  }
+
 }
