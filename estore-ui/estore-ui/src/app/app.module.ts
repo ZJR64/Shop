@@ -22,6 +22,7 @@ import { AdminHomeComponent } from './admin-home/admin-home.component';
 import { AdminMenuComponent } from './admin-menu/admin-menu.component';
 import { IngredientDetailsComponent } from './ingredient-details/ingredient-details.component';
 import { UniversalMenuComponent } from './universal-menu/universal-menu.component';
+import { CartComponent } from './cart/cart.component';
 import { AdminsComponent } from './admins/admins.component';
 import { UserSettingsComponent } from './user-settings/user-settings.component';
 import { OrdersComponent } from './orders/orders.component';
@@ -48,6 +49,7 @@ import { DeleteAccountComponent } from './delete-account/delete-account.componen
     DashboardComponent,
     ProductSearchComponent,
     ProductIngredientsComponent,
+    CartComponent,
     UserSettingsComponent,
     OrdersComponent,
     DeleteAccountComponent

@@ -2,6 +2,8 @@ package com.estore.api.estoreapi.Model;
 
 import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.Test;
+import java.util.*;
+
 import org.springframework.boot.test.context.SpringBootTest;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
@@ -26,10 +28,12 @@ class EstoreApiUserTests {
         String expected_address = "129 balls lane";
         Boolean expected_admin = false;
         String[] expected_payInfo = new String[] { "123", "235", "1351135" };
+        String[] temp = new String[] { "testName2", "medium", "5" };
+        Map<Integer, String[]> expected_cart = Map.of(3, temp);
 
         // Invoke
         User user = new User(expected_id, expected_email, expected_name, expected_password, expected_address,
-                expected_admin, expected_payInfo);
+                expected_admin, expected_payInfo, expected_cart);
 
         // Analyze
         assertEquals(expected_id, user.getId());
@@ -51,7 +55,9 @@ class EstoreApiUserTests {
         String address = "129 balls lane";
         Boolean admin = false;
         String[] payInfo = new String[] { "123", "235", "1351135" };
-        User user = new User(id, email, name, password, address, admin, payInfo);
+        String[] temp = new String[] { "testName2", "medium", "5" };
+        Map<Integer, String[]> cart = Map.of(3, temp);
+        User user = new User(id, email, name, password, address, admin, payInfo, cart);
 
         String expected_name = "Balls";
 
@@ -72,7 +78,9 @@ class EstoreApiUserTests {
         String address = "129 balls lane";
         Boolean admin = false;
         String[] payInfo = new String[] { "123", "235", "1351135" };
-        User user = new User(id, email, name, password, address, admin, payInfo);
+        String[] temp = new String[] { "testName2", "medium", "5" };
+        Map<Integer, String[]> cart = Map.of(3, temp);
+        User user = new User(id, email, name, password, address, admin, payInfo, cart);
 
         String expected_address = "Testicular Torsion Avenue";
 
@@ -93,7 +101,9 @@ class EstoreApiUserTests {
         String address = "129 balls lane";
         Boolean admin = false;
         String[] payInfo = new String[] { "123", "235", "1351135" };
-        User user = new User(id, email, name, password, address, admin, payInfo);
+        String[] temp = new String[] { "testName2", "medium", "5" };
+        Map<Integer, String[]> cart = Map.of(3, temp);
+        User user = new User(id, email, name, password, address, admin, payInfo, cart);
 
         String expected_password = "Not Beans?";
 
@@ -114,7 +124,9 @@ class EstoreApiUserTests {
         String address = "129 balls lane";
         Boolean admin = false;
         String[] payInfo = new String[] { "123", "235", "1351135" };
-        User user = new User(id, email, name, password, address, admin, payInfo);
+        String[] temp = new String[] { "testName2", "medium", "5" };
+        Map<Integer, String[]> cart = Map.of(3, temp);
+        User user = new User(id, email, name, password, address, admin, payInfo, cart);
 
         boolean expected_admin = true;
         // Invoke
@@ -134,7 +146,9 @@ class EstoreApiUserTests {
         String address = "129 balls lane";
         Boolean admin = false;
         String[] payInfo = new String[] { "123", "235", "1351135" };
-        User user = new User(id, email, name, password, address, admin, payInfo);
+        String[] temp = new String[] { "testName2", "medium", "5" };
+        Map<Integer, String[]> cart = Map.of(3, temp);
+        User user = new User(id, email, name, password, address, admin, payInfo, cart);
 
         String[] expected_payInfo = new String[] { "135135", "13616457", "9876" };
 
@@ -156,7 +170,9 @@ class EstoreApiUserTests {
         Boolean admin = false;
         String[] payInfo = new String[] { "123", "235", "1351135" };
         String expected_string = String.format(User.STRING_FORMAT, id, email, name, password, address, admin, payInfo);
-        User user = new User(id, email, name, password, address, admin, payInfo);
+        String[] temp = new String[] { "testName2", "medium", "5" };
+        Map<Integer, String[]> cart = Map.of(3, temp);
+        User user = new User(id, email, name, password, address, admin, payInfo, cart);
 
         // Invoke
         String actual_string = user.toString();
