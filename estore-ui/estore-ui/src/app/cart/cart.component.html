@@ -1,6 +1,6 @@
 <div *ngIf="user">
     <h2>{{user.name}}'s Cart:</h2>
-    <div *ngFor="let entry of user.cart | keyvalue">
+    <div *ngFor="let entry of products | keyvalue">
         <label>{{entry.key}}:</label>
         <div *ngFor="let item of entry.value; index as i">
             <label *ngIf="i%2 == 0">{{item}}</label>
