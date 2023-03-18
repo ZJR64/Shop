@@ -38,7 +38,4 @@ export class MenuComponent {
     this.router.navigateByUrl('/cart');
   }
 
-  goLogout(): void {
-    this.router.navigateByUrl('/logout');
-  }
 }
