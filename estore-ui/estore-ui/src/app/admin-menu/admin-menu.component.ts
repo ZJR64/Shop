@@ -32,6 +32,10 @@ export class AdminMenuComponent {
     this.router.navigateByUrl('/admin/products');
   }
 
+  goOrders(): void {
+    this.router.navigateByUrl('/admin/orders');
+    }
+   
   goCart(): void {
     this.router.navigateByUrl('/cart');
   }

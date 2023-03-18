@@ -17,7 +17,7 @@ import com.estore.api.estoreapi.model.Ingredient;
  */
 @Tag("Model-tier")
 @SpringBootTest
-class EstoreApiIngredientTesst {
+class EstoreApiIngredientTest {
 
 	@Test
 	public void testCtor() {
@@ -152,7 +152,7 @@ class EstoreApiIngredientTesst {
 		String description = "Gottem";
 		double price = 0.69;
 		double volume = 420.69;
-		String expected_string = String.format(Ingredient.getSTRING_FORMAT(), id, name, type, price, volume);
+		String expected_string = String.format(Ingredient.getSTRING_FORMAT(), id, name, type, description, price, volume);
 		Ingredient ingredient = new Ingredient(id, name, type, description, price, volume);
 
 		// Invoke

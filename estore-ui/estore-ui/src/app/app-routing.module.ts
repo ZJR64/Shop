@@ -24,36 +24,32 @@ import { ProductsComponent } from './products/products.component';
 import { ProductDetailComponent } from './product-detail/product-detail.component';
 import { CartComponent } from './cart/cart.component';
 import { UserSettingsComponent } from './user-settings/user-settings.component';
+import { OrdersComponent } from './orders/orders.component';
 import { DeleteAccountComponent } from './delete-account/delete-account.component';
 
 const routes: Routes = [
-  {
-    path: '', component: UniversalMenuComponent, canActivate: [AuthGuardService], children: [
-      {
-        path: '', component: MenuComponent, children: [
-          { path: '', redirectTo: 'home', pathMatch: 'full' },
-          { path: 'home', component: HomeComponent },
-          { path: 'dashboard', component: DashboardComponent },
-          { path: 'cart', component: CartComponent }
-        ]
-      },
+  { path: '', component: UniversalMenuComponent, canActivate: [AuthGuardService], children: [
+    { path: '', component: MenuComponent, children: [
+      { path: '', redirectTo: 'home', pathMatch: 'full' },
+      { path: 'home', component: HomeComponent},
+      { path: 'dashboard', component: DashboardComponent },
+      { path: 'cart', component: CartComponent }
+    ]},
+    
+    { path: 'admin', component: AdminMenuComponent, canActivate: [AdminGuardService], children: [
+      { path: '', component: AdminHomeComponent},
+      { path: 'ingredients', component: IngredientsComponent},
+      { path: 'ingredients/:id', component: IngredientDetailsComponent },
+      { path: 'orders', component: OrdersComponent},
+      { path: 'admins', component: AdminsComponent},
+      { path: 'products', component: ProductsComponent },
+      { path: 'products/:id', component: ProductDetailComponent },
+      { path: 'products/:id/ingredients', component: ProductIngredientsComponent },
+    ]},
 
-      {
-        path: 'admin', component: AdminMenuComponent, canActivate: [AdminGuardService], children: [
-          { path: '', component: AdminHomeComponent },
-          { path: 'ingredients', component: IngredientsComponent },
-          { path: 'ingredients/:id', component: IngredientDetailsComponent },
-          { path: 'products', component: ProductsComponent },
-          { path: 'admins', component: AdminsComponent},
-          { path: 'products/:id', component: ProductDetailComponent },
-          { path: 'products/:id/ingredients', component: ProductIngredientsComponent },
-          { path: 'cart', component: CartComponent }
-        ]
-      },
-
-      { path: 'settings', component: UserSettingsComponent },
-      { path: 'logout', component: LogoutComponent },
-      { path: 'delete', component: DeleteAccountComponent }
+    { path: 'settings', component: UserSettingsComponent },
+    { path: 'logout', component: LogoutComponent },
+    { path: 'delete', component: DeleteAccountComponent }
     ],
   },
   { path: 'login', component: LoginComponent, canActivate: [SafeGuardService] },

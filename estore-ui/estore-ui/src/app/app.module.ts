@@ -25,6 +25,7 @@ import { UniversalMenuComponent } from './universal-menu/universal-menu.componen
 import { CartComponent } from './cart/cart.component';
 import { AdminsComponent } from './admins/admins.component';
 import { UserSettingsComponent } from './user-settings/user-settings.component';
+import { OrdersComponent } from './orders/orders.component';
 import { DeleteAccountComponent } from './delete-account/delete-account.component';
 
 @NgModule({
@@ -50,6 +51,7 @@ import { DeleteAccountComponent } from './delete-account/delete-account.componen
     ProductIngredientsComponent,
     CartComponent,
     UserSettingsComponent,
+    OrdersComponent,
     DeleteAccountComponent
   ],
   imports: [
