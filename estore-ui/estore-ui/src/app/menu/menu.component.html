@@ -1,23 +1,29 @@
 <nav>
-<!-- (click) passes input value to check if correct login -->
-<button type="button" class="add-button" (click)="goHome();">
-Home
-</button>
+    <!-- (click) passes input value to check if correct login -->
+    <button type="button" class="add-button" (click)="goHome();">
+        Home
+    </button>
 
-<!-- (click) send to dashboard -->
-<button type="button" class="add-button" (click)="goDashboard();">
-Dashboard
-</button>
+    <!-- (click) send to dashboard -->
+    <button type="button" class="add-button" (click)="goDashboard();">
+        Dashboard
+    </button>
 
-<!-- (click) send to store -->
-<button type="button" class="add-button" (click)="goStore();">
+    <!-- (click) send to store -->
+    <button type="button" class="add-button" (click)="goStore();">
     Store
-</button>
+    </button>
 
-<!-- (click) send to admin home -->
-<button *ngIf="isAdmin" type="button" class="add-button" (click)="goAdmin();">
-Manage Store
-</button>
+    <!-- (click) send to cart -->
+    <button type="button" class="add-button" (click)="goCart();">
+        Shopping Cart
+    </button>
+
+    <!-- (click) send to admin home -->
+    <button *ngIf="isAdmin" type="button" class="add-button" (click)="goAdmin();">
+        Manage Store
+    </button>
+
 
 </nav>
 <br>
