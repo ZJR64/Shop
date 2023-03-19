@@ -22,8 +22,18 @@ export class CheckoutComponent {
     private router: Router,
     private orderService: OrderService,
   ) {
+    document.addEventListener('click', this.handleClick.bind(this));
     this.getUser();
     this.calcTotal();
+  }
+
+  handleClick(event: MouseEvent) {
+    const checkRight = document.querySelector('.checkout-right');
+  
+    // check if click occurred outside of cart button and sidebar
+    if (checkRight && !checkRight.contains(event.target as Node)) {
+      this.calcTotal();
+    }
   }
 
   ngOnInit() {
