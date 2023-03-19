@@ -11,11 +11,11 @@ import { Product } from '../product';
 
 
 @Component({
-  selector: 'app-cart',
-  templateUrl: './cart.component.html',
-  styleUrls: ['./cart.component.css']
+  selector: 'app-checkout',
+  templateUrl: './checkout.component.html',
+  styleUrls: ['./checkout.component.css']
 })
-export class CartComponent {
+export class CheckoutComponent {
   user!: User;
   products!: Map<string, number[]>;
 
@@ -103,5 +103,9 @@ export class CartComponent {
       this.userService.updateUser(this.user).subscribe();
 
     }
+  }
+
+  checkout(): void {
+    //TODO
   }
 }

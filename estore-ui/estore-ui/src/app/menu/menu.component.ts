@@ -38,8 +38,8 @@ export class MenuComponent {
     this.router.navigateByUrl('/store');
   }
   
-  goCart(): void {
-    this.router.navigateByUrl('/cart');
+  goCheckout(): void {
+    this.router.navigateByUrl('/checkout');
   }
 
 }

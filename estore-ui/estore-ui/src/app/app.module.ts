@@ -22,7 +22,7 @@ import { AdminHomeComponent } from './admin-home/admin-home.component';
 import { AdminMenuComponent } from './admin-menu/admin-menu.component';
 import { IngredientDetailsComponent } from './ingredient-details/ingredient-details.component';
 import { UniversalMenuComponent } from './universal-menu/universal-menu.component';
-import { CartComponent } from './cart/cart.component';
+import { CheckoutComponent } from './checkout/checkout.component';
 import { AdminsComponent } from './admins/admins.component';
 import { UserSettingsComponent } from './user-settings/user-settings.component';
 import { OrdersComponent } from './orders/orders.component';
@@ -52,7 +52,7 @@ import { StoreDetailComponent } from './store-detail/store-detail.component';
     DashboardComponent,
     ProductSearchComponent,
     ProductIngredientsComponent,
-    CartComponent,
+    CheckoutComponent,
     UserSettingsComponent,
     DeleteAccountComponent,
     StoreComponent,

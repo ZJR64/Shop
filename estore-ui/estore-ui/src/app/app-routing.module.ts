@@ -22,7 +22,7 @@ import { DashboardComponent } from './dashboard/dashboard.component';
 import { ProductIngredientsComponent } from './product-ingredients/product-ingredients.component';
 import { ProductsComponent } from './products/products.component';
 import { ProductDetailComponent } from './product-detail/product-detail.component';
-import { CartComponent } from './cart/cart.component';
+import { CheckoutComponent } from './checkout/checkout.component';
 import { UserSettingsComponent } from './user-settings/user-settings.component';
 import { OrdersComponent } from './orders/orders.component';
 import { DeleteAccountComponent } from './delete-account/delete-account.component';
@@ -37,7 +37,7 @@ const routes: Routes = [
       { path: 'dashboard', component: DashboardComponent },
       { path: 'store', component: StoreComponent },
       { path: 'store/:id', component: StoreDetailComponent },
-      { path: 'cart', component: CartComponent }
+      { path: 'checkout', component: CheckoutComponent }
     ]},
     
     { path: 'admin', component: AdminMenuComponent, canActivate: [AdminGuardService], children: [
