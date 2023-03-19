@@ -17,11 +17,22 @@ export class MenuComponent {
     private router: Router,
     private userService: UserService,
   ) {
+    document.addEventListener('click', this.handleClickOutside.bind(this));
     this.userService.getUserFromEmail(localStorage.getItem('currentUser')!).subscribe(
       (user) => {
         this.isAdmin = user.admin;
       });
       this.showSidebar = false;
+  }
+
+  handleClickOutside(event: MouseEvent) {
+    const cartButton = document.querySelector('.cart-button');
+    const cartSidebar = document.querySelector('.cart-sidebar');
+  
+    // check if click occurred outside of cart button and sidebar
+    if (cartButton && cartSidebar && !cartButton.contains(event.target as Node) && !cartSidebar.contains(event.target as Node)) {
+      this.showSidebar = false;
+    }
   }
 
   toggleCart(): void {
@@ -43,9 +54,4 @@ export class MenuComponent {
   goStore(): void {
     this.router.navigateByUrl('/store');
   }
-  
-  goCheckout(): void {
-    this.router.navigateByUrl('/checkout');
-  }
-
 }
