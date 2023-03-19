@@ -81,9 +81,14 @@ export class CartComponent {
 
       // update cart
       values.splice(index, 2);
-      this.products.set(key, values);
+      if (values.length != 0) {
+        this.products.set(key, values);
+      }
+      else {
+        this.products.delete(key);
+      }
       this.user.cart = Object.fromEntries(this.products.entries());
-      // this.userService.updateUser(this.user).subscribe();
+      this.userService.updateUser(this.user).subscribe();
 
     }
   }
