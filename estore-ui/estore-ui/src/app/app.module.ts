@@ -29,6 +29,7 @@ import { OrdersComponent } from './orders/orders.component';
 import { DeleteAccountComponent } from './delete-account/delete-account.component';
 import { StoreComponent } from './store/store.component';
 import { StoreDetailComponent } from './store-detail/store-detail.component';
+import { CartComponent } from './cart/cart.component';
 
 
 @NgModule({
@@ -58,7 +59,8 @@ import { StoreDetailComponent } from './store-detail/store-detail.component';
     StoreComponent,
     StoreDetailComponent,
     OrdersComponent,
-    DeleteAccountComponent
+    DeleteAccountComponent,
+    CartComponent
   ],
   imports: [
     BrowserModule,

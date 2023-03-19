@@ -11,6 +11,7 @@ import { UserService } from '../services/user.service';
 })
 export class MenuComponent {
   isAdmin?: boolean;
+  showSidebar!: boolean;
 
   constructor(
     private router: Router,
@@ -20,6 +21,11 @@ export class MenuComponent {
       (user) => {
         this.isAdmin = user.admin;
       });
+      this.showSidebar = false;
+  }
+
+  toggleCart(): void {
+    this.showSidebar = !this.showSidebar;
   }
 
   goHome(): void {
