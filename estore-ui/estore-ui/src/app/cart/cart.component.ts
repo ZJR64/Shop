@@ -7,6 +7,9 @@ import { ActivatedRoute } from '@angular/router';
 import { Location } from '@angular/common';
 import { UserService } from '../services/user.service';
 import { ProductService } from '../services/product.service';
+import { IngredientService } from '../services/ingredients.service';
+import { Ingredient } from '../ingredient';
+import { Product } from '../product';
 
 
 @Component({
@@ -15,12 +18,13 @@ import { ProductService } from '../services/product.service';
   styleUrls: ['./cart.component.css']
 })
 export class CartComponent {
-  @Input() user?: User;
-  products!: Map<String, number[]>;
+  user!: User;
+  products!: Map<string, number[]>;
 
   constructor(
     private route: ActivatedRoute,
     private userService: UserService,
+    private ingredientService: IngredientService,
     private productService: ProductService,
     private location: Location
   ) {
@@ -30,7 +34,7 @@ export class CartComponent {
 
   ngOnInit() {
     console.log("opened cart")
-    this.products = new Map<String, number[]>();
+    this.products = new Map<string, number[]>();
   }
 
   getUser(): void {
@@ -44,13 +48,43 @@ export class CartComponent {
     });
   }
 
-  delete(key: String, index: number): void {
+  returnIngredients(productName: string, size: number): void {
+    this.productService.getProducts().subscribe((products: Product[]) => {
+      products.forEach((product: Product) => {
+        if (product.name == productName) {
+          const keysArray = Object.keys(product.ingredients);
+          const valuesArray = Object.values(product.ingredients);
+          var i = -1;
+          keysArray.forEach((name: String) => {
+            i++;
+            this.ingredientService.getIngredients().subscribe((ingredients: Ingredient[]) => {
+              ingredients.forEach((ingredient: Ingredient) => {
+                if (name == ingredient.name) {
+                  ingredient.volume += size * valuesArray[i];
+                  this.ingredientService.updateIngredient(ingredient).subscribe();
+                }
+              })
+            });
+          });
+        }
+      })
+    });
+
+  }
+
+  delete(key: string, index: number): void {
     if (this.user) {
       var values: number[] = this.products.get(key)!;
+
+      // add ingredients back to storage
+      this.returnIngredients(key, values[index]);
+
+      // update cart
       values.splice(index, 2);
       this.products.set(key, values);
-      this.user.cart = this.products;
-      //this.userService.updateUser(this.user).subscribe();
+      this.user.cart = Object.fromEntries(this.products.entries());
+      // this.userService.updateUser(this.user).subscribe();
+
     }
   }
 }

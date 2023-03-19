@@ -6,7 +6,9 @@ export interface User {
   address: string;
   admin: boolean;
   payInfo: string[];
-  cart: Map<String, number[]>
+  cart: {
+    [key: string]: number[];
+  };
   [key: string]: any;
 }
 

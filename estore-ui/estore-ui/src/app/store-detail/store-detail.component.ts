@@ -6,6 +6,7 @@ import { IngredientService } from '../services/ingredients.service';
 
 import { Product } from '../product';
 import { ProductService } from '../services/product.service';
+import { UserService } from '../services/user.service';
 
 @Component({
   selector: 'app-store-detail',
@@ -19,10 +20,10 @@ export class StoreDetailComponent {
   ingredients!: Ingredient[];
 
   constructor(
-    private router: Router,
     private route: ActivatedRoute,
     private productService: ProductService,
     private ingredientService: IngredientService,
+    private userService: UserService,
     ) {
     const id = +this.route.snapshot.paramMap.get('id')!;
 
@@ -109,7 +110,29 @@ export class StoreDetailComponent {
   addToCart(): void {
     if (this.canMakeProduct(this.size)) {
       this.removeIngredients();
-      //TODO: Add the product to the cart
+      
+      // Add the product to the cart
+      var products: Map<String, number[]>;
+      this.userService.getUserFromEmail(localStorage.getItem('currentUser')!).subscribe(user => {
+        const keysArray = Object.keys(user.cart);
+        const valuesArray = Object.values(user.cart);
+        var added: boolean = false;
+        for (let i = 0; i < keysArray.length; i++) {
+          if (keysArray[i] == this.product.name) {
+            valuesArray[i].push(this.size);
+            valuesArray[i].push(this.price);
+            added = true;
+          }
+          products.set(keysArray[i], valuesArray[i]);
+        }
+
+        if (!added) {
+          products.set(this.product.name, [this.size, this.price])
+        }
+
+        user.cart = Object.fromEntries(products.entries());
+        this.userService.updateUser(user).subscribe();
+      });
     } else {
       alert("Not enough ingredients to make this product!");
     }
