@@ -80,15 +80,17 @@ export class StoreDetailComponent {
     const keysArray = Object.keys(this.product.ingredients);
     const valuesArray = Object.values(this.product.ingredients);
     let canMake = true;
-    let i = -1;
-    keysArray.forEach((name: String) => {
-      i++;
-      this.ingredients.forEach((ingredient: Ingredient) => {
-        if (name == ingredient.name && ingredient.volume < size * valuesArray[i]) {
-          canMake = false;
-        }
-      })
-    });
+    if (this.ingredients && this.product) {
+      let i = -1;
+      keysArray!.forEach((name: String) => {
+        i++;
+        this.ingredients.forEach((ingredient: Ingredient) => {
+          if (name == ingredient.name && ingredient.volume < size * valuesArray[i]) {
+            canMake = false;
+          }
+        })
+      });
+    }
     return canMake;
   }
 
@@ -110,7 +112,7 @@ export class StoreDetailComponent {
   addToCart(): void {
     if (this.canMakeProduct(this.size)) {
       this.removeIngredients();
-      
+
       // Add the product to the cart
       var products: Map<String, number[]>;
       this.userService.getUserFromEmail(localStorage.getItem('currentUser')!).subscribe(user => {
