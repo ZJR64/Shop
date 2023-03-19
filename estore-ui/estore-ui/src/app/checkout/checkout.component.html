@@ -3,6 +3,17 @@
         <app-cart></app-cart>
     </div>
     <div class="checkout-right">
+        <div>
+            <label>Being shipped to: {{user.address}}</label>
+        </div>
+        <br>
+        <label>Payment:</label>
+        <div *ngFor="let pay of user.payInfo; let i = index;">
+            <div class="pay-info">
+                <input type="radio" [(ngModel)]="payment" name="type" value="{{pay}}" required>{{pay}}
+            </div>
+        </div>
+        <br>
         <h2>Total: ${{price}}</h2>
         <br>
         <button type="button" class="order-button" (click)="order();" [disabled]="!isOrder()">Order</button>

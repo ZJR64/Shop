@@ -15,6 +15,7 @@ import { OrderService } from '../services/order.service';
 export class CheckoutComponent {
   user!: User;
   price!: number;
+  payment?: string;
 
   constructor(
     private userService: UserService,
@@ -68,6 +69,15 @@ export class CheckoutComponent {
   }
 
   order(): void {
+    //check that payment and address are not null
+    if(!this.payment) {
+      alert("You have not selected a payment method");
+      return;
+    }
+    if(!this.user.address) {
+      alert("Please go to user settings and add your address");
+      return;
+    }
     // Create Ingredient
     this.userService.getUserFromEmail(localStorage.getItem('currentUser')!).subscribe((user) => {
       var products: Map<string, number[]> = new Map<string, number[]>();
@@ -93,7 +103,7 @@ export class CheckoutComponent {
         id: 0,
         email: user.email,
         address: user.address,
-        payment: '1234-5678-9012-3456',
+        payment: this.payment!,
         price: this.price,
         products: newProducts!,
         fulfilled: false
