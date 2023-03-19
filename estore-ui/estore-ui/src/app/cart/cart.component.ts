@@ -67,22 +67,6 @@ export class CartComponent {
       })
     });
   }
-
-  calcTotal(): number {
-    var price: number = 0;
-    this.products.forEach((details: number[]) => {
-      var index: number = -1;
-      details.forEach((value: number) => {
-        index++;
-        if (index%2 == 1) {
-          price += value;
-        }
-      });
-    });
-
-    return price;
-  }
-
   delete(key: string, index: number): void {
     if (this.user) {
       var values: number[] = this.products.get(key)!;

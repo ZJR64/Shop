@@ -12,6 +12,7 @@ import { UserService } from '../services/user.service';
 export class MenuComponent {
   isAdmin?: boolean;
   showSidebar!: boolean;
+  price!: number;
 
   constructor(
     private router: Router,
@@ -35,7 +36,33 @@ export class MenuComponent {
     }
   }
 
+  calcTotal(): void {
+    this.userService.getUserFromEmail(localStorage.getItem('currentUser')!).subscribe((user) => {
+      var price: number = 0;
+      var products: Map<string, number[]> = new Map<string, number[]>();
+      const keysArray = Object.keys(user.cart);
+      const valuesArray = Object.values(user.cart);
+      for (let i = 0; i < keysArray.length; i++) {
+        products.set(keysArray[i], valuesArray[i]);
+      }
+
+      products.forEach((details: number[]) => {
+        var index: number = -1;
+        details.forEach((value: number) => {
+          index++;
+          if (index%2 == 1) {
+            price += value;
+          }
+        });
+      });
+
+      this.price = price;
+    });
+  }
+
+
   toggleCart(): void {
+    this.calcTotal();
     this.showSidebar = !this.showSidebar;
   }
 
@@ -53,5 +80,9 @@ export class MenuComponent {
 
   goStore(): void {
     this.router.navigateByUrl('/store');
+  }
+
+  goCheckout(): void {
+    this.router.navigateByUrl('/checkout');
   }
 }

@@ -28,6 +28,11 @@
         <div class="sidebar cart-sidebar" *ngIf="showSidebar">
             <button class="close-button" (click)="toggleCart()">Close</button>
             <app-cart></app-cart>
+            <!-- (click) send to checkout -->
+            <h2>Total: ${{price}}</h2>
+            <button type="button" class="add-button" (click)="goCheckout();">
+                Checkout
+            </button>
         </div>
     </div>
 </nav>

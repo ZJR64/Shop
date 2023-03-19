@@ -37,7 +37,6 @@ const routes: Routes = [
       { path: 'dashboard', component: DashboardComponent },
       { path: 'store', component: StoreComponent },
       { path: 'store/:id', component: StoreDetailComponent },
-      { path: 'checkout', component: CheckoutComponent }
     ]},
     
     { path: 'admin', component: AdminMenuComponent, canActivate: [AdminGuardService], children: [
@@ -51,6 +50,7 @@ const routes: Routes = [
       { path: 'products/:id/ingredients', component: ProductIngredientsComponent },
     ]},
 
+    { path: 'checkout', component: CheckoutComponent },
     { path: 'settings', component: UserSettingsComponent },
     { path: 'logout', component: LogoutComponent },
     { path: 'delete', component: DeleteAccountComponent }
