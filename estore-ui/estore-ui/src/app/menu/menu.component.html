@@ -20,7 +20,7 @@
             Manage Store
         </button>
     </div>
-    <div class="menu-right">
+    <div *ngif="!isAdmin" class="menu-right">
         <!-- (click) show cart -->
         <button type="button" class="add-button cart-button" (click)="toggleCart();">
             Cart
