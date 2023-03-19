@@ -1,13 +1,10 @@
 import { User } from '../user';
 
-import { Component, Input } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
-import { Location } from '@angular/common';
+import { Component } from '@angular/core';
+import { Router } from '@angular/router';
 import { UserService } from '../services/user.service';
-import { ProductService } from '../services/product.service';
-import { IngredientService } from '../services/ingredients.service';
-import { Ingredient } from '../ingredient';
-import { Product } from '../product';
+import { Order } from '../order';
+import { OrderService } from '../services/order.service';
 
 
 @Component({
@@ -17,93 +14,76 @@ import { Product } from '../product';
 })
 export class CheckoutComponent {
   user!: User;
-  products!: Map<string, number[]>;
+  price!: number;
 
   constructor(
     private userService: UserService,
-    private ingredientService: IngredientService,
-    private productService: ProductService,
+    private router: Router,
+    private orderService: OrderService,
   ) {
     this.getUser();
-
+    this.calcTotal();
   }
 
   ngOnInit() {
-    console.log("opened cart")
-    this.products = new Map<string, number[]>();
+    console.log("opened cart");
   }
 
   getUser(): void {
     this.userService.getUserFromEmail(localStorage.getItem('currentUser')!).subscribe(user => {
       this.user = user
+    });
+  }
+
+  calcTotal(): void {
+    this.userService.getUserFromEmail(localStorage.getItem('currentUser')!).subscribe((user) => {
+      var price: number = 0;
+      var products: Map<string, number[]> = new Map<string, number[]>();
       const keysArray = Object.keys(user.cart);
       const valuesArray = Object.values(user.cart);
       for (let i = 0; i < keysArray.length; i++) {
-        this.products.set(keysArray[i], valuesArray[i]);
+        products.set(keysArray[i], valuesArray[i]);
       }
-    });
-  }
 
-  returnIngredients(productName: string, size: number): void {
-    this.productService.getProducts().subscribe((products: Product[]) => {
-      products.forEach((product: Product) => {
-        if (product.name == productName) {
-          const keysArray = Object.keys(product.ingredients);
-          const valuesArray = Object.values(product.ingredients);
-          var i = -1;
-          keysArray.forEach((name: String) => {
-            i++;
-            this.ingredientService.getIngredients().subscribe((ingredients: Ingredient[]) => {
-              ingredients.forEach((ingredient: Ingredient) => {
-                if (name == ingredient.name) {
-                  ingredient.volume += size * valuesArray[i];
-                  this.ingredientService.updateIngredient(ingredient).subscribe();
-                }
-              })
-            });
-          });
-        }
-      })
-    });
-  }
-
-  calcTotal(): number {
-    var price: number = 0;
-    this.products.forEach((details: number[]) => {
-      var index: number = -1;
-      details.forEach((value: number) => {
-        index++;
-        if (index%2 == 1) {
-          price += value;
-        }
+      products.forEach((details: number[]) => {
+        var index: number = -1;
+        details.forEach((value: number) => {
+          index++;
+          if (index%2 == 1) {
+            price += value;
+          }
+        });
       });
+
+      this.price = price;
     });
-
-    return price;
   }
 
-  delete(key: string, index: number): void {
-    if (this.user) {
-      var values: number[] = this.products.get(key)!;
+  order(): void {
+    //TODO create a new order
+    // Create Test Ingredient
+    const newProducts = {
+      "Pint o Pinto": [8.0, 12.0],
+      "Royal Blend": [32.0]
+    };
+    const newOrder: Order = {
+      id: 0,
+      email: 'test@attempt.com',
+      address: '123 Sesame Street',
+      payment: '1234-5678-9012-3456',
+      price: 50.67,
+      products: newProducts,
+      fulfilled: false
+    };
 
-      // add ingredients back to storage
-      this.returnIngredients(key, values[index]);
-
-      // update cart
-      values.splice(index, 2);
-      if (values.length != 0) {
-        this.products.set(key, values);
-      }
-      else {
-        this.products.delete(key);
-      }
-      this.user.cart = Object.fromEntries(this.products.entries());
-      this.userService.updateUser(this.user).subscribe();
-
-    }
-  }
-
-  checkout(): void {
-    //TODO
+    // to storage 
+    this.orderService.addOrder(newOrder)
+    .subscribe(order => {
+      console.log("test order made and stored")
+    });
+    // clear cart
+    this.user.cart = Object.fromEntries(new Map<string, number[]>());
+    this.userService.updateUser(this.user).subscribe();
+    this.router.navigateByUrl('/home');
   }
 }

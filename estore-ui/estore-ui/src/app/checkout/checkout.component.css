@@ -1,9 +1,31 @@
-.delete-button {
-    display: inline-block;
-    margin-left: 10px;
-    padding: 5px;
-    background-color: #ccc;
-    border: none;
-    cursor: pointer;
-  }
-  
+.checkout {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.checkout-left {
+  width: 50%;
+  padding: 1rem;
+  box-sizing: border-box;
+  overflow-y: auto; /* Add a scrollbar to the cart section if needed */
+}
+
+.checkout-right {
+  width: 50%;
+  padding: 1rem;
+  box-sizing: border-box;
+}
+
+/* Style the order button */
+.order-button {
+  background-color: #4CAF50; /* Green background */
+  border: none;
+  color: white; /* White text */
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 2px;
+  cursor: pointer;
+}
