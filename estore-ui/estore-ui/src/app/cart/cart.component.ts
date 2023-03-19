@@ -67,6 +67,7 @@ export class CartComponent {
       })
     });
   }
+  
   delete(key: string, index: number): void {
     if (this.user) {
       var values: number[] = this.products.get(key)!;

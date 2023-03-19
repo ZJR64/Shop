@@ -36,6 +36,7 @@ export class CheckoutComponent {
   }
 
   calcTotal(): void {
+
     this.userService.getUserFromEmail(localStorage.getItem('currentUser')!).subscribe((user) => {
       var price: number = 0;
       var products: Map<string, number[]> = new Map<string, number[]>();
@@ -59,31 +60,54 @@ export class CheckoutComponent {
     });
   }
 
-  order(): void {
-    //TODO create a new order
-    // Create Test Ingredient
-    const newProducts = {
-      "Pint o Pinto": [8.0, 12.0],
-      "Royal Blend": [32.0]
-    };
-    const newOrder: Order = {
-      id: 0,
-      email: 'test@attempt.com',
-      address: '123 Sesame Street',
-      payment: '1234-5678-9012-3456',
-      price: 50.67,
-      products: newProducts,
-      fulfilled: false
-    };
+  isOrder(): boolean {
+    if (this.price > 0) {
+      return true;
+    }
+    return false;
+  }
 
-    // to storage 
-    this.orderService.addOrder(newOrder)
-    .subscribe(order => {
-      console.log("test order made and stored")
+  order(): void {
+    // Create Ingredient
+    this.userService.getUserFromEmail(localStorage.getItem('currentUser')!).subscribe((user) => {
+      var products: Map<string, number[]> = new Map<string, number[]>();
+      const keysArray = Object.keys(user.cart);
+      const valuesArray = Object.values(user.cart);
+      for (let i = 0; i < keysArray.length; i++) {
+        products.set(keysArray[i], valuesArray[i]);
+      }
+
+      var newProducts: {
+        [key: string]: number[];
+      }={};
+
+      products.forEach((details: number[], key: string) => {
+        const volumes: number[] = [];
+        for (let i = 0; i < details.length; i += 2) {
+          volumes.push(details[i]);
+        }
+        newProducts[key] = volumes;
+      });
+
+      const newOrder: Order = {
+        id: 0,
+        email: user.email,
+        address: user.address,
+        payment: '1234-5678-9012-3456',
+        price: this.price,
+        products: newProducts!,
+        fulfilled: false
+      }
+      // to storage 
+      this.orderService.addOrder(newOrder)
+      .subscribe(order => {
+        console.log("new order made and stored")
+      });
+
+      // clear cart
+      this.user.cart = Object.fromEntries(new Map<string, number[]>());
+      this.userService.updateUser(this.user).subscribe();
+      this.router.navigateByUrl('/home');
     });
-    // clear cart
-    this.user.cart = Object.fromEntries(new Map<string, number[]>());
-    this.userService.updateUser(this.user).subscribe();
-    this.router.navigateByUrl('/home');
   }
 }

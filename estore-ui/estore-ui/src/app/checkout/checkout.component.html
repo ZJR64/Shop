@@ -5,6 +5,6 @@
     <div class="checkout-right">
         <h2>Total: ${{price}}</h2>
         <br>
-        <button type="button" class="order-button" (click)="order();">Order</button>
+        <button type="button" class="order-button" (click)="order();" [disabled]="!isOrder()">Order</button>
     </div>
 </div>
