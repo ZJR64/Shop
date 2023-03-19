@@ -32,3 +32,13 @@
   .sidebar.show {
     left: 0;
   }
+
+  .close-button {
+    display: inline-block;
+    margin-left: 10px;
+    padding: 0px;
+    background-color: #ccc;
+    border: none;
+    cursor: pointer;
+  }
+  

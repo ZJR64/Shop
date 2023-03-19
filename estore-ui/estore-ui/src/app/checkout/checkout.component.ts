@@ -20,11 +20,9 @@ export class CheckoutComponent {
   products!: Map<string, number[]>;
 
   constructor(
-    private route: ActivatedRoute,
     private userService: UserService,
     private ingredientService: IngredientService,
     private productService: ProductService,
-    private location: Location
   ) {
     this.getUser();
 

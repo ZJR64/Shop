@@ -26,12 +26,12 @@
         </button>
     </div>
     <div class="menu-right">
-        <!-- (click) wshow cart -->
+        <!-- (click) show cart -->
         <button type="button" class="add-button" (click)="toggleCart();">
             Cart
         </button>
         <div class="sidebar" *ngIf="showSidebar">
-            <button class="close-button" (click)="toggleCart()">X</button>
+            <button class="close-button" (click)="toggleCart()">Close</button>
             <app-cart></app-cart>
         </div>
     </div>
