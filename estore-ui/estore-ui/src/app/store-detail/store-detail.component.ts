@@ -114,7 +114,7 @@ export class StoreDetailComponent {
       this.removeIngredients();
 
       // Add the product to the cart
-      var products: Map<String, number[]>;
+      var products: Map<String, number[]> = new Map<String, number[]>();
       this.userService.getUserFromEmail(localStorage.getItem('currentUser')!).subscribe(user => {
         const keysArray = Object.keys(user.cart);
         const valuesArray = Object.values(user.cart);
