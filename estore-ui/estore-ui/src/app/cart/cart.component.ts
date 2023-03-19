@@ -1,6 +1,4 @@
 import { User } from '../user';
-import { ModalModule } from 'ngx-bootstrap/modal';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { Component, Input } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
