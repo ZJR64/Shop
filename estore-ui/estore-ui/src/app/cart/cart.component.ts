@@ -1,6 +1,4 @@
 import { User } from '../user';
-import { ModalModule } from 'ngx-bootstrap/modal';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { Component, Input } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
@@ -69,7 +67,21 @@ export class CartComponent {
         }
       })
     });
+  }
 
+  calcTotal(): number {
+    var price: number = 0;
+    this.products.forEach((details: number[]) => {
+      var index: number = -1;
+      details.forEach((value: number) => {
+        index++;
+        if (index%2 == 1) {
+          price += value;
+        }
+      });
+    });
+
+    return price;
   }
 
   delete(key: string, index: number): void {
