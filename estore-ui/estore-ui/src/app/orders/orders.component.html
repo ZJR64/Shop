@@ -17,7 +17,7 @@
         <td>{{order.email}}</td>
         <td>{{order.address}}</td>
         <td>{{order.payment}}</td>
-        <td>{{order.price}}</td>
+        <td>${{order.price}}</td>
         <td>
             <div *ngFor="let product of order.products | keyvalue">
                 Product: {{product.key}}, Size(s): {{product.value}}
