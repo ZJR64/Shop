@@ -1,0 +1,16 @@
+.checkout {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.checkout-left {
+  width: 50%;
+  padding: 1rem;
+  box-sizing: border-box;
+}
+
+.checkout-right {
+  width: 50%;
+  padding: 1rem;
+  box-sizing: border-box;
+}

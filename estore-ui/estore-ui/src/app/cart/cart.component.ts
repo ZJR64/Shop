@@ -1,7 +1,7 @@
 import { User } from '../user';
 
 import { Component, Input } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Location } from '@angular/common';
 import { UserService } from '../services/user.service';
 import { ProductService } from '../services/product.service';
@@ -20,11 +20,10 @@ export class CartComponent {
   products!: Map<string, number[]>;
 
   constructor(
-    private route: ActivatedRoute,
     private userService: UserService,
     private ingredientService: IngredientService,
     private productService: ProductService,
-    private location: Location
+    private router: Router,
   ) {
     this.getUser();
 
@@ -67,9 +66,8 @@ export class CartComponent {
         }
       })
     });
-
   }
-
+  
   delete(key: string, index: number): void {
     if (this.user) {
       var values: number[] = this.products.get(key)!;
@@ -89,5 +87,9 @@ export class CartComponent {
       this.userService.updateUser(this.user).subscribe();
 
     }
+  }
+
+  checkout(): void {
+    this.router.navigateByUrl('/checkout');
   }
 }

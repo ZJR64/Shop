@@ -1,31 +1,39 @@
-<nav>
-    <!-- (click) passes input value to check if correct login -->
-    <button type="button" class="add-button" (click)="goHome();">
-        Home
-    </button>
+<nav class="menu">
+    <div class="menu-left">
+        <!-- (click) passes input value to check if correct login -->
+        <button type="button" class="add-button" (click)="goHome();">
+            Home
+        </button>
 
-    <!-- (click) send to dashboard -->
-    <button type="button" class="add-button" (click)="goDashboard();">
-        Dashboard
-    </button>
+        <!-- (click) send to dashboard -->
+        <button type="button" class="add-button" (click)="goDashboard();">
+            Dashboard
+        </button>
 
-    <!-- (click) send to store -->
-    <button type="button" class="add-button" (click)="goStore();">
-    Store
-    </button>
+        <!-- (click) send to store -->
+        <button type="button" class="add-button" (click)="goStore();">
+        Store
+        </button>
 
-
-    <!-- (click) send to cart -->
-    <button type="button" class="add-button" (click)="goCart();">
-        Shopping Cart
-    </button>
-
-    <!-- (click) send to admin home -->
-    <button *ngIf="isAdmin" type="button" class="add-button" (click)="goAdmin();">
-        Manage Store
-    </button>
-
-
+        <!-- (click) send to admin home -->
+        <button *ngIf="isAdmin" type="button" class="add-button" (click)="goAdmin();">
+            Manage Store
+        </button>
+    </div>
+    <div *ngif="!isAdmin" class="menu-right">
+        <!-- (click) show cart -->
+        <button type="button" class="add-button cart-button" (click)="toggleCart();">
+            Cart
+        </button>
+        <div class="sidebar cart-sidebar" *ngIf="showSidebar">
+            <button class="close-button" (click)="toggleCart()">Close</button>
+            <app-cart></app-cart>
+            <!-- (click) send to checkout -->
+            <h2>Total: ${{price}}</h2>
+            <button type="button" class="add-button" (click)="goCheckout();">
+                Checkout
+            </button>
+        </div>
+    </div>
 </nav>
-<br>
 <router-outlet></router-outlet>
