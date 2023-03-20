@@ -23,7 +23,10 @@ export class ProductsComponent {
 
   add(name: string): void {
     name = name.trim();
-    if (!name) { return; }
+    var i: string[];
+    i = [];
+    this.products.forEach(element => i.push(element.name))
+    if (!name || i.includes(name)) { return; }
     this.productService.addProduct({ name } as Product)
       .subscribe(product => {
         this.products.push(product);
