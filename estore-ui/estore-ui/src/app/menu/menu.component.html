@@ -14,17 +14,18 @@
         <button type="button" class="add-button" (click)="goStore();">
         Store
         </button>
-
+    </div>
+    <div class="menu-right">
         <!-- (click) send to admin home -->
         <button *ngIf="isAdmin" type="button" class="add-button" (click)="goAdmin();">
             Manage Store
         </button>
-    </div>
-    <div *ngif="!isAdmin" class="menu-right">
+
         <!-- (click) show cart -->
-        <button type="button" class="add-button cart-button" (click)="toggleCart();">
+        <button *ngIf="!isAdmin" type="button" class="add-button cart-button" (click)="toggleCart();">
             Cart
         </button>
+
         <div class="sidebar cart-sidebar" *ngIf="showSidebar">
             <button class="close-button" (click)="toggleCart()">Close</button>
             <app-cart></app-cart>
