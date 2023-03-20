@@ -1,9 +1,9 @@
-import { User } from '../user';
+import { User } from '../object-interfaces/user';
 
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { UserService } from '../services/user.service';
-import { Order } from '../order';
+import { Order } from '../object-interfaces/order';
 import { OrderService } from '../services/order.service';
 
 

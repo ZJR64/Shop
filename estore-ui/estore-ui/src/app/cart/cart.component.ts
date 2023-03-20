@@ -1,4 +1,4 @@
-import { User } from '../user';
+import { User } from '../object-interfaces/user';
 
 import { Component, Input } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
@@ -6,8 +6,8 @@ import { Location } from '@angular/common';
 import { UserService } from '../services/user.service';
 import { ProductService } from '../services/product.service';
 import { IngredientService } from '../services/ingredients.service';
-import { Ingredient } from '../ingredient';
-import { Product } from '../product';
+import { Ingredient } from '../object-interfaces/ingredient';
+import { Product } from '../object-interfaces/product';
 
 
 @Component({

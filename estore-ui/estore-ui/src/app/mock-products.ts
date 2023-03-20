@@ -1,4 +1,4 @@
-import { Product } from './product';
+import { Product } from './object-interfaces/product';
 
 export const PRODUCTS: Product[] = [
     { id: 1, name: 'cRaZy BlEnD', type: 'coffee', modPrice: 0.44, ingredients: new Map<string, number>([["pinto", 0.40], ["black", 0.60]]) },

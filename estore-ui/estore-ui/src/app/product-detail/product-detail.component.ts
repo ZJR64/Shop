@@ -1,12 +1,12 @@
 import { Component, Input } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Location } from '@angular/common';
-import { User } from '../user';
+import { User } from '../object-interfaces/user';
 import { UserService } from '../services/user.service';
 
 
 import { ProductService } from '../services/product.service';
-import { Product } from '../product';
+import { Product } from '../object-interfaces/product';
 
 @Component({
   selector: 'app-product-detail',

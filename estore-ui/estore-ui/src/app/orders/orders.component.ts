@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
-import { Order } from '../order';
+import { Order } from '../object-interfaces/order';
 import { OrderService } from '../services/order.service';
 
 

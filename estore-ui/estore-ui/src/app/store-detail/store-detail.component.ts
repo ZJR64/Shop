@@ -1,10 +1,10 @@
 import { Component } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 
-import { Ingredient } from '../ingredient';
+import { Ingredient } from '../object-interfaces/ingredient';
 import { IngredientService } from '../services/ingredients.service';
 
-import { Product } from '../product';
+import { Product } from '../object-interfaces/product';
 import { ProductService } from '../services/product.service';
 import { UserService } from '../services/user.service';
 

@@ -4,7 +4,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable, of } from 'rxjs';
 import { catchError, map, tap } from 'rxjs/operators';
 
-import { User } from '../user';
+import { User } from '../object-interfaces/user';
 import { MessageService } from './message.service';
 
 

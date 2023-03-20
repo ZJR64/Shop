@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { Ingredient } from '../ingredient';
+import { Ingredient } from '../object-interfaces/ingredient';
 import { IngredientService } from '../services/ingredients.service'
 
 @Component({

@@ -4,7 +4,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable, of } from 'rxjs';
 import { catchError, map, tap } from 'rxjs/operators';
 
-import { Ingredient } from '../ingredient';
+import { Ingredient } from '../object-interfaces/ingredient';
 import { MessageService } from './message.service';
 
 

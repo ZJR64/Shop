@@ -1,5 +1,5 @@
 import { Component, Input } from '@angular/core';
-import { Product } from '../product';
+import { Product } from '../object-interfaces/product';
 import { ActivatedRoute } from '@angular/router';
 import { Location } from '@angular/common';
 import { MessageService } from '../message.service';
