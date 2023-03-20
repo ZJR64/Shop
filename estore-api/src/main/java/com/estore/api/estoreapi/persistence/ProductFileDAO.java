@@ -3,6 +3,7 @@ package com.estore.api.estoreapi.persistence;
 import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.List;
 import java.util.Map;
 import java.util.TreeMap;
 import java.util.logging.Logger;
@@ -177,7 +178,14 @@ public class ProductFileDAO implements ProductDAO {
     @Override
     public Product[] findProducts(String containsText) {
         synchronized (products) {
-            return getProductsArray(containsText);
+            String searchLowerCase = containsText.toLowerCase();
+            List<Product> matches = new ArrayList<>();
+            for (Product product : getProductsArray()) {
+                if (product.getName().toLowerCase().contains(searchLowerCase)) {
+                    matches.add(product);
+                }
+            }
+            return matches.toArray(new Product[0]);
         }
     }
 

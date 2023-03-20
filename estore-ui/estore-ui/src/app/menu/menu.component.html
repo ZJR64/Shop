@@ -9,14 +9,22 @@
         Dashboard
     </button>
 
+    <!-- (click) send to store -->
+    <button type="button" class="add-button" (click)="goStore();">
+    Store
+    </button>
+
+
+    <!-- (click) send to cart -->
+    <button type="button" class="add-button" (click)="goCart();">
+        Shopping Cart
+    </button>
+
     <!-- (click) send to admin home -->
     <button *ngIf="isAdmin" type="button" class="add-button" (click)="goAdmin();">
         Manage Store
     </button>
 
-    <button *nfIf="isAdmin == false" class="add-button" (click)="goCart();">
-        Shopping Cart
-    </button>
 
 </nav>
 <br>

@@ -1,0 +1,25 @@
+<div class="center">
+    <input type="text" [(ngModel)]="searchTerm" (input)="onSearch()" placeholder="Search by Name">
+  </div>
+  <table>
+    <thead>
+      <tr>
+        <th (click)="sort('name')">Name {{sortOrder == 'name' ? (sortReverse ? '↑' : '↓') : ''}}</th>
+        <th>Blend Type</th>
+        <th>Ingredients</th>
+        <th (click)="sort('price')">Price {{sortOrder == 'price' ? (sortReverse ? '↑' : '↓') : ''}}</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let product of products" (click)="goToProduct(product)">
+        <td>{{ product.name }}</td>
+        <td>{{product.type}}</td>
+        <td>
+          <div *ngFor="let ingredient of product.ingredients | keyvalue">
+            {{ingredient.key}}
+          </div>
+        </td>
+        <td>${{calcPrice(product)}}</td>
+      </tr>
+    </tbody>
+  </table>

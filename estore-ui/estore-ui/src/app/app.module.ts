@@ -27,6 +27,9 @@ import { AdminsComponent } from './admins/admins.component';
 import { UserSettingsComponent } from './user-settings/user-settings.component';
 import { OrdersComponent } from './orders/orders.component';
 import { DeleteAccountComponent } from './delete-account/delete-account.component';
+import { StoreComponent } from './store/store.component';
+import { StoreDetailComponent } from './store-detail/store-detail.component';
+
 
 @NgModule({
   declarations: [
@@ -51,6 +54,9 @@ import { DeleteAccountComponent } from './delete-account/delete-account.componen
     ProductIngredientsComponent,
     CartComponent,
     UserSettingsComponent,
+    DeleteAccountComponent,
+    StoreComponent,
+    StoreDetailComponent,
     OrdersComponent,
     DeleteAccountComponent
   ],

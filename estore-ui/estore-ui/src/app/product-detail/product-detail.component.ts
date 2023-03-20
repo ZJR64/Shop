@@ -5,7 +5,7 @@ import { User } from '../user';
 import { UserService } from '../services/user.service';
 
 
-import { ProductService } from '../product.service';
+import { ProductService } from '../services/product.service';
 import { Product } from '../product';
 
 @Component({
@@ -51,23 +51,6 @@ export class ProductDetailComponent {
     }
     if (this.user) {
       this.userService.updateUser(this.user).subscribe(() => this.goBack());
-    }
-  }
-
-  addToCart(key: String): void {
-    if (this.user && this.product) {
-      const i = new Map<String, String[]>(Object.entries(this.user['cart']))
-      var num = 0;
-      if (i.has(key)) {
-        num = Number(i.get(key)?.at(2));
-      }
-      num++;
-      console.log(i);
-      i.set(key, [this.product.name, "large", "" + num]);
-      console.log(i);
-      const i2 = Object.fromEntries(i);
-      this.user['cart'] = i2;
-      this.save();
     }
   }
 }

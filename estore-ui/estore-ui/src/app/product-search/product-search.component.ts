@@ -7,7 +7,7 @@ import {
 } from 'rxjs/operators';
 
 import { Product } from '../product';
-import { ProductService } from '../product.service';
+import { ProductService } from '../services/product.service';
 
 @Component({
   selector: 'app-product-search',

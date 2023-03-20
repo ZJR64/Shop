@@ -34,6 +34,10 @@ export class MenuComponent {
     this.router.navigateByUrl('/dashboard');
   }
 
+  goStore(): void {
+    this.router.navigateByUrl('/store');
+  }
+  
   goCart(): void {
     this.router.navigateByUrl('/cart');
   }

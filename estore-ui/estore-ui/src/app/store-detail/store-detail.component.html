@@ -1,0 +1,24 @@
+<div *ngIf="product">
+    <h2> {{product.name}}</h2>
+    <br>
+    <div>
+      <label>Blend: {{product.type}}</label>
+    </div>
+    <div>
+      <label>Sizes:</label>
+      <button (click)="changeSize(10);" [disabled]="!canMakeProduct(10)">10</button>
+      <button (click)="changeSize(20);" [disabled]="!canMakeProduct(20)">20</button>
+      <button (click)="changeSize(30);" [disabled]="!canMakeProduct(30)">30</button>
+    </div>
+    <br>
+    <div>
+      <label>Price: ${{price}}</label>
+    </div>
+    <br>
+    Ingredient(s):
+    <div *ngFor="let ingredient of product.ingredients | keyvalue">
+        {{ingredient.value*100}}% {{ingredient.key}}
+    </div>
+    <br>
+    <button (click)="addToCart();">Add To Cart</button>
+  </div>

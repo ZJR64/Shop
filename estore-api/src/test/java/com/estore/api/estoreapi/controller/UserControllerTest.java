@@ -42,8 +42,8 @@ public class UserControllerTest {
         // Setup
         String[] test = new String[1];
         test[0] = "123456789";
-        String[] temp = new String[] { "testName", "small", "4" };
-        Map<Integer, String[]> cart = Map.of(3, temp);
+        double[] temp = new double[] {10.0, 27.0 };
+        Map<String, double[]> cart = Map.of("Test Blend", temp);
         User user = new User(99, "test@gmail.com", "Jim Bean", "12345", "123 Idiot Street", true, test, cart);
         // When the same id is passed in, our mock User DAO will return the User object
         when(mockUserDAO.getUser(user.getId())).thenReturn(user);
@@ -90,8 +90,8 @@ public class UserControllerTest {
         // Setup
         String[] test = new String[1];
         test[0] = "123456789";
-        String[] temp = new String[] { "testName", "small", "4" };
-        Map<Integer, String[]> cart = Map.of(3, temp);
+        double[] temp = new double[] {10.0, 27.0 };
+        Map<String, double[]> cart = Map.of("Test Blend", temp);
         User user = new User(99, "test@gmail.com", "Jim Bean", "12345", "123 Idiot Street", true, test, cart);
         // When the same id is passed in, our mock User DAO will return the User object
         when(mockUserDAO.getUser(user.getEmail())).thenReturn(user);
@@ -138,8 +138,8 @@ public class UserControllerTest {
         // Setup
         String[] test = new String[1];
         test[0] = "123456789";
-        String[] temp = new String[] { "testName", "small", "4" };
-        Map<Integer, String[]> cart = Map.of(3, temp);
+        double[] temp = new double[] {10.0, 27.0 };
+        Map<String, double[]> cart = Map.of("Test Blend", temp);
         User user = new User(99, "test@gmail.com", "Jim Bean", "12345", "123 Idiot Street", true, test, cart);
         // when createUser is called, return true simulating successful
         // creation and save
@@ -158,8 +158,8 @@ public class UserControllerTest {
         // Setup
         String[] test = new String[1];
         test[0] = "123456789";
-        String[] temp = new String[] { "testName", "small", "4" };
-        Map<Integer, String[]> cart = Map.of(3, temp);
+        double[] temp = new double[] {10.0, 27.0 };
+        Map<String, double[]> cart = Map.of("Test Blend", temp);
         User user = new User(99, "test@gmail.com", "Jim Bean", "12345", "123 Idiot Street", true, test, cart);
         // when createUser is called, return false simulating failed
         // creation and save
@@ -177,8 +177,8 @@ public class UserControllerTest {
         // Setup
         String[] test = new String[1];
         test[0] = "123456789";
-        String[] temp = new String[] { "testName", "small", "4" };
-        Map<Integer, String[]> cart = Map.of(3, temp);
+        double[] temp = new double[] {10.0, 27.0 };
+        Map<String, double[]> cart = Map.of("Test Blend", temp);
         User user = new User(99, "test@gmail.com", "Jim Bean", "12345", "123 Idiot Street", true, test, cart);
 
         // When createUser is called on the Mock User DAO, throw an IOException
@@ -197,8 +197,8 @@ public class UserControllerTest {
         String[] test = new String[2];
         test[0] = "123456789";
         test[1] = "987654321";
-        String[] temp = new String[] { "testName", "small", "4" };
-        Map<Integer, String[]> cart = Map.of(3, temp);
+        double[] temp = new double[] {10.0, 27.0 };
+        Map<String, double[]> cart = Map.of("Test Blend", temp);
         User user = new User(99, "dumbdumb@gmail.com", "Me", "AAAHHH", "567 send me to heaven", false, test, cart);
         // when updateUser is called, return true simulating successful
         // update and save
@@ -220,8 +220,8 @@ public class UserControllerTest {
         String[] test = new String[2];
         test[0] = "123456789";
         test[1] = "987654321";
-        String[] temp = new String[] { "testName", "small", "4" };
-        Map<Integer, String[]> cart = Map.of(3, temp);
+        double[] temp = new double[] {10.0, 27.0 };
+        Map<String, double[]> cart = Map.of("Test Blend", temp);
         User user = new User(99, "dumbdumb@gmail.com", "Me", "AAAHHH", "567 send me to heaven", false, test, cart);
         // when updateUser is called, return true simulating successful
         // update and save
@@ -240,8 +240,8 @@ public class UserControllerTest {
         String[] test = new String[2];
         test[0] = "123456789";
         test[1] = "987654321";
-        String[] temp = new String[] { "testName", "small", "4" };
-        Map<Integer, String[]> cart = Map.of(3, temp);
+        double[] temp = new double[] {10.0, 27.0 };
+        Map<String, double[]> cart = Map.of("Test Blend", temp);
         User user = new User(99, "dumbdumb@gmail.com", "Me", "AAAHHH", "567 send me to heaven", false, test, cart);
         // When updateUser is called on the Mock User DAO, throw an IOException
         doThrow(new IOException()).when(mockUserDAO).updateUser(user);
@@ -263,10 +263,10 @@ public class UserControllerTest {
         String[] test2 = new String[2];
         test2[0] = "9183487164";
         test2[1] = "0495761495";
-        String[] temp = new String[] { "testName", "small", "4" };
-        Map<Integer, String[]> cart = Map.of(3, temp);
-        String[] temp2 = new String[] { "testName2", "medium", "5" };
-        Map<Integer, String[]> cart2 = Map.of(3, temp2);
+        double[] temp = new double[] {10.0, 27.0 };
+        Map<String, double[]> cart = Map.of("Test Blend", temp);
+        double[] temp2 = new double[] {10.0, 27.0 };
+        Map<String, double[]> cart2 = Map.of("Test Blend", temp2);
         users[0] = new User(99, "dumbdumb@gmail.com", "Me", "AAAHHH", "567 send me to heaven", false, test1, cart);
         users[1] = new User(100, "ohgod@yahoo.com", "NoThanks", "crap", "oops road", true, test2, cart2);
         // When getUsers is called return the users created above
@@ -304,10 +304,10 @@ public class UserControllerTest {
         String[] test2 = new String[2];
         test2[0] = "9183487164";
         test2[1] = "0495761495";
-        String[] temp = new String[] { "testName", "small", "4" };
-        Map<Integer, String[]> cart = Map.of(3, temp);
-        String[] temp2 = new String[] { "testName2", "medium", "5" };
-        Map<Integer, String[]> cart2 = Map.of(3, temp2);
+        double[] temp = new double[] {10.0, 27.0 };
+        Map<String, double[]> cart = Map.of("Test Blend", temp);
+        double[] temp2 = new double[] {10.0, 27.0 };
+        Map<String, double[]> cart2 = Map.of("Test Blend", temp2);
         users[0] = new User(99, "dumbdumb@gmail.com", "Melvin", "AAAHHH", "567 send me to heaven", false, test1, cart);
         users[1] = new User(100, "ohgod@yahoo.com", "Kelvin", "crap", "oops road", true, test2, cart2);
         // When findUsers is called with the search string, return the two
