@@ -46,7 +46,10 @@ export class RegisterComponent implements OnInit{
     let id = 0;
     let payInfo: String[] = [];
     let admin: boolean = false;
-    this.userService.addUser({id, email, name, password, admin, payInfo} as User)
+    var cart: {
+      [key: string]: number[];
+    }={};
+    this.userService.addUser({id, email, name, password, admin, payInfo, cart} as User)
       .subscribe(user => {
         this.users.push(user);
     });

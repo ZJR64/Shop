@@ -116,16 +116,18 @@ export class StoreDetailComponent {
       // Add the product to the cart
       var products: Map<String, number[]> = new Map<String, number[]>();
       this.userService.getUserFromEmail(localStorage.getItem('currentUser')!).subscribe(user => {
-        const keysArray = Object.keys(user.cart);
-        const valuesArray = Object.values(user.cart);
         var added: boolean = false;
-        for (let i = 0; i < keysArray.length; i++) {
-          if (keysArray[i] == this.product.name) {
-            valuesArray[i].push(this.size);
-            valuesArray[i].push(this.price);
-            added = true;
-          }
+        if (user.cart) {
+          const keysArray = Object.keys(user.cart);
+          const valuesArray = Object.values(user.cart);
+          for (let i = 0; i < keysArray.length; i++) {
+            if (keysArray[i] == this.product.name) {
+              valuesArray[i].push(this.size);
+              valuesArray[i].push(this.price);
+              added = true;
+            }
           products.set(keysArray[i], valuesArray[i]);
+          }
         }
 
         if (!added) {
