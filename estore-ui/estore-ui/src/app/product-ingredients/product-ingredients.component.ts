@@ -33,7 +33,7 @@ export class ProductIngredientsComponent {
   save(): void {
     if (this.product) {
       this.productService.updateProduct(this.product)
-        .subscribe();
+        .subscribe(() => this.goBack());
     }
   }
 
@@ -61,7 +61,10 @@ export class ProductIngredientsComponent {
   addIngredient(): void {
     const id = Number(this.route.snapshot.paramMap.get('id'));
     if (this.product) {
-      const i = new Map<String, number>(Object.entries(this.product['ingredients']))
+      var i = new Map<String, number>();
+      if (this.product['ingredients'] != null) {
+        i = new Map<String, number>(Object.entries(this.product['ingredients']))
+      }
       i.set((<HTMLInputElement>document.getElementById("iname")).value, parseFloat((<HTMLInputElement>document.getElementById("ivolume")).value));
       const i2 = Object.fromEntries(i);
       this.product['ingredients'] = i2;
