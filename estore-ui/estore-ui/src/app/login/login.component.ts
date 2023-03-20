@@ -39,7 +39,12 @@ export class LoginComponent implements OnInit{
       if (user) {
         if (user.password.trim() == password) {
           localStorage.setItem('currentUser', user.email);
-          this.router.navigateByUrl('/home')
+          if (user.admin) {
+            this.router.navigateByUrl('/admin')
+          }
+          else {
+            this.router.navigateByUrl('/home')
+          }
           return;
         }
         this.message = "Wrong Password";
