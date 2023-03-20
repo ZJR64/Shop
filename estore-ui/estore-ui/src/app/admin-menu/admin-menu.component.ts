@@ -12,10 +12,6 @@ export class AdminMenuComponent {
     private router: Router,
   ) { }
 
-  goHome(): void {
-    this.router.navigateByUrl('/home');
-  }
-
   goAdmin(): void {
     this.router.navigateByUrl('/admin');
   }

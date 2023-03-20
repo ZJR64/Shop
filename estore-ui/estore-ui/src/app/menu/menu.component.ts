@@ -70,10 +70,6 @@ export class MenuComponent {
     this.router.navigateByUrl('/home');
   }
 
-  goAdmin(): void {
-    this.router.navigateByUrl('/admin');
-  }
-
   goDashboard(): void {
     this.router.navigateByUrl('/dashboard');
   }

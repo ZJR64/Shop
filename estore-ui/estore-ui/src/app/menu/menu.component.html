@@ -16,11 +16,6 @@
         </button>
     </div>
     <div class="menu-right">
-        <!-- (click) send to admin home -->
-        <button *ngIf="isAdmin" type="button" class="add-button" (click)="goAdmin();">
-            Manage Store
-        </button>
-
         <!-- (click) show cart -->
         <button *ngIf="!isAdmin" type="button" class="add-button cart-button" (click)="toggleCart();">
             Cart
