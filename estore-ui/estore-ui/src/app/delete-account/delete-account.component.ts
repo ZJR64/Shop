@@ -27,6 +27,10 @@ export class DeleteAccountComponent {
   }
 
   delete(): void {
+    if (this.user.email == 'admin') {
+      alert("this account is not allowed to be deleted");
+      return;
+    }
     this.userService.deleteUser(this.user.id)
     .subscribe(() => {
         console.log(`Deleted user with id=${this.user.id}`);

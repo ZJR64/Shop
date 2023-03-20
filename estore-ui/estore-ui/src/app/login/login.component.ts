@@ -25,8 +25,14 @@ export class LoginComponent implements OnInit{
   verify(email: string, password: string): void {
     email = email.trim();
     password = password.trim();
-    if (!email) { return; }
-    if (!password) { return; }
+    if (!email) {
+      this.message = "Email Cannot Be Empty";
+      return;
+    }
+    if (!password) {
+      this.message = "Password Cannot Be Empty";
+      return;
+    }
 
     this.userService.getUserFromEmail(email).subscribe(
     (user) => {

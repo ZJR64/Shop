@@ -66,7 +66,15 @@ export class AdminsComponent {
   }
 
   changeAdmin(user: User): void {
+    // check if admin is owner
+    if ("admin" == user.email) {
+      alert("cannot remove this account from admins");
+      return;
+    }
+
+    // check if self
     if (localStorage.getItem('currentUser') == user.email) {
+      alert("cannot remove yourself from admins");
       return;
     }
 

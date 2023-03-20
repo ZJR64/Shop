@@ -11,8 +11,8 @@
     </thead>
     <tbody>
       <tr *ngFor="let user of users">
+        <td>{{user.name}}</td>
         <td>{{user.email}}</td>
-        <td>{{user.name }}</td>
         <td>
           <button (click)="changeAdmin(user)">
             {{ adminView ? 'Remove' : 'Add' }}
