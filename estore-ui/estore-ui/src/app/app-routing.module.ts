@@ -4,6 +4,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { AuthGuardService } from './services/auth-guard.service';
 import { SafeGuardService } from './services/safe-guard.service';
 import { AdminGuardService } from './services/admin-guard.service';
+import { UserGuardService } from './services/user-guard.service';
 
 import { LoginComponent } from './login/login.component';
 import { LogoutComponent } from './logout/logout.component';
@@ -31,9 +32,9 @@ import { StoreDetailComponent } from './store-detail/store-detail.component';
 
 const routes: Routes = [
   { path: '', component: UniversalMenuComponent, canActivate: [AuthGuardService], children: [
-    { path: '', component: MenuComponent, children: [
+    { path: '', component: MenuComponent, canActivate: [UserGuardService], children: [
       { path: '', redirectTo: 'home', pathMatch: 'full' },
-      { path: 'home', component: HomeComponent},
+      { path: 'home', component: HomeComponent },
       { path: 'dashboard', component: DashboardComponent },
       { path: 'store', component: StoreComponent },
       { path: 'store/:id', component: StoreDetailComponent },
@@ -50,7 +51,7 @@ const routes: Routes = [
       { path: 'products/:id/ingredients', component: ProductIngredientsComponent },
     ]},
 
-    { path: 'checkout', component: CheckoutComponent },
+    { path: 'checkout', component: CheckoutComponent, canActivate: [UserGuardService]},
     { path: 'settings', component: UserSettingsComponent },
     { path: 'logout', component: LogoutComponent },
     { path: 'delete', component: DeleteAccountComponent }

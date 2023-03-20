@@ -23,10 +23,10 @@ export class AdminGuardService {
         else {
           this.isAdmin = false;
         }
+        if (!this.isAdmin) {
+          this.router.navigate(['/home']);
+        }
       });
-      if (!this.isAdmin) {
-        this.router.navigate(['/home']);
-      }
       return this.isAdmin!;
   }
 
