@@ -134,6 +134,14 @@ The very top left of our webpage displays the text "Coffee/Tea E-store" and is p
 > section will follow the same instructions that are given for the View
 > Tier above._
 
+![Ingredient UML](Ingredient-UML-Diagram.png)
+
+![Product UML](Product-UML-Diagram.png)
+
+![Order UML](Orders-UML-Diagram.png)
+
+![User UML](User-UML-Diagram.png)
+
 > _At appropriate places as part of this narrative provide **one** or more updated and **properly labeled**
 > static models (UML class diagrams) with some details such as critical attributes and methods._
 > 
@@ -141,6 +149,18 @@ The very top left of our webpage displays the text "Coffee/Tea E-store" and is p
 
 ## OO Design Principles
 > _**[Sprint 2, 3 & 4]** Discuss at least **4 key OO Principles** in your current design. This should be taken from your work in "Adherence to Architecture and Design Principles" that you have completed in a previous Sprint. Be sure to include any diagrams (or clearly refer to ones elsewhere in your Tier sections above) to support your claims._
+
+Single Responsibility:
+  The Controller class does not have methods to change or retrieve the name, id, or type of a product.  Rather its only purpose is to add, remove, update, or delete products that already exist.  
+
+Pure Fabrication:
+  Pure Fabrication appears within the FileDAO classes.  The FileDAO extracts functionality that could have been contained within the model classes, but to maintain other OOP priniciples, functionality is split between the two.  
+
+Controller:
+  A Controller can be defined as the first object beyond the UI level that receives and controls a set of operations.  The Controller is the class that deals with the HTTP requests and is the first layer beyond the "UI": also known as the Terminal or Localhost page.  
+
+Open/Closed:
+  The ProductController class is open for extension without modifying the base functionality.  The ProductController class will be extened to other parts of the website but it will not be modified further.  
 
 > _**[Sprint 3 & 4]** OO Design Principles should span across **all tiers.**_
 
@@ -170,6 +190,14 @@ There are 13 stories that have passed their acceptance criteria tests.  This is 
 > achieved from unit testing of the code base. Discuss the team's
 > coverage targets, why you selected those values, and how well your
 > code coverage met your targets._
+
+![Controller Tier](Controller-Tier.png)
+
+![Model Tier](Model-Tier.png)
+
+![Persistence Tier](Persistence-Tier.png)
+
+These images depict the code coverage for the e-store.  The Controller, Model, and Persistence Tiers are covered at 100%, 99%, and 97% respectively.  This is well above the acceptable rate of 95% for the Model Tier and 90% for other tiers.  The code coverage results indicates that the code is being fully tested by the unit tests in place.  
 
 >_**[Sprint 2 & 4]** **Include images of your code coverage report.** If there are any anomalies, discuss
 > those._
