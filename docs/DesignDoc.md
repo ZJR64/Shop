@@ -74,6 +74,8 @@ This section describes the application domain.
 
 ![Domain Model](Domain-Model.png)
 
+The customer manages the cart which contains various products from the product list. The cart is then listed during checkout where the user has the option to designate whether it's a gift and whether they want to add anything extra to it. Once they've made a purchase, the product is shipped to the user's address. 
+
 > _**[Sprint 2 & 4]** Provide a high-level overview of the domain for this application. You
 > can discuss the more important domain entities and their relationship
 > to each other._
