@@ -24,7 +24,10 @@ This project will an e-store website to allow a small business owner to sell pro
 |------|------------|
 | SPA | Single Page |
 | HTML | Hypertext Markup Language |
-
+| MVP | Minimal Viable Product |
+| MVVM | Model-View-ViewModel |
+| CSS | Cascading Style Sheets | 
+| REST API | Representational State Transfer Application Programming Interface | 
 
 ## Requirements
 
@@ -32,7 +35,7 @@ Features of the application include browsing products, purchasing tea or coffee,
 
 ### Definition of MVP
 
-The Minimal Viable Product (MVP) includes minimal authentication, which includes customer and admin user accounts for logging in and out of the site.  As well as customer and e-store admin fuctionality. The required functionality involves searching for products, selecting the size of a product, modifying personal information, and addind or removing products from the cart, for customers.  The admin aspect of the functionality involves adding, removing, and editing product and ingredient data, and adding or removing other admins.  Admins will not have access to a shopping cart like a customer would.  
+The MVP includes minimal authentication, which includes customer and admin user accounts for logging in and out of the site.  As well as customer and e-store admin fuctionality. The required functionality involves searching for products, selecting the size of a product, modifying personal information, and addind or removing products from the cart, for customers.  The admin aspect of the functionality involves adding, removing, and editing product and ingredient data, and adding or removing other admins.  Admins will not have access to a shopping cart like a customer would.  
 
 ### MVP Features
 >  _**[Sprint 4]** Provide a list of top-level Epics and/or Stories of the MVP._
