@@ -30,6 +30,7 @@ This project will an e-store website to allow a small business owner to sell pro
 | REST API | Representational State Transfer Application Programming Interface | 
 | HW | Hardware |
 | OO | Object-Oriented |
+| OS | Operating System |
 
 ## Requirements
 
