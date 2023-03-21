@@ -1,0 +1,35 @@
+table {
+    width: 100%;
+    margin: 0 auto;
+    text-align: center;
+    background-color: #a2d3acaa;
+}
+  
+th, td {
+    padding: 10px;
+}
+  
+thead {
+    background-color: #ccc;
+}
+
+tbody tr {
+    height: 100px;
+    background-color: #929090aa;
+}
+
+tbody tr:hover {
+    background-color: #aaaa;
+}
+
+input {
+    width: 50%;
+    margin: 0 auto;
+    text-align: center;
+    font-size: 16px;
+    height: 40px
+  }
+
+.center {
+    text-align: center;
+}

@@ -1,0 +1,43 @@
+.menu {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+  }
+  
+  .menu-left {
+    display: flex;
+    align-items: center;
+    margin-right: auto;
+  }
+  
+  .menu-right {
+    display: flex;
+    align-items: center;
+    margin-left: auto;
+  }
+
+  .sidebar {
+    position: fixed;
+    top: 150px;
+    right: 0;
+    width: 300px;
+    height: 100%;
+    background-color: white;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+    z-index: 1000;
+    padding: 10px;
+  }
+  
+  .sidebar.show {
+    left: 0;
+  }
+
+  .close-button {
+    display: inline-block;
+    margin-left: 10px;
+    padding: 0px;
+    background-color: #ccc;
+    border: none;
+    cursor: pointer;
+  }

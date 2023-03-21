@@ -1,0 +1,32 @@
+div {
+    margin-bottom: 10px;
+}
+label {
+    display: inline-block;
+    width: 150px;
+    text-align: center;
+}
+input {
+    text-align:center;
+    font-size: 1em;
+    padding: .5rem;
+}
+button {
+    margin-top: 20px;
+    margin-right: .5rem;
+    background-color: #eee;
+    padding: 1rem;
+    border-radius: 4px;
+    font-size: 1rem;
+}
+button:hover {
+    background-color: #cfd8dc;
+}
+button:disabled {
+    background-color: #eee;
+    color: #ccc;
+    cursor: auto;
+}
+.center {
+    text-align: center;
+}

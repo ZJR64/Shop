@@ -1,0 +1,27 @@
+<div class="center">
+    <input type="text" [(ngModel)]="searchTerm" (input)="onSearch()" placeholder="Search Users">
+  </div>
+  <table>
+    <thead>
+      <tr>
+        <th (click)="sort('name')">Name {{sortOrder == 'name' ? (sortReverse ? '↑' : '↓') : ''}}</th>
+        <th (click)="sort('email')">Email {{sortOrder == 'email' ? (sortReverse ? '↑' : '↓') : ''}}</th>
+        <th></th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let user of users">
+        <td>{{user.name}}</td>
+        <td>{{user.email}}</td>
+        <td>
+          <button (click)="changeAdmin(user)">
+            {{ adminView ? 'Remove' : 'Add' }}
+          </button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+  
+  <button (click)="switch()">
+    {{ adminView ? 'Add Admins' : 'Finish' }}
+  </button>

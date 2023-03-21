@@ -3,6 +3,7 @@ package com.estore.api.estoreapi.persistence;
 import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.List;
 import java.util.Map;
 import java.util.TreeMap;
 import java.util.logging.Logger;
@@ -26,13 +27,14 @@ import com.estore.api.estoreapi.model.Product;
 @Component
 public class ProductFileDAO implements ProductDAO {
     private static final Logger LOG = Logger.getLogger(ProductFileDAO.class.getName());
-    Map<Integer, Product> products; // Provides a local cache of the product objects
+    public Map<Integer, Product> products; // Provides a local cache of the product objects
                                     // so that we don't need to read from the file
                                     // each time
     private ObjectMapper objectMapper; // Provides conversion between Product
                                        // objects and JSON text format written
                                        // to the file
-    private static int nextId; // The next Id to assign to a new product
+    private static int currentID; // The lates ID to be assigned to a product
+    private static ArrayList<Integer> deletedIDs; // arraylist of all deleted ids
     private String filename; // Filename to read from and write to
 
     /**
@@ -56,9 +58,13 @@ public class ProductFileDAO implements ProductDAO {
      * @return The next id
      */
     private synchronized static int nextId() {
-        int id = nextId;
-        ++nextId;
-        return id;
+        if (deletedIDs.size() > 0) {
+            return deletedIDs.remove(0);
+        }
+        else {
+            currentID++;
+            return currentID;
+        }
     }
 
     /**
@@ -124,7 +130,9 @@ public class ProductFileDAO implements ProductDAO {
      */
     private boolean load() throws IOException {
         products = new TreeMap<>();
-        nextId = 0;
+        currentID = 0;
+        deletedIDs = new ArrayList<Integer>();
+
 
         // Deserializes the JSON objects from the file into an array of products
         // readValue will throw an IOException if there's an issue with the file
@@ -132,13 +140,25 @@ public class ProductFileDAO implements ProductDAO {
         Product[] productArray = objectMapper.readValue(new File(filename), Product[].class);
 
         // Add each product to the tree map and keep track of the greatest id
+        int maxID = 0;
         for (Product product : productArray) {
             products.put(product.getId(), product);
-            if (product.getId() > nextId)
-                nextId = product.getId();
+            if (product.getId() > maxID)
+                maxID = product.getId();
         }
-        // Make the next id one greater than the maximum from the file
-        ++nextId;
+
+        //assign the value.
+        currentID = maxID;
+
+        //find the missing ids to fil in the deleted id list
+        for (int i = 1; i <= maxID; i++) {
+            deletedIDs.add(i);
+        }
+
+        for (Product product : productArray) {
+            deletedIDs.remove(deletedIDs.indexOf(product.getId()));
+        }
+
         return true;
     }
 
@@ -158,7 +178,14 @@ public class ProductFileDAO implements ProductDAO {
     @Override
     public Product[] findProducts(String containsText) {
         synchronized (products) {
-            return getProductsArray(containsText);
+            String searchLowerCase = containsText.toLowerCase();
+            List<Product> matches = new ArrayList<>();
+            for (Product product : getProductsArray()) {
+                if (product.getName().toLowerCase().contains(searchLowerCase)) {
+                    matches.add(product);
+                }
+            }
+            return matches.toArray(new Product[0]);
         }
     }
 
@@ -183,8 +210,8 @@ public class ProductFileDAO implements ProductDAO {
         synchronized (products) {
             // We create a new product object because the id field is immutable
             // and we need to assign the next unique id
-            Product newProduct = new Product(nextId(), product.getName(), product.getType(), product.getPrice(),
-                    product.getQuantity());
+            Product newProduct = new Product(nextId(), product.getName(), product.getType(), product.getModPrice(),
+                    product.getIngredients());
             products.put(newProduct.getId(), newProduct);
             save(); // may throw an IOException
             return newProduct;
@@ -214,6 +241,7 @@ public class ProductFileDAO implements ProductDAO {
         synchronized (products) {
             if (products.containsKey(id)) {
                 products.remove(id);
+                deletedIDs.add(id);
                 return save();
             } else
                 return false;

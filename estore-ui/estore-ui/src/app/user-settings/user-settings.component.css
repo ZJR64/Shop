@@ -1,0 +1,22 @@
+.pay-info {
+    display: inline-block;
+  }
+  
+  .pay-info label {
+    margin-right: 10px;
+  }
+  
+  .pay-info input {
+    display: inline-block;
+    width: 200px;
+  }
+  
+  .delete-button {
+    display: inline-block;
+    margin-left: 10px;
+    padding: 5px;
+    background-color: #ccc;
+    border: none;
+    cursor: pointer;
+  }
+  

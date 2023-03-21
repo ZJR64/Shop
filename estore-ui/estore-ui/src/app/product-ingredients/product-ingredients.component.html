@@ -1,0 +1,25 @@
+<div *ngIf="product">
+    <h2>{{product.name | uppercase}} Details</h2>
+    <div>id: {{product.id}}</div>
+    <div>Name: {{product.name}}</div>
+    <div>Type: {{product.type}}</div>
+    <div>Ingredient list (ingredient proportion):</div>
+    <li *ngFor="let entry of product.ingredients | keyvalue">
+
+        -- <input id="ingredient-name" [(ngModel)]="entry.key" placeholder="ingredient name" readonly>
+        <input id="ingredient-volume" [(ngModel)]="entry.value" placeholder="ingredient volume" readonly>
+        <button type="button" class="delete" title="delete ingredient" (click)="deleteIngredient(entry.key)">x</button>
+    </li>
+    <hr>
+    <form>
+        <label for="iname">Ingredient name:</label><br>
+        <input type="text" id="iname" name="iname" value="Ingredient"><br>
+        <label for="ivolume">Ingredient proportion (between 0.0 and 1.0):</label><br>
+        <input type="number" id="ivolume" name="ivolume" value="1.0" min="0.0" max="1.0"><br><br>
+        <input type="submit" value="Add Ingredient" (click)="addIngredient()">
+    </form>
+    <br>
+    <br>
+    <button type="button" (click)="goBack()">go back</button>
+    <button type="button" (click)="save()">save</button>
+</div>

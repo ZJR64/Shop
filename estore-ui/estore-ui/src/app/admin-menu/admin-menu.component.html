@@ -1,0 +1,29 @@
+<nav>
+    <!-- (click) sends the admin back to the store home screen -->
+    <button type="button" class="add-button" (click)="goAdmin();">
+        Admin Hub
+    </button>
+
+    <!-- (click) sends the admin to the product list -->
+    <button type="button" class="add-button" (click)="goProducts();">
+        Product Inventory
+    </button>
+
+    <!-- (click) sends the admin to the ingredient list -->
+    <button type="button" class="add-button" (click)="goIngredients();">
+        Ingredient Inventory
+    </button>
+
+    <!-- (click) sends the admin to the admin list -->
+    <button type="button" class="add-button" (click)="goAdmins();">
+        Admins
+    </button>
+
+    <!-- (click) sends the orders list -->
+    <button type="button" class="add-button" (click)="goOrders();">
+        Orders
+    </button>
+
+</nav>
+<br>
+<router-outlet></router-outlet>
