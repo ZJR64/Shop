@@ -14,20 +14,16 @@ geometry: margin=1in
 
 ## Executive Summary
 
-> _This is a summary of the project._
-
 ### Purpose
->  _**[Sprint 2 & 4]** Provide a very brief statement about the project and the most
-> important user group and user goals._
 
 This project will an e-store website to allow a small business owner to sell products to consumers.  This specific e-store will feature a varitiey of coffee and tea blends to be sold to customers.  The e-store will allow the manage inventory and add, modify, or remove products to be sold, while the customer will be able to browse the products and purchase them through the e-store.  
 
 ### Glossary and Acronyms
-> _**[Sprint 2 & 4]** Provide a table of terms and acronyms._
 
 | Term | Definition |
 |------|------------|
 | SPA | Single Page |
+| HTML | Hypertext Markup Language |
 
 
 ## Requirements
