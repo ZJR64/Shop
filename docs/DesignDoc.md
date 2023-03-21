@@ -28,6 +28,8 @@ This project will an e-store website to allow a small business owner to sell pro
 | MVVM | Model-View-ViewModel |
 | CSS | Cascading Style Sheets | 
 | REST API | Representational State Transfer Application Programming Interface | 
+| HW | Hardware |
+| OO | Object-Oriented |
 
 ## Requirements
 
