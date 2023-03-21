@@ -106,8 +106,7 @@ Both the ViewModel and Model are built using Java and Spring Framework. Details 
 This section describes the web interface flow; this is how the user views and interacts
 with the e-store application.
 
-> _Provide a summary of the application's user interface.  Describe, from
-> the user's perspective, the flow of the pages in the web application._
+The very top left of our webpage displays the text "Coffee/Tea E-store" and is prevalent on all the pages. Right underneath this text are the buttons "Back" and "Logout", since we believed these to be the most important. This notion is reflected in almost all websites and browsers. Notice that Chrome for example has the back arrow on the top left of the window. In the same row but on the far right, we have the "Settings" button, which brings the user to the user settings component. We belived that this also belonged near the top because one of the first things a new user would have to do is change their personal information by adding a credit card number, address, etc. A bit below that on the next row, we have the "Home", Dashboard", and "Store" buttons next to each other. 
 
 
 ### View Tier
